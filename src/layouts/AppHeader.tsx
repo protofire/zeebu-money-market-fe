@@ -222,7 +222,7 @@ export function AppHeader() {
           }}
           onClick={() => setMobileMenuOpen(false)}
         >
-          <img src={uiConfig.appLogo} alt="AAVE" width={72} height={20} />
+          <img src={uiConfig.appLogo} alt="Zeebu" width={91} height={22} />
         </Box>
         <Box sx={{ mr: sm ? 1 : 3 }}>
           {ENABLE_TESTNET && (
