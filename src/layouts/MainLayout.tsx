@@ -21,6 +21,9 @@ export function MainLayout({ children }: { children: ReactNode }) {
         backgroundAttachment: 'fixed',
         minHeight: '100vh',
         width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        flexGrow: '1',
       }}
     >
       <TopBarNotify
