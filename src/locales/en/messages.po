@@ -278,10 +278,6 @@ msgstr "Approving {symbol}..."
 msgid "Array parameters that should be equal length are not"
 msgstr "Array parameters that should be equal length are not"
 
-#: pages/staking.staking.tsx
-msgid "As a result of governance decisions, this ABPT staking pool is now deprecated. You have the flexibility to either migrate all of your tokens to v2 or unstake them without any cooldown period."
-msgstr "As a result of governance decisions, this ABPT staking pool is now deprecated. You have the flexibility to either migrate all of your tokens to v2 or unstake them without any cooldown period."
-
 #: src/modules/bridge/BridgeWrapper.tsx
 #: src/modules/dashboard/lists/BorrowAssetsList/BorrowAssetsList.tsx
 #: src/modules/dashboard/lists/BorrowedPositionsList/BorrowedPositionsList.tsx
@@ -427,10 +423,6 @@ msgstr "Balance"
 #: src/components/transactions/GovDelegation/GovDelegationModalContent.tsx
 msgid "Balance to revoke"
 msgstr "Balance to revoke"
-
-#: pages/staking.staking.tsx
-msgid "Balancer Pool"
-msgstr "Balancer Pool"
 
 #: src/modules/dashboard/lists/BorrowAssetsList/BorrowAssetsList.tsx
 msgid "Be careful - You are very close to liquidation. Consider depositing more collateral or paying down some of your borrowed positions"
@@ -1226,10 +1218,6 @@ msgstr "Go Back"
 msgid "Go to Balancer Pool"
 msgstr "Go to Balancer Pool"
 
-#: src/components/transactions/MigrateV3/MigrateV3ModalContent.tsx
-msgid "Go to V3 Dashboard"
-msgstr "Go to V3 Dashboard"
-
 #: src/layouts/components/LanguageSwitcher.tsx
 msgid "Greek"
 msgstr "Greek"
@@ -1251,10 +1239,6 @@ msgstr "Health factor is not below the threshold"
 #: src/components/lists/ListWrapper.tsx
 msgid "Hide"
 msgstr "Hide"
-
-#: src/modules/staking/GhoDiscountProgram.tsx
-msgid "Holders of stkAAVE receive a discount on the GHO borrowing rate"
-msgstr "Holders of stkAAVE receive a discount on the GHO borrowing rate"
 
 #: src/components/transactions/Borrow/BorrowAmountWarning.tsx
 #: src/components/transactions/Withdraw/WithdrawAndSwitchModalContent.tsx
@@ -1555,7 +1539,6 @@ msgstr "Menu"
 msgid "Merit Program rewards are claimed through the"
 msgstr "Merit Program rewards are claimed through the"
 
-#: src/components/transactions/MigrateV3/MigrateV3Actions.tsx
 #: src/components/transactions/StakingMigrate/StakingMigrateActions.tsx
 msgid "Migrate"
 msgstr "Migrate"
@@ -1581,12 +1564,10 @@ msgstr "Migrate to {0} v3 Market"
 msgid "Migrate your assets"
 msgstr "Migrate your assets"
 
-#: src/components/transactions/MigrateV3/MigrateV3ModalContent.tsx
 #: src/components/transactions/StakingMigrate/StakingMigrateModalContent.tsx
 msgid "Migrated"
 msgstr "Migrated"
 
-#: src/components/transactions/MigrateV3/MigrateV3Actions.tsx
 #: src/components/transactions/StakingMigrate/StakingMigrateActions.tsx
 msgid "Migrating"
 msgstr "Migrating"
@@ -1724,7 +1705,6 @@ msgstr "Not enough voting power to participate in this proposal"
 msgid "Not reached"
 msgstr "Not reached"
 
-#: pages/v3-migration.page.tsx
 #: src/modules/dashboard/lists/BorrowedPositionsList/BorrowedPositionsList.tsx
 msgid "Nothing borrowed yet"
 msgstr "Nothing borrowed yet"
@@ -1738,7 +1718,6 @@ msgstr "Nothing found"
 msgid "Nothing staked"
 msgstr "Nothing staked"
 
-#: pages/v3-migration.page.tsx
 #: src/modules/dashboard/lists/SuppliedPositionsList/SuppliedPositionsList.tsx
 msgid "Nothing supplied yet"
 msgstr "Nothing supplied yet"
@@ -1754,10 +1733,6 @@ msgstr "Operation not supported"
 #: src/modules/reserve-overview/ReserveTopDetails.tsx
 msgid "Oracle price"
 msgstr "Oracle price"
-
-#: pages/reserve-overview.page.tsx
-msgid "Overview"
-msgstr "Overview"
 
 #: pages/404.page.tsx
 msgid "Page not found"
@@ -1801,10 +1776,6 @@ msgstr "Please connect your wallet to be able to switch your tokens."
 #: src/modules/faucet/FaucetAssetsList.tsx
 msgid "Please connect your wallet to get free testnet assets."
 msgstr "Please connect your wallet to get free testnet assets."
-
-#: pages/v3-migration.page.tsx
-msgid "Please connect your wallet to see migration tool."
-msgstr "Please connect your wallet to see migration tool."
 
 #: src/components/ConnectWalletPaper.tsx
 #: src/components/ConnectWalletPaperStaking.tsx
@@ -2137,18 +2108,6 @@ msgstr "Select language"
 msgid "Select slippage tolerance"
 msgstr "Select slippage tolerance"
 
-#: src/components/transactions/MigrateV3/MigrateV3ModalContent.tsx
-msgid "Selected assets have successfully migrated. Visit the Market Dashboard to see them."
-msgstr "Selected assets have successfully migrated. Visit the Market Dashboard to see them."
-
-#: src/components/transactions/MigrateV3/MigrateV3ModalContent.tsx
-msgid "Selected borrow assets"
-msgstr "Selected borrow assets"
-
-#: src/components/transactions/MigrateV3/MigrateV3ModalContent.tsx
-msgid "Selected supply assets"
-msgstr "Selected supply assets"
-
 #: src/layouts/FeedbackDialog.tsx
 msgid "Send Feedback"
 msgstr "Send Feedback"
@@ -2272,18 +2231,6 @@ msgstr "Stablecoin"
 #: src/modules/staking/StakingPanel.tsx
 msgid "Stake"
 msgstr "Stake"
-
-#: pages/staking.staking.tsx
-msgid "Stake AAVE"
-msgstr "Stake AAVE"
-
-#: pages/staking.staking.tsx
-msgid "Stake ABPT"
-msgstr "Stake ABPT"
-
-#: pages/staking.staking.tsx
-msgid "Stake GHO"
-msgstr "Stake GHO"
 
 #: src/components/transactions/StakeCooldown/StakeCooldownModalContent.tsx
 msgid "Stake cooldown activated"
@@ -3075,10 +3022,6 @@ msgstr "We couldn't find any assets related to your search. Try again with a dif
 msgid "We couldn't find any transactions related to your search. Try again with a different asset name, or reset filters."
 msgstr "We couldn't find any transactions related to your search. Try again with a different asset name, or reset filters."
 
-#: pages/staking.staking.tsx
-msgid "We couldn’t detect a wallet. Connect a wallet to stake and view your balance."
-msgstr "We couldn’t detect a wallet. Connect a wallet to stake and view your balance."
-
 #: pages/404.page.tsx
 msgid "We suggest you go back to the Dashboard."
 msgstr "We suggest you go back to the Dashboard."
@@ -3277,7 +3220,6 @@ msgid "Your health factor and loan to value determine the assurance of your coll
 msgstr "Your health factor and loan to value determine the assurance of your collateral. To avoid liquidations you can supply more collateral or repay borrow positions."
 
 #: pages/governance/index.governance.tsx
-#: pages/reserve-overview.page.tsx
 #: src/modules/governance/UserGovernanceInfo.tsx
 #: src/modules/governance/VotingPowerInfoPanel.tsx
 #: src/modules/reserve-overview/ReserveActions.tsx
@@ -3404,10 +3346,6 @@ msgstr "staking view"
 msgid "starts"
 msgstr "starts"
 
-#: src/modules/staking/GhoDiscountProgram.tsx
-msgid "stkAAVE holders get a discount on GHO borrow rate"
-msgstr "stkAAVE holders get a discount on GHO borrow rate"
-
 #: src/modules/reserve-overview/Gho/GhoDiscountCalculator.tsx
 msgid "to"
 msgstr "to"
@@ -3439,7 +3377,6 @@ msgstr "withdrew"
 #: src/layouts/TopBarNotify.tsx
 #: src/modules/dashboard/DashboardEModeButton.tsx
 #: src/modules/reserve-overview/ReserveTopDetailsWrapper.tsx
-#: src/modules/staking/GhoDiscountProgram.tsx
 msgid "{0}"
 msgstr "{0}"
 
