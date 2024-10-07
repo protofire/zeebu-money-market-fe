@@ -1565,10 +1565,6 @@ msgstr "Migrate"
 msgid "Migrate to Aave V3"
 msgstr "Migrate to Aave V3"
 
-#: src/components/TopInfoPanel/PageTitle.tsx
-msgid "Migrate to V3"
-msgstr "Migrate to V3"
-
 #: src/components/transactions/StakingMigrate/StakingMigrateModalContent.tsx
 msgid "Migrate to stkABPT v2"
 msgstr "Migrate to stkABPT v2"
@@ -2966,14 +2962,6 @@ msgstr "Variable interest rate will <0>fluctuate</0> based on the market conditi
 msgid "Variable rate"
 msgstr "Variable rate"
 
-#: src/components/MarketSwitcher.tsx
-msgid "Version 2"
-msgstr "Version 2"
-
-#: src/components/MarketSwitcher.tsx
-msgid "Version 3"
-msgstr "Version 3"
-
 #: src/modules/history/TransactionRowItem.tsx
 msgid "View"
 msgstr "View"
@@ -3436,7 +3424,6 @@ msgstr "tokens, please go to the"
 msgid "withdrew"
 msgstr "withdrew"
 
-#: src/components/MarketSwitcher.tsx
 #: src/components/transactions/DelegationTxsWrapper.tsx
 #: src/components/transactions/DelegationTxsWrapper.tsx
 #: src/components/transactions/DelegationTxsWrapper.tsx
