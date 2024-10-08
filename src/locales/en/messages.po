@@ -17,6 +17,14 @@ msgstr ""
 msgid "..."
 msgstr "..."
 
+#: src/modules/history/HistoryWrapper.tsx
+msgid ".CSV"
+msgstr ".CSV"
+
+#: src/modules/history/HistoryWrapper.tsx
+msgid ".JSON"
+msgstr ".JSON"
+
 #: src/components/Warnings/AMPLWarning.tsx
 msgid "<0>Ampleforth</0> is a rebasing asset. Visit the <1>documentation</1> to learn more."
 msgstr "<0>Ampleforth</0> is a rebasing asset. Visit the <1>documentation</1> to learn more."
@@ -122,6 +130,10 @@ msgstr "Addresses"
 msgid "Addresses ({0})"
 msgstr "Addresses ({0})"
 
+#: src/modules/bridge/BridgeWrapper.tsx
+msgid "Age"
+msgstr "Age"
+
 #: src/components/transactions/Emode/EmodeModalContent.tsx
 #: src/components/transactions/Emode/EmodeModalContent.tsx
 msgid "All Assets"
@@ -200,6 +212,7 @@ msgstr "Approving {symbol}..."
 msgid "Array parameters that should be equal length are not"
 msgstr "Array parameters that should be equal length are not"
 
+#: src/modules/bridge/BridgeWrapper.tsx
 #: src/modules/dashboard/lists/BorrowAssetsList/BorrowAssetsList.tsx
 #: src/modules/dashboard/lists/BorrowedPositionsList/BorrowedPositionsList.tsx
 #: src/modules/dashboard/lists/SuppliedPositionsList/SuppliedPositionsList.tsx
@@ -664,6 +677,10 @@ msgstr "Debt ceiling limits the amount possible to borrow against this asset by 
 msgid "Delegated power"
 msgstr "Delegated power"
 
+#: src/modules/bridge/BridgeWrapper.tsx
+msgid "Destination"
+msgstr "Destination"
+
 #: src/modules/dashboard/lists/BorrowAssetsList/BorrowAssetsListItem.tsx
 #: src/modules/dashboard/lists/BorrowAssetsList/BorrowAssetsListMobileItem.tsx
 #: src/modules/dashboard/lists/BorrowAssetsList/GhoBorrowAssetsListItem.tsx
@@ -929,6 +946,7 @@ msgid "Global settings"
 msgstr "Global settings"
 
 #: src/modules/governance/proposal/ProposalTopPanel.tsx
+#: src/modules/reserve-overview/ReserveTopDetailsWrapper.tsx
 msgid "Go Back"
 msgstr "Go Back"
 
@@ -1122,6 +1140,10 @@ msgstr "MAX"
 msgid "Manage analytics"
 msgstr "Manage analytics"
 
+#: src/modules/reserve-overview/ReserveTopDetailsWrapper.tsx
+msgid "Market"
+msgstr "Market"
+
 #: src/modules/markets/MarketsTopPanel.tsx
 #: src/ui-config/menu-items/index.tsx
 msgid "Markets"
@@ -1273,6 +1295,10 @@ msgstr "No rewards to claim"
 msgid "No search results{0}"
 msgstr "No search results{0}"
 
+#: src/modules/history/HistoryWrapper.tsx
+msgid "No transactions yet."
+msgstr "No transactions yet."
+
 #: src/components/transactions/GovVote/GovVoteModalContent.tsx
 msgid "No voting power"
 msgstr "No voting power"
@@ -1312,6 +1338,10 @@ msgstr "Not reached"
 #: src/modules/dashboard/lists/BorrowedPositionsList/BorrowedPositionsList.tsx
 msgid "Nothing borrowed yet"
 msgstr "Nothing borrowed yet"
+
+#: src/modules/history/HistoryWrapper.tsx
+msgid "Nothing found"
+msgstr "Nothing found"
 
 #: src/components/transactions/StakeCooldown/StakeCooldownModalContent.tsx
 msgid "Nothing staked"
@@ -1366,6 +1396,11 @@ msgstr "Please connect your wallet to be able to switch your tokens."
 #: src/components/ConnectWalletPaper.tsx
 msgid "Please connect your wallet to see your supplies, borrowings, and open positions."
 msgstr "Please connect your wallet to see your supplies, borrowings, and open positions."
+
+#: src/modules/bridge/BridgeWrapper.tsx
+#: src/modules/history/HistoryWrapper.tsx
+msgid "Please connect your wallet to view transaction history."
+msgstr "Please connect your wallet to view transaction history."
 
 #: src/components/WalletConnection/WalletSelector.tsx
 msgid "Please enter a valid wallet address."
@@ -1482,6 +1517,10 @@ msgstr "Receive (est.)"
 #: src/components/transactions/Faucet/FaucetModalContent.tsx
 msgid "Received"
 msgstr "Received"
+
+#: src/modules/bridge/BridgeWrapper.tsx
+msgid "Recent Transactions"
+msgstr "Recent Transactions"
 
 #: src/components/transactions/GovDelegation/GovDelegationModalContent.tsx
 msgid "Recipient address"
@@ -1701,6 +1740,10 @@ msgstr "Sorry, an unexpected error happened. In the meantime you may try reloadi
 msgid "Sorry, we couldn't find the page you were looking for."
 msgstr "Sorry, we couldn't find the page you were looking for."
 
+#: src/modules/bridge/BridgeWrapper.tsx
+msgid "Source"
+msgstr "Source"
+
 #: src/layouts/components/LanguageSwitcher.tsx
 msgid "Spanish"
 msgstr "Spanish"
@@ -1764,6 +1807,10 @@ msgstr "Staking balance"
 #: src/modules/governance/proposal/VotingResults.tsx
 msgid "State"
 msgstr "State"
+
+#: src/modules/bridge/BridgeWrapper.tsx
+msgid "Status"
+msgstr "Status"
 
 #: src/layouts/FeedbackDialog.tsx
 msgid "Submission did not work, please try again later or contact wecare@avara.xyz"
@@ -2170,11 +2217,16 @@ msgstr "Track wallet balance in read-only mode"
 msgid "Transaction failed"
 msgstr "Transaction failed"
 
+#: src/modules/history/HistoryWrapper.tsx
+msgid "Transaction history is not currently available for this market"
+msgstr "Transaction history is not currently available for this market"
+
 #: src/components/transactions/FlowCommons/TxModalDetails.tsx
 msgid "Transaction overview"
 msgstr "Transaction overview"
 
 #: src/components/transactions/Bridge/BridgeModalContent.tsx
+#: src/modules/history/HistoryWrapper.tsx
 msgid "Transactions"
 msgstr "Transactions"
 
@@ -2295,6 +2347,10 @@ msgstr "View Bridge Transactions"
 msgid "View Transactions"
 msgstr "View Transactions"
 
+#: src/modules/bridge/BridgeWrapper.tsx
+msgid "View all"
+msgstr "View all"
+
 #: src/modules/governance/proposal/VotersListContainer.tsx
 msgid "View all votes"
 msgstr "View all votes"
@@ -2372,6 +2428,10 @@ msgstr "Wallets are provided by External Providers and by selecting you agree to
 #: src/modules/markets/MarketAssetsListContainer.tsx
 msgid "We couldn't find any assets related to your search. Try again with a different asset name, symbol, or address."
 msgstr "We couldn't find any assets related to your search. Try again with a different asset name, symbol, or address."
+
+#: src/modules/history/HistoryWrapper.tsx
+msgid "We couldn't find any transactions related to your search. Try again with a different asset name, or reset filters."
+msgstr "We couldn't find any transactions related to your search. Try again with a different asset name, or reset filters."
 
 #: pages/404.page.tsx
 msgid "We suggest you go back to the Dashboard."
@@ -2481,6 +2541,10 @@ msgstr "You did not participate in this proposal"
 #: src/components/transactions/CollateralChange/CollateralChangeModalContent.tsx
 msgid "You do not have supplies in this currency"
 msgstr "You do not have supplies in this currency"
+
+#: src/modules/bridge/BridgeWrapper.tsx
+msgid "You don't have any bridge transactions"
+msgstr "You don't have any bridge transactions"
 
 #: src/components/transactions/Repay/RepayModalContent.tsx
 msgid "You don’t have enough funds in your wallet to repay the full amount. If you proceed to repay with your current amount of funds, you will still have a small borrowing position in your dashboard."
@@ -2666,6 +2730,7 @@ msgstr "withdrew"
 #: src/layouts/TopBarNotify.tsx
 #: src/layouts/TopBarNotify.tsx
 #: src/modules/dashboard/DashboardEModeButton.tsx
+#: src/modules/reserve-overview/ReserveTopDetailsWrapper.tsx
 msgid "{0}"
 msgstr "{0}"
 
