@@ -486,8 +486,6 @@ export function getThemedComponents(theme: Theme) {
               borderTop: '1px solid',
               color: theme.palette.common.white,
               boxShadow: '0 2px #d3390b',
-              transition:
-                'background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;',
               borderRadius: '3rem',
               '&:hover, &.Mui-focusVisible': {
                 borderColor: '#ff895b94',
