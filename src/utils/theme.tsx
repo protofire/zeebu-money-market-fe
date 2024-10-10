@@ -447,7 +447,8 @@ export function getThemedComponents(theme: Theme) {
               transition:
                 'background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1)',
               '&:hover, &.Mui-focusVisible': {
-                backgroundColor: theme.palette.primary,
+                borderColor: '#FF895B',
+                opacity: '0.9',
               },
             },
           },
@@ -466,8 +467,34 @@ export function getThemedComponents(theme: Theme) {
           {
             props: { color: 'primary', variant: 'outlined' },
             style: {
-              background: theme.palette.background.surface,
-              borderColor: theme.palette.divider,
+              background:
+                'linear-gradient(180deg, rgba(255, 255, 255, 0.25) 6.67%, rgba(255, 255, 255, 0) 100%)',
+              borderColor: theme.palette.common.white,
+              transition: 'all 0.2s ease',
+              borderWidth: '1px',
+              borderRadius: '3rem',
+              '&:hover, &.Mui-focusVisible': {
+                borderColor: '#FF895B',
+                opacity: '0.9',
+              },
+            },
+          },
+          {
+            props: { color: 'primary', variant: 'contained' },
+            style: {
+              background: 'linear-gradient(0deg,#ff895b,#ff895b)',
+              borderTop: '1px solid',
+              color: theme.palette.common.white,
+              boxShadow: '0 2px #d3390b',
+              transition:
+                'background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;',
+              borderRadius: '3rem',
+              '&:hover, &.Mui-focusVisible': {
+                borderColor: '#ff895b94',
+                borderTop: '1px solid',
+                boxShadow: '0 3px #a02b07',
+                opacity: '0.9',
+              },
             },
           },
         ],
