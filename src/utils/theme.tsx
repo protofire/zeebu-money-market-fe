@@ -190,7 +190,7 @@ export const getDesignTokens = (mode: 'light' | 'dark') => {
         disabled: getColor('#EAEBEF', '#EBEBEF14'),
         glass: getColor('#ffffff8f', '#292e4144'),
       },
-      divider: getColor('#EAEBEF', '#EBEBEF14'),
+      divider: getColor('#EAEBEF', '#ebebef65'),
       action: {
         active: getColor('#8E92A3', '#EBEBEF8F'),
         hover: getColor('#F1F1F3', '#EBEBEF14'),
