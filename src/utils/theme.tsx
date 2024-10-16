@@ -457,6 +457,9 @@ export function getThemedComponents(theme: Theme) {
             style: {
               color: theme.palette.common.white,
               background: theme.palette.gradients.newGradient,
+              border: '1px solid',
+              borderColor: theme.palette.common.white,
+              borderRadius: '3rem',
               transition: 'all 0.2s ease',
               '&:hover, &.Mui-focusVisible': {
                 background: theme.palette.gradients.newGradient,
