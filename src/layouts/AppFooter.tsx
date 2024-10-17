@@ -63,11 +63,6 @@ export function AppFooter() {
       key: 'Docs',
     },
     {
-      href: 'https://docs.aave.com/faq/',
-      label: <Trans>FAQS</Trans>,
-      key: 'FAQS',
-    },
-    {
       href: '/',
       label: <Trans>Manage analytics</Trans>,
       key: 'Manage analytics',
