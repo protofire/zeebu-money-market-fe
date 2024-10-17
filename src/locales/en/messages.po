@@ -1002,10 +1002,6 @@ msgstr "Expires"
 msgid "FAQ"
 msgstr "FAQ"
 
-#: src/layouts/AppFooter.tsx
-msgid "FAQS"
-msgstr "FAQS"
-
 #: src/modules/governance/proposal/VotersListContainer.tsx
 msgid "Failed to load proposal voters. Please refresh the page."
 msgstr "Failed to load proposal voters. Please refresh the page."
@@ -2203,8 +2199,8 @@ msgid "The app is running in fork mode."
 msgstr "The app is running in fork mode."
 
 #: src/layouts/AppHeader.tsx
-msgid "The app is running in testnet mode. Learn how it works in"
-msgstr "The app is running in testnet mode. Learn how it works in"
+msgid "The app is running in testnet mode."
+msgstr "The app is running in testnet mode."
 
 #: src/ui-config/errorMapping.tsx
 msgid "The caller of the function is not an AToken"
