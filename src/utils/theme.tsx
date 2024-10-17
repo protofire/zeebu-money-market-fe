@@ -177,7 +177,7 @@ export const getDesignTokens = (mode: 'light' | 'dark') => {
       text: {
         primary: getColor('#303549', '#F1F1F3'),
         secondary: getColor('#555868', '#d5daf3'),
-        disabled: getColor('#656874', '#62677B'),
+        disabled: getColor('#656874', '##d5daf3'),
         muted: getColor('#A5A8B6', '#b9bbc5'),
         highlight: getColor('#383D51', '#d19e40'),
       },
