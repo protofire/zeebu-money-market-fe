@@ -134,7 +134,7 @@ export default function MyApp(props: MyAppProps) {
         description={
           'Zeebu is an Open Source Protocol to create Non-Custodial Liquidity Markets to earn interest on supplying and borrowing assets with a variable or stable interest rate. The protocol is designed for easy integration into your products and services.'
         }
-        imageUrl="./public/zeebu-opengraph.png"
+        imageUrl="./public/zeebu-com-opengraph.png"
       />
       <LanguageProvider>
         <QueryClientProvider client={queryClient}>
