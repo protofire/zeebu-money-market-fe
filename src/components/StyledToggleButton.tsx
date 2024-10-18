@@ -4,8 +4,7 @@ import React from 'react';
 const CustomToggleButton = styled(ToggleButton)<ToggleButtonProps>(({ theme }) => ({
   border: '0px',
   flex: 1,
-  backgroundColor: '#383D51',
-  borderRadius: '4px',
+  borderRadius: '6px',
 
   '&.Mui-selected, &.Mui-selected:hover': {
     backgroundColor: '#FFFFFF',
