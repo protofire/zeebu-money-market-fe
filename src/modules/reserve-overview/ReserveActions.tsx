@@ -496,7 +496,7 @@ const WalletBalance = ({ balance, symbol, marketTitle }: WalletBalanceProps) => 
         sx={(theme) => ({
           width: '42px',
           height: '42px',
-          background: theme.palette.background.surface,
+          background: theme.palette.background.default + '40',
           border: `0.5px solid ${theme.palette.background.disabled}`,
           borderRadius: '12px',
           display: 'flex',

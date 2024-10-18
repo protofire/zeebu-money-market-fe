@@ -1236,10 +1236,6 @@ msgstr "Let us know how we can make the app better for you. For user support rel
 msgid "Linked addresses"
 msgstr "Linked addresses"
 
-#: src/layouts/MobileMenu.tsx
-msgid "Links"
-msgstr "Links"
-
 #: src/modules/dashboard/LiquidationRiskParametresModal/components/LTVContent.tsx
 msgid "Liquidation <0/> threshold"
 msgstr "Liquidation <0/> threshold"
@@ -1368,7 +1364,6 @@ msgstr "Merit Program rewards are claimed through the"
 msgid "Migrate"
 msgstr "Migrate"
 
-#: src/layouts/MobileMenu.tsx
 #: src/layouts/MoreMenu.tsx
 msgid "Migrate to Aave V3"
 msgstr "Migrate to Aave V3"
