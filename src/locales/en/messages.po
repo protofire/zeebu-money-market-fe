@@ -30,8 +30,8 @@ msgid "<0>Ampleforth</0> is a rebasing asset. Visit the <1>documentation</1> to 
 msgstr "<0>Ampleforth</0> is a rebasing asset. Visit the <1>documentation</1> to learn more."
 
 #: src/components/transactions/Borrow/ParameterChangewarning.tsx
-msgid "<0>Attention:</0> Parameter changes via governance can alter your account health factor and risk of liquidation. Follow the <1>Aave governance forum</1> for updates."
-msgstr "<0>Attention:</0> Parameter changes via governance can alter your account health factor and risk of liquidation. Follow the <1>Aave governance forum</1> for updates."
+msgid "<0>Attention:</0> Parameter changes via governance can alter your account health factor and risk of liquidation."
+msgstr "<0>Attention:</0> Parameter changes via governance can alter your account health factor and risk of liquidation."
 
 #: src/modules/dashboard/lists/SlippageList.tsx
 msgid "<0>Slippage tolerance </0><1>{selectedSlippage}% </1><2>{0}</2>"
@@ -1421,10 +1421,6 @@ msgstr "More"
 #: src/modules/governance/VoteBar.tsx
 msgid "NAY"
 msgstr "NAY"
-
-#: src/components/WalletConnection/WalletSelector.tsx
-msgid "Need help connecting a wallet? <0>Read our FAQ</0>"
-msgstr "Need help connecting a wallet? <0>Read our FAQ</0>"
 
 #: src/components/incentives/IncentivesTooltipContent.tsx
 msgid "Net APR"
