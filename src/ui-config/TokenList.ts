@@ -136,6 +136,18 @@ const NETWORK_ASSETS: TokenInfo[] = [
       isNative: true,
     },
   },
+  {
+    name: 'Ethereum Sepolia',
+    symbol: 'ETH',
+    decimals: 18,
+    address: API_ETH_MOCK_ADDRESS,
+    chainId: 11155111,
+    logoURI:
+      'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png',
+    extensions: {
+      isNative: true,
+    },
+  },
 ];
 
 export const TOKEN_LIST: TokenList = {
@@ -12689,6 +12701,31 @@ export const TOKEN_LIST: TokenList = {
       decimals: 18,
       chainId: 11155111,
       logoURI: 'https://assets.coingecko.com/coins/images/2518/standard/weth.png?1696503332',
+    },
+    {
+      name: 'USDCoin',
+      address: '0x94a9d9ac8a22534e3faca9f4e7f2e2cf85d5e4c8',
+      symbol: 'USDC',
+      decimals: 6,
+      chainId: 11155111,
+      logoURI:
+        'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png',
+    },
+    {
+      name: 'Zeebu',
+      address: '0x6098bc6ca2fdfda186847878726afbad1d01f13d',
+      symbol: 'ZBU',
+      decimals: 18,
+      chainId: 11155111,
+      logoURI: '/icons/tokens/zbu.svg',
+    },
+    {
+      name: 'Wrapped Bitcoin',
+      address: '0x29f2d40b0605204364af54ec677bd022da425d03',
+      symbol: 'WBTC',
+      decimals: 18,
+      chainId: 11155111,
+      logoURI: '/icons/tokens/wbtc.svg',
     },
     {
       name: 'Gho Token',
