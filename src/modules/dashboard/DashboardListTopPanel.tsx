@@ -1,8 +1,7 @@
 import { Trans } from '@lingui/macro';
 import { Box, Checkbox, FormControlLabel } from '@mui/material';
-import { FaucetButton } from 'src/components/FaucetButton';
 import { useRootStore } from 'src/store/root';
-import { ENABLE_TESTNET, STAGING_ENV } from 'src/utils/marketsAndNetworksConfig';
+import { ENABLE_TESTNET } from 'src/utils/marketsAndNetworksConfig';
 import { DASHBOARD } from 'src/utils/mixPanelEvents';
 
 import { BridgeButton } from '../../components/BridgeButton';
@@ -46,8 +45,6 @@ export const DashboardListTopPanel = ({
         }}
         label={<Trans>Show assets with 0 balance</Trans>}
       />
-
-      {(STAGING_ENV || ENABLE_TESTNET) && <FaucetButton />}
       {!ENABLE_TESTNET && <BridgeButton bridge={bridge} />}
     </Box>
   );

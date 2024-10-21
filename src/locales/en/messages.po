@@ -2986,10 +2986,6 @@ msgstr "{0}"
 msgid "{0} Balance"
 msgstr "{0} Balance"
 
-#: src/components/FaucetButton.tsx
-msgid "{0} Faucet"
-msgstr "{0} Faucet"
-
 #: src/modules/staking/BuyWithFiatModal.tsx
 msgid "{0} on-ramp service is provided by External Provider and by selecting you agree to Terms of the Provider. Your access to the service might be reliant on the External Provider being operational."
 msgstr "{0} on-ramp service is provided by External Provider and by selecting you agree to Terms of the Provider. Your access to the service might be reliant on the External Provider being operational."
