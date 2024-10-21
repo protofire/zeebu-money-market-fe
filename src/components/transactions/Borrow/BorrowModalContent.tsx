@@ -10,6 +10,7 @@ import { useState } from 'react';
 import { APYTypeTooltip } from 'src/components/infoTooltips/APYTypeTooltip';
 import { FormattedNumber } from 'src/components/primitives/FormattedNumber';
 import { Row } from 'src/components/primitives/Row';
+import { Warning } from 'src/components/primitives/Warning';
 import { StyledTxModalToggleButton } from 'src/components/StyledToggleButton';
 import { StyledTxModalToggleGroup } from 'src/components/StyledToggleButtonGroup';
 import {
@@ -272,9 +273,9 @@ export const BorrowModalContent = ({
       />
 
       {blockingError !== undefined && (
-        <Typography variant="helperText" color="error.main">
-          {handleBlocked()}
-        </Typography>
+        <Warning severity="error" icon={false} sx={{ mt: 1, mb: 0 }}>
+          <Typography variant="helperText">{handleBlocked()}</Typography>
+        </Warning>
       )}
 
       {poolReserve.isWrappedBaseAsset && (

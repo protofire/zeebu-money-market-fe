@@ -2742,8 +2742,8 @@ msgid "To borrow you need to supply any asset to be used as collateral."
 msgstr "要借款，您需要提供任何用作抵押品的资产。"
 
 #: src/components/infoTooltips/ApprovalTooltip.tsx
-msgid "To continue, you need to grant Aave smart contracts permission to move your funds from your wallet. Depending on the asset and wallet you use, it is done by signing the permission message (gas free), or by submitting an approval transaction (requires gas). <0>Learn more</0>"
-msgstr "要继续，您需要授予 Aave 智能合约从钱包中转移资金的权限。根据您使用的资产和钱包，可以通过签署许可消息（无 gas）或提交批准交易（需要 gas）来完成。 <0>了解更多信息</0>"
+msgid "To continue, you need to grant Zeebu smart contracts permission to move your funds from your wallet. Depending on the asset and wallet you use, it is done by signing the permission message (gas free), or by submitting an approval transaction (requires gas). <0>Learn more</0>"
+msgstr "要继续，您需要授予 Zeebu 智能合约从钱包中转移资金的权限。根据您使用的资产和钱包，可以通过签署许可消息（无 gas）或提交批准交易（需要 gas）来完成。 <0>了解更多信息</0>"
 
 #: src/components/transactions/Emode/EmodeModalContent.tsx
 msgid "To enable E-mode for the {0} category, all borrow positions outside of this category must be closed."
