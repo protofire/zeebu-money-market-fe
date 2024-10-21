@@ -194,6 +194,7 @@ export function AppHeader() {
           alignItems: 'center',
           flexDirection: 'space-between',
           boxShadow: 'inset 0px -1px 0px rgba(242, 243, 247, 0.16)',
+          backdropFilter: 'blur(4px)',
         })}
       >
         <Box

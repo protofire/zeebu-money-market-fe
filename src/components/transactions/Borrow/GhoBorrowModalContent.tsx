@@ -342,7 +342,7 @@ export const GhoBorrowModalContent = ({
         />
       )}
 
-      <ParameterChangewarning underlyingAsset={underlyingAsset} />
+      <ParameterChangewarning />
 
       <BorrowActions
         poolReserve={poolReserve}
