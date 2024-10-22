@@ -9,7 +9,7 @@ interface StyledLinkProps {
 }
 
 const StyledLink = styled(Link)<StyledLinkProps>(({ theme }) => ({
-  color: theme.palette.text.primary + '90',
+  color: theme.palette.common.white,
   '&:hover': {
     color: theme.palette.text.primary,
   },
@@ -75,33 +75,35 @@ export function AppFooter() {
 
   return (
     <Box
-      sx={(theme) => ({
+      sx={{
         display: 'flex',
-        padding: ['22px 0px 40px 0px', '0 22px 0 40px', '20px 22px'],
+        padding: ['22px 0px 40px 0px', '0 22px 0 40px', '20px 80px'],
         width: '100%',
         justifyContent: 'space-between',
         alignItems: 'center',
         gap: '22px',
         flexDirection: ['column', 'column', 'row'],
-        boxShadow:
-          theme.palette.mode === 'light'
-            ? 'inset 0px 1px 0px rgba(0, 0, 0, 0.04)'
-            : 'inset 0px 1px 0px rgba(255, 255, 255, 0.12)',
-      })}
+      }}
     >
-      <Box sx={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-        {FOOTER_LINKS.map((link) => (
-          <StyledLink onClick={link.onClick} key={link.key} href={link.href}>
-            <Typography variant="caption">{link.label}</Typography>
-          </StyledLink>
-        ))}
+      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+        <Box sx={{ display: 'flex', flexDirection: 'row', gap: '1rem', alignItems: 'center' }}>
+          {FOOTER_LINKS.map((link) => (
+            <StyledLink onClick={link.onClick} key={link.key} href={link.href}>
+              <Typography variant="secondary16">{link.label}</Typography>
+            </StyledLink>
+          ))}
+        </Box>
+        <Typography variant="secondary14" sx={{ fontWeight: 'normal', opacity: '0.5' }}>
+          Copyright ©Zeebu 2024
+        </Typography>
       </Box>
-      <Box sx={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+      <Box sx={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
         {FOOTER_ICONS.map((icon) => (
           <StyledLink href={icon.href} key={icon.title}>
             <SvgIcon
               sx={{
-                fontSize: [24, 24, 20],
+                fontSize: [24, 24, 24],
+                color: 'theme.palette.common.white',
               }}
             >
               {icon.icon}
