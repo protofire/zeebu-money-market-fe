@@ -8,6 +8,18 @@ interface StyledLinkProps {
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }
 
+function Copyright() {
+  return (
+    <Typography mt={1} variant="secondary14" sx={{ fontWeight: 'normal', opacity: '0.5' }}>
+      Copyright ©
+      <Link href="https://www.zeebu.com/" target="_blank" color="text.primary">
+        Zeebu&nbsp;
+      </Link>
+      {new Date().getFullYear()}
+    </Typography>
+  );
+}
+
 const StyledLink = styled(Link)<StyledLinkProps>(({ theme }) => ({
   color: theme.palette.common.white,
   '&:hover': {
@@ -93,9 +105,7 @@ export function AppFooter() {
             </StyledLink>
           ))}
         </Box>
-        <Typography variant="secondary14" sx={{ fontWeight: 'normal', opacity: '0.5' }}>
-          Copyright ©Zeebu 2024
-        </Typography>
+        <Copyright />
       </Box>
       <Box sx={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
         {FOOTER_ICONS.map((icon) => (
