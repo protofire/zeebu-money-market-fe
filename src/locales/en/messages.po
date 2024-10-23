@@ -849,10 +849,6 @@ msgstr "Discount parameters are decided by the Aave community and may be changed
 msgid "Discountable amount"
 msgstr "Discountable amount"
 
-#: src/layouts/AppFooter.tsx
-msgid "Docs"
-msgstr "Docs"
-
 #: src/components/transactions/Borrow/GhoBorrowSuccessView.tsx
 msgid "Download"
 msgstr "Download"
@@ -1603,8 +1599,8 @@ msgid "Price impact {0}%"
 msgstr "Price impact {0}%"
 
 #: src/layouts/AppFooter.tsx
-msgid "Privacy"
-msgstr "Privacy"
+msgid "Privacy Policy"
+msgstr "Privacy Policy"
 
 #: src/modules/governance/proposal/ProposalLifecycle.tsx
 msgid "Proposal details"
@@ -2144,8 +2140,8 @@ msgid "Techpaper"
 msgstr "Techpaper"
 
 #: src/layouts/AppFooter.tsx
-msgid "Terms"
-msgstr "Terms"
+msgid "Terms of Service"
+msgstr "Terms of Service"
 
 #: src/layouts/components/TestNetModeSwitcher.tsx
 msgid "Testnet mode"

@@ -1,5 +1,5 @@
 import { Trans } from '@lingui/macro';
-import { Instagram, LinkedIn, Telegram, Twitter } from '@mui/icons-material';
+import { Description, Instagram, LinkedIn, Telegram, Twitter } from '@mui/icons-material';
 import { Box, styled, SvgIcon, Typography } from '@mui/material';
 import { Link } from 'src/components/primitives/Link';
 import { useRootStore } from 'src/store/root';
@@ -31,6 +31,11 @@ const StyledLink = styled(Link)<StyledLinkProps>(({ theme }) => ({
 
 const FOOTER_ICONS = [
   {
+    href: 'https://zeebu.gitbook.io/zbu-protocol-1.0/hvKFvzLoONc5kSQNlboc',
+    icon: <Description />,
+    title: 'Docs',
+  },
+  {
     href: 'https://x.com/zeebuofficial',
     icon: <Twitter />,
     title: 'Twitter',
@@ -60,19 +65,14 @@ export function AppFooter() {
 
   const FOOTER_LINKS = [
     {
-      href: 'https://www.zeebu.com/terms-conditions',
-      label: <Trans>Terms</Trans>,
-      key: 'Terms',
-    },
-    {
       href: 'https://www.zeebu.com/privacy-policy',
-      label: <Trans>Privacy</Trans>,
+      label: <Trans>Privacy Policy</Trans>,
       key: 'Privacy',
     },
     {
-      href: 'https://zeebu.gitbook.io/zbu-protocol-1.0/hvKFvzLoONc5kSQNlboc',
-      label: <Trans>Docs</Trans>,
-      key: 'Docs',
+      href: 'https://www.zeebu.com/terms-conditions',
+      label: <Trans>Terms of Service</Trans>,
+      key: 'Terms',
     },
     {
       href: '/',
