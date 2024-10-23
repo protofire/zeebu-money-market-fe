@@ -417,6 +417,13 @@ export function getThemedComponents(theme: Theme) {
         styleOverrides: {
           root: {
             borderRadius: '4px',
+            '&.Mui-disabled': {
+              color: 'hsla(0,0%,100%,.26)',
+              backgroundColor: theme.palette.action.disabledBackground,
+              borderColor: theme.palette.action.disabled,
+              cursor: 'no-drop',
+              boxShadow: '0 2px #d3390b',
+            },
           },
           sizeLarge: {
             ...theme.typography.buttonL,
@@ -436,9 +443,7 @@ export function getThemedComponents(theme: Theme) {
             props: { variant: 'surface' },
             style: {
               color:
-                theme.palette.mode === 'light'
-                  ? 'theme.palette.primary'
-                  : 'theme.palette.common.white',
+                theme.palette.mode === 'light' ? theme.palette.primary : theme.palette.common.white,
               border: '1px solid',
               borderColor: theme.palette.common.white,
               background:
@@ -449,6 +454,13 @@ export function getThemedComponents(theme: Theme) {
               '&:hover, &.Mui-focusVisible': {
                 borderColor: '#FF895B',
                 opacity: '0.9',
+              },
+              '&.Mui-disabled': {
+                background: 'linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), #ff895b',
+                color: 'hsla(0,0%,100%,.26)',
+                borderColor: theme.palette.action.disabled,
+                cursor: 'no-drop',
+                boxShadow: '0 2px #d3390b',
               },
             },
           },
@@ -465,6 +477,13 @@ export function getThemedComponents(theme: Theme) {
                 background: theme.palette.gradients.newGradient,
                 opacity: '0.9',
               },
+              '&.Mui-disabled': {
+                background: 'linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), #ff895b',
+                color: 'hsla(0,0%,100%,.26)',
+                borderColor: theme.palette.action.disabled,
+                cursor: 'no-drop',
+                boxShadow: '0 2px #d3390b',
+              },
             },
           },
           {
@@ -479,6 +498,13 @@ export function getThemedComponents(theme: Theme) {
               '&:hover, &.Mui-focusVisible': {
                 borderColor: '#FF895B',
                 opacity: '0.9',
+              },
+              '&.Mui-disabled': {
+                background: 'linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), #ff895b',
+                color: 'hsla(0,0%,100%,.26)',
+                borderColor: theme.palette.action.disabled,
+                cursor: 'no-drop',
+                boxShadow: '0 2px #d3390b',
               },
             },
           },
@@ -495,6 +521,13 @@ export function getThemedComponents(theme: Theme) {
                 borderTop: '1px solid',
                 boxShadow: '0 3px #a02b07',
                 opacity: '0.9',
+              },
+              '&.Mui-disabled': {
+                background: 'linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), #ff895b',
+                borderColor: theme.palette.action.disabled,
+                color: 'hsla(0,0%,100%,.26)',
+                cursor: 'no-drop',
+                boxShadow: '0 2px #d3390b',
               },
             },
           },

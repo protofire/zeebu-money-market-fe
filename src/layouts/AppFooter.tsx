@@ -1,5 +1,5 @@
 import { Trans } from '@lingui/macro';
-import { Instagram, LinkedIn, Telegram, Twitter } from '@mui/icons-material';
+import { Description, Instagram, LinkedIn, Telegram, Twitter } from '@mui/icons-material';
 import { Box, styled, SvgIcon, Typography } from '@mui/material';
 import { Link } from 'src/components/primitives/Link';
 import { useRootStore } from 'src/store/root';
@@ -8,8 +8,20 @@ interface StyledLinkProps {
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }
 
+function Copyright() {
+  return (
+    <Typography mt={1} variant="secondary14" sx={{ fontWeight: 'normal', opacity: '0.5' }}>
+      Copyright ©
+      <Link href="https://www.zeebu.com/" target="_blank" color="text.primary">
+        Zeebu&nbsp;
+      </Link>
+      {new Date().getFullYear()}
+    </Typography>
+  );
+}
+
 const StyledLink = styled(Link)<StyledLinkProps>(({ theme }) => ({
-  color: theme.palette.text.primary + '90',
+  color: theme.palette.common.white,
   '&:hover': {
     color: theme.palette.text.primary,
   },
@@ -18,6 +30,11 @@ const StyledLink = styled(Link)<StyledLinkProps>(({ theme }) => ({
 }));
 
 const FOOTER_ICONS = [
+  {
+    href: 'https://zeebu.gitbook.io/zbu-protocol-1.0/hvKFvzLoONc5kSQNlboc',
+    icon: <Description />,
+    title: 'Docs',
+  },
   {
     href: 'https://x.com/zeebuofficial',
     icon: <Twitter />,
@@ -48,19 +65,14 @@ export function AppFooter() {
 
   const FOOTER_LINKS = [
     {
-      href: 'https://www.zeebu.com/terms-conditions',
-      label: <Trans>Terms</Trans>,
-      key: 'Terms',
-    },
-    {
       href: 'https://www.zeebu.com/privacy-policy',
-      label: <Trans>Privacy</Trans>,
+      label: <Trans>Privacy Policy</Trans>,
       key: 'Privacy',
     },
     {
-      href: 'https://zeebu.gitbook.io/zbu-protocol-1.0/hvKFvzLoONc5kSQNlboc',
-      label: <Trans>Docs</Trans>,
-      key: 'Docs',
+      href: 'https://www.zeebu.com/terms-conditions',
+      label: <Trans>Terms of Service</Trans>,
+      key: 'Terms',
     },
     {
       href: '/',
@@ -75,33 +87,33 @@ export function AppFooter() {
 
   return (
     <Box
-      sx={(theme) => ({
+      sx={{
         display: 'flex',
-        padding: ['22px 0px 40px 0px', '0 22px 0 40px', '20px 22px'],
+        padding: ['22px 0px 40px 0px', '0 22px 0 40px', '20px 80px'],
         width: '100%',
         justifyContent: 'space-between',
         alignItems: 'center',
         gap: '22px',
         flexDirection: ['column', 'column', 'row'],
-        boxShadow:
-          theme.palette.mode === 'light'
-            ? 'inset 0px 1px 0px rgba(0, 0, 0, 0.04)'
-            : 'inset 0px 1px 0px rgba(255, 255, 255, 0.12)',
-      })}
+      }}
     >
-      <Box sx={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-        {FOOTER_LINKS.map((link) => (
-          <StyledLink onClick={link.onClick} key={link.key} href={link.href}>
-            <Typography variant="caption">{link.label}</Typography>
-          </StyledLink>
-        ))}
+      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+        <Box sx={{ display: 'flex', flexDirection: 'row', gap: '1rem', alignItems: 'center' }}>
+          {FOOTER_LINKS.map((link) => (
+            <StyledLink onClick={link.onClick} key={link.key} href={link.href}>
+              <Typography variant="secondary16">{link.label}</Typography>
+            </StyledLink>
+          ))}
+        </Box>
+        <Copyright />
       </Box>
-      <Box sx={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+      <Box sx={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
         {FOOTER_ICONS.map((icon) => (
           <StyledLink href={icon.href} key={icon.title}>
             <SvgIcon
               sx={{
-                fontSize: [24, 24, 20],
+                fontSize: [24, 24, 24],
+                color: 'theme.palette.common.white',
               }}
             >
               {icon.icon}
