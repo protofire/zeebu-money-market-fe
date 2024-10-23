@@ -524,8 +524,10 @@ export function getThemedComponents(theme: Theme) {
               },
               '&.Mui-disabled': {
                 background: 'linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), #ff895b',
+                borderColor: theme.palette.action.disabled,
                 color: 'hsla(0,0%,100%,.26)',
-                boxShadow: 'none',
+                cursor: 'no-drop',
+                boxShadow: '0 2px #d3390b',
               },
             },
           },
