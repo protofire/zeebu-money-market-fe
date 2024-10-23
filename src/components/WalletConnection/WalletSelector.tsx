@@ -110,13 +110,12 @@ export const WalletSelector = () => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
       <TxModalTitle title="Connect a wallet" />
-      <Grid container md={12}>
+      <Grid container md={12} spacing={4}>
         <Grid item md={6}>
           <Box>
             <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex vero, expedita laudantium
-              voluptates reprehenderit nobis accusantium sit consectetur officia ad, alias nesciunt
-              quidem quo nihil voluptatum ipsam ratione molestias odit.
+              Start by connecting with one of the wallet from the given options. Be sure to store
+              your private keys or seed phrase securely. Never share them with anyone.
             </Typography>
           </Box>
         </Grid>
