@@ -1562,10 +1562,6 @@ msgstr "Please connect your wallet to be able to switch your tokens."
 msgid "Please connect your wallet to see your supplies, borrowings, and open positions."
 msgstr "Please connect your wallet to see your supplies, borrowings, and open positions."
 
-#: src/components/WalletConnection/WalletSelector.tsx
-msgid "Please enter a valid wallet address."
-msgstr "Please enter a valid wallet address."
-
 #: src/components/transactions/Warnings/ChangeNetworkWarning.tsx
 msgid "Please switch to {networkName}."
 msgstr "Please switch to {networkName}."
@@ -2411,14 +2407,6 @@ msgstr "Total supplied"
 msgid "Total worth"
 msgstr "Total worth"
 
-#: src/components/WalletConnection/WalletSelector.tsx
-msgid "Track wallet"
-msgstr "Track wallet"
-
-#: src/components/WalletConnection/WalletSelector.tsx
-msgid "Track wallet balance in read-only mode"
-msgstr "Track wallet balance in read-only mode"
-
 #: src/components/transactions/FlowCommons/Error.tsx
 msgid "Transaction failed"
 msgstr "Transaction failed"
@@ -2641,10 +2629,6 @@ msgstr "Wallet balance"
 msgid "Wallet not detected. Connect or install wallet and retry"
 msgstr "Wallet not detected. Connect or install wallet and retry"
 
-#: src/components/WalletConnection/WalletSelector.tsx
-msgid "Wallets are provided by External Providers and by selecting you agree to Terms of those Providers. Your access to the wallet might be reliant on the External Provider being operational."
-msgstr "Wallets are provided by External Providers and by selecting you agree to Terms of those Providers. Your access to the wallet might be reliant on the External Provider being operational."
-
 #: src/modules/markets/MarketAssetsListContainer.tsx
 msgid "We couldn't find any assets related to your search. Try again with a different asset name, symbol, or address."
 msgstr "We couldn't find any assets related to your search. Try again with a different asset name, symbol, or address."
@@ -2656,6 +2640,10 @@ msgstr "We suggest you go back to the Dashboard."
 #: src/modules/reserve-overview/Gho/GhoReserveConfiguration.tsx
 msgid "Website"
 msgstr "Website"
+
+#: src/components/WalletConnection/WalletSelector.tsx
+msgid "What Is A Wallet?"
+msgstr "What Is A Wallet?"
 
 #: src/components/infoTooltips/LiquidationPenaltyTooltip.tsx
 msgid "When a liquidation occurs, liquidators repay up to 50% of the outstanding borrowed amount on behalf of the borrower. In return, they can buy the collateral at a discount and keep the difference (liquidation penalty) as a bonus."
