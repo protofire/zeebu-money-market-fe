@@ -31,7 +31,7 @@ export const BasicModal = ({
         alignItems: 'center',
         justifyContent: 'center',
         backdropFilter: 'blur(10px)',
-        backgroundColor: theme.palette.background.surface + '5',
+        backgroundColor: theme.palette.background.surface + '1',
         '.MuiPaper-root': {
           outline: 'none',
         },

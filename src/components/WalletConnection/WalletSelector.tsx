@@ -1,5 +1,5 @@
 import { Trans } from '@lingui/macro';
-import { Box, Button, Grid, Typography } from '@mui/material';
+import { Box, Button, Grid, Stack, styled, Typography } from '@mui/material';
 import { UnsupportedChainIdError } from '@web3-react/core';
 import { NoEthereumProviderError } from '@web3-react/injected-connector';
 import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
@@ -8,8 +8,43 @@ import { WalletType } from 'src/libs/web3-data-provider/WalletOptions';
 import { useRootStore } from 'src/store/root';
 import { AUTH } from 'src/utils/mixPanelEvents';
 
+import SendArrowIcon from '../icons/SendArrowIcon';
 import { Warning } from '../primitives/Warning';
 import { TxModalTitle } from '../transactions/FlowCommons/TxModalTitle';
+
+const WalletButton = styled(Button)(({ theme }) => ({
+  boxShadow: 'none',
+  textTransform: 'none',
+  fontSize: 14,
+  fontWeight: 'bold',
+  padding: '6px 18px',
+  border: '1px solid',
+  lineHeight: 1.5,
+  background:
+    'linear-gradient(180deg, rgba(255, 255, 255, 0.25) 6.67%, rgba(255, 255, 255, 0.00) 100%)',
+  borderColor: '#F5F5F5',
+  color: theme.palette.text.primary,
+  height: 50,
+  marginTop: 20,
+  borderRadius: '30px',
+  '&:hover': {
+    backgroundColor: 'hsl(17, 100%, 68%)',
+    borderColor: 'none',
+    boxShadow: 'none',
+    color: 'white',
+    '& svg': {
+      stroke: 'white',
+    },
+  },
+  '&:active': {
+    boxShadow: 'none',
+    background: 'linear-gradient(180deg, #FFE3B5 32.17%, #D3390B 100%)',
+    borderColor: 'none',
+  },
+  '&:focus': {
+    boxShadow: 'none',
+  },
+}));
 
 export type WalletRowProps = {
   walletName: string;
@@ -36,7 +71,7 @@ const WalletRow = ({ walletName, walletType }: WalletRowProps) => {
             src={`/icons/wallets/walletConnect.svg`}
             width="24px"
             height="24px"
-            alt={`browser wallet icon`}
+            alt={`wallet connect icon`}
           />
         );
       default:
@@ -54,15 +89,22 @@ const WalletRow = ({ walletName, walletType }: WalletRowProps) => {
       disabled={loading}
       variant="outlined"
       sx={{
+        width: '100%',
+        height: '60px',
+        borderRadius: '10px',
+        border: '1px solid rgba(255, 255, 255, 0.20)',
+        background:
+          'linear-gradient(127deg, rgba(255, 255, 255, 0.10) 2.54%, rgba(153, 153, 153, 0.10) 97.47%)',
+        backdropFilter: 'blur(60px)',
+        padding: '10px',
+        cursor: 'pointer',
+        fontSize: '14px',
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        width: '100%',
-        mb: '8px',
+        justifyContent: 'flex-start',
       }}
-      size="large"
       onClick={connectWalletClick}
-      endIcon={getWalletIcon(walletType)}
+      startIcon={getWalletIcon(walletType)}
     >
       {walletName}
     </Button>
@@ -90,7 +132,6 @@ export const WalletSelector = () => {
     } else {
       blockingError = ErrorType.UNDETERMINED_ERROR;
     }
-    // TODO: add other errors
   }
 
   const handleBlocking = () => {
@@ -108,33 +149,85 @@ export const WalletSelector = () => {
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+    <Box>
       <TxModalTitle title="Connect a wallet" />
-      <Grid container md={12} spacing={4}>
-        <Grid item md={6}>
-          <Box>
-            <Typography>
-              Start by connecting with one of the wallet from the given options. Be sure to store
-              your private keys or seed phrase securely. Never share them with anyone.
-            </Typography>
-          </Box>
+      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} flexDirection="row">
+        <Grid
+          item
+          spacing={4}
+          xs={12}
+          md={5}
+          sx={{
+            padding: '20px',
+            borderRadius: '20px',
+            border: '1px solid rgba(48, 58, 80, 0.3)',
+            background:
+              'linear-gradient(127.43deg, rgba(255, 255, 255, 0.15) 2.54%, rgba(153, 153, 153, 0.15) 97.47%)',
+          }}
+        >
+          <img src="walleticon.svg" alt="wallet icon" width={87} height={87} />
+          <Typography variant="h4" mt={4} mb={4}>
+            Connect your Wallet
+          </Typography>
+
+          <Typography variant="main14" fontWeight={400}>
+            Start by connecting with one of the wallet from the given options. Be sure to store your
+            private keys or seed phrase securely. Never share them with anyone.
+          </Typography>
+          <WalletButton>
+            <Stack
+              justifyContent="space-between"
+              alignItems="center"
+              direction="row"
+              width="100%"
+              lineHeight="30px"
+            >
+              <Typography mr={1} sx={{ fontSize: { xs: '12px', md: '14px' } }} fontWeight="bold">
+                <Trans>What Is A Wallet?</Trans>
+              </Typography>
+              <SendArrowIcon />
+            </Stack>
+          </WalletButton>
         </Grid>
-        <Grid item md={6}>
-          <WalletRow
-            key="browser_wallet"
-            walletName="Browser wallet"
-            walletType={WalletType.INJECTED}
-          />
-          <WalletRow
-            key="walletconnect_wallet"
-            walletName="WalletConnect"
-            walletType={WalletType.WALLET_CONNECT}
-          />
-          <WalletRow
-            key="walletlink_wallet"
-            walletName="Coinbase Wallet"
-            walletType={WalletType.WALLET_LINK}
-          />
+        <Grid
+          item
+          xs={12}
+          md={7}
+          spacing={4}
+          sx={{
+            padding: '20px',
+            borderRadius: '20px',
+            border: '1px solid rgba(48, 58, 80, 0.3)',
+            background:
+              'linear-gradient(127.43deg, rgba(255, 255, 255, 0.15) 2.54%, rgba(153, 153, 153, 0.15) 97.47%)',
+          }}
+        >
+          <Typography variant="h4" mt={4} mb={4}>
+            Available Wallets
+          </Typography>
+          <Grid container direction="row" rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 2 }}>
+            <Grid item xs={12} sm={6}>
+              <WalletRow
+                key="browser_wallet"
+                walletName="Browser wallet"
+                walletType={WalletType.INJECTED}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <WalletRow
+                key="walletconnect_wallet"
+                walletName="WalletConnect"
+                walletType={WalletType.WALLET_CONNECT}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <WalletRow
+                key="walletlink_wallet"
+                walletName="Coinbase Wallet"
+                walletType={WalletType.WALLET_LINK}
+              />
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
       {error && <Warning severity="error">{handleBlocking()}</Warning>}

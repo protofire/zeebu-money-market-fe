@@ -2641,6 +2641,10 @@ msgstr "We suggest you go back to the Dashboard."
 msgid "Website"
 msgstr "Website"
 
+#: src/components/WalletConnection/WalletSelector.tsx
+msgid "What Is A Wallet?"
+msgstr "What Is A Wallet?"
+
 #: src/components/infoTooltips/LiquidationPenaltyTooltip.tsx
 msgid "When a liquidation occurs, liquidators repay up to 50% of the outstanding borrowed amount on behalf of the borrower. In return, they can buy the collateral at a discount and keep the difference (liquidation penalty) as a bonus."
 msgstr "When a liquidation occurs, liquidators repay up to 50% of the outstanding borrowed amount on behalf of the borrower. In return, they can buy the collateral at a discount and keep the difference (liquidation penalty) as a bonus."
