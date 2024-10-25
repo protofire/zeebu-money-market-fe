@@ -92,11 +92,6 @@ msgstr "AToken supply is not zero"
 msgid "Aave Governance"
 msgstr "Aave Governance"
 
-#: src/modules/reserve-overview/AddTokenDropdown.tsx
-#: src/modules/reserve-overview/TokenLinkDropdown.tsx
-msgid "Aave aToken"
-msgstr "Aave aToken"
-
 #: src/modules/reserve-overview/TokenLinkDropdown.tsx
 msgid "Aave debt token"
 msgstr "Aave debt token"
@@ -2865,6 +2860,11 @@ msgstr "Your {networkName} wallet is empty. Get free test assets at"
 #: src/hooks/useReserveActionState.tsx
 msgid "Your {networkName} wallet is empty. Get free test {0} at"
 msgstr "Your {networkName} wallet is empty. Get free test {0} at"
+
+#: src/modules/reserve-overview/AddTokenDropdown.tsx
+#: src/modules/reserve-overview/TokenLinkDropdown.tsx
+msgid "Zeebu aToken"
+msgstr "Zeebu aToken"
 
 #: src/ui-config/errorMapping.tsx
 msgid "Zero address not valid"

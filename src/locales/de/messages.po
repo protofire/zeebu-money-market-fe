@@ -126,8 +126,8 @@ msgstr "Aave-Governance"
 
 #: src/modules/reserve-overview/AddTokenDropdown.tsx
 #: src/modules/reserve-overview/TokenLinkDropdown.tsx
-msgid "Aave aToken"
-msgstr "Aave aToken"
+msgid "Zeebu aToken"
+msgstr "Zeebu aToken"
 
 #: src/modules/reserve-overview/TokenLinkDropdown.tsx
 msgid "Aave debt token"
