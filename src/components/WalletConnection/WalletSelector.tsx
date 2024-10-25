@@ -65,6 +65,15 @@ const WalletRow = ({ walletName, walletType }: WalletRowProps) => {
             alt={`browser wallet icon`}
           />
         );
+      case WalletType.WALLET_LINK:
+        return (
+          <img
+            src={`/icons/wallets/coinbase.svg`}
+            width="24px"
+            height="24px"
+            alt={`wallet connect icon`}
+          />
+        );
       case WalletType.WALLET_CONNECT:
         return (
           <img
@@ -215,7 +224,7 @@ export const WalletSelector = () => {
           <Typography variant="h4" mt={4} mb={4}>
             Available Wallets
           </Typography>
-          <Grid container direction="row" rowSpacing={2} columnSpacing={{ xs: 2, sm: 3, md: 4 }}>
+          <Grid container direction="row" rowSpacing={2} columnSpacing={{ xs: 2, sm: 3, md: 2 }}>
             <Grid item xs={12} sm={6}>
               <WalletRow
                 key="browser_wallet"
