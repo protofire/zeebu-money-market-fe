@@ -94,14 +94,19 @@ const WalletRow = ({ walletName, walletType }: WalletRowProps) => {
         borderRadius: '10px',
         border: '1px solid rgba(255, 255, 255, 0.20)',
         background:
-          'linear-gradient(127deg, rgba(255, 255, 255, 0.10) 2.54%, rgba(153, 153, 153, 0.10) 97.47%)',
-        backdropFilter: 'blur(60px)',
+          'linear-gradient(127deg, rgba(0, 0, 0, 0.123) 2.54%, rgba(0, 0, 0, 0.178) 97.47%)',
+        backdropFilter: 'blur(6px)',
         padding: '10px',
         cursor: 'pointer',
         fontSize: '14px',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'flex-start',
+        '&.Mui-disabled': {
+          background: '#22222237',
+          color: '#cacaca',
+          boxShadow: 'none',
+        },
       }}
       onClick={connectWalletClick}
       startIcon={getWalletIcon(walletType)}
@@ -151,10 +156,9 @@ export const WalletSelector = () => {
   return (
     <Box>
       <TxModalTitle title="Connect a wallet" />
-      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} flexDirection="row">
+      <Grid container flexDirection="row" flexWrap={'nowrap'} gap={4}>
         <Grid
           item
-          spacing={4}
           xs={12}
           md={5}
           sx={{
@@ -166,15 +170,22 @@ export const WalletSelector = () => {
           }}
         >
           <img src="walleticon.svg" alt="wallet icon" width={87} height={87} />
-          <Typography variant="h4" mt={4} mb={4}>
+          <Typography variant="h4" mt={2} mb={2}>
             Connect your Wallet
           </Typography>
-
           <Typography variant="main14" fontWeight={400}>
             Start by connecting with one of the wallet from the given options. Be sure to store your
             private keys or seed phrase securely. Never share them with anyone.
           </Typography>
-          <WalletButton>
+          <WalletButton
+            onClick={() =>
+              window.open(
+                'https://learn.metamask.io/lessons/what-is-a-crypto-wallet',
+                '_blank',
+                'noreferrer noopener'
+              )
+            }
+          >
             <Stack
               justifyContent="space-between"
               alignItems="center"
@@ -193,7 +204,6 @@ export const WalletSelector = () => {
           item
           xs={12}
           md={7}
-          spacing={4}
           sx={{
             padding: '20px',
             borderRadius: '20px',
@@ -205,7 +215,7 @@ export const WalletSelector = () => {
           <Typography variant="h4" mt={4} mb={4}>
             Available Wallets
           </Typography>
-          <Grid container direction="row" rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 2 }}>
+          <Grid container direction="row" rowSpacing={2} columnSpacing={{ xs: 2, sm: 3, md: 4 }}>
             <Grid item xs={12} sm={6}>
               <WalletRow
                 key="browser_wallet"
@@ -230,6 +240,7 @@ export const WalletSelector = () => {
           </Grid>
         </Grid>
       </Grid>
+
       {error && <Warning severity="error">{handleBlocking()}</Warning>}
     </Box>
   );

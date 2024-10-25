@@ -69,7 +69,6 @@ export const BasicModal = ({
                 p: 0,
                 minWidth: 0,
                 position: 'absolute',
-                bgcolor: 'background.paper',
               }}
               onClick={handleClose}
               data-cy={'close-button'}
