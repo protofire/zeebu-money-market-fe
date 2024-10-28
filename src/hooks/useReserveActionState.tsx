@@ -71,7 +71,7 @@ export const useReserveActionState = ({
                 {!currentMarketData.addresses.FAUCET ? (
                   <Button
                     variant="text"
-                    href="https://faucet.circle.com/"
+                    href="https://staging.aave.com/faucet/"
                     component={Link}
                     sx={{ verticalAlign: 'top' }}
                     disableRipple
