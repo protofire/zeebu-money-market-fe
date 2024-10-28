@@ -1,19 +1,50 @@
 import { Trans } from '@lingui/macro';
-import { Box, Button, InputBase, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Button, Grid, Stack, styled, Typography } from '@mui/material';
 import { UnsupportedChainIdError } from '@web3-react/core';
 import { NoEthereumProviderError } from '@web3-react/injected-connector';
-import { utils } from 'ethers';
-import { useState } from 'react';
-import { ReadOnlyModeTooltip } from 'src/components/infoTooltips/ReadOnlyModeTooltip';
 import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
 import { UserRejectedRequestError } from 'src/libs/web3-data-provider/WalletConnectConnector';
 import { WalletType } from 'src/libs/web3-data-provider/WalletOptions';
 import { useRootStore } from 'src/store/root';
-import { getENSProvider } from 'src/utils/marketsAndNetworksConfig';
 import { AUTH } from 'src/utils/mixPanelEvents';
 
+import SendArrowIcon from '../icons/SendArrowIcon';
 import { Warning } from '../primitives/Warning';
 import { TxModalTitle } from '../transactions/FlowCommons/TxModalTitle';
+
+const WalletButton = styled(Button)(({ theme }) => ({
+  boxShadow: 'none',
+  textTransform: 'none',
+  fontSize: 14,
+  fontWeight: 'bold',
+  padding: '6px 18px',
+  border: '1px solid',
+  lineHeight: 1.5,
+  background:
+    'linear-gradient(180deg, rgba(255, 255, 255, 0.25) 6.67%, rgba(255, 255, 255, 0.00) 100%)',
+  borderColor: '#F5F5F5',
+  color: theme.palette.text.primary,
+  height: 50,
+  marginTop: 20,
+  borderRadius: '30px',
+  '&:hover': {
+    backgroundColor: 'hsl(17, 100%, 68%)',
+    borderColor: 'none',
+    boxShadow: 'none',
+    color: 'white',
+    '& svg': {
+      stroke: 'white',
+    },
+  },
+  '&:active': {
+    boxShadow: 'none',
+    background: 'linear-gradient(180deg, #FFE3B5 32.17%, #D3390B 100%)',
+    borderColor: 'none',
+  },
+  '&:focus': {
+    boxShadow: 'none',
+  },
+}));
 
 export type WalletRowProps = {
   walletName: string;
@@ -34,42 +65,24 @@ const WalletRow = ({ walletName, walletType }: WalletRowProps) => {
             alt={`browser wallet icon`}
           />
         );
-      case WalletType.WALLET_CONNECT:
-        return (
-          <img
-            src={`/icons/wallets/walletConnect.svg`}
-            width="24px"
-            height="24px"
-            alt={`browser wallet icon`}
-          />
-        );
       case WalletType.WALLET_LINK:
         return (
           <img
             src={`/icons/wallets/coinbase.svg`}
             width="24px"
             height="24px"
-            alt={`browser wallet icon`}
+            alt={`wallet connect icon`}
           />
         );
-      case WalletType.TORUS:
+      case WalletType.WALLET_CONNECT:
         return (
           <img
-            src={`/icons/wallets/torus.svg`}
+            src={`/icons/wallets/walletConnect.svg`}
             width="24px"
             height="24px"
-            alt={`browser wallet icon`}
+            alt={`wallet connect icon`}
           />
         );
-      // case WalletType.FRAME:
-      //   return (
-      //     <img
-      //       src={`/icons/wallets/frame.svg`}
-      //       width="24px"
-      //       height="24px"
-      //       alt={`browser wallet icon`}
-      //     />
-      //   );
       default:
         return null;
     }
@@ -79,20 +92,33 @@ const WalletRow = ({ walletName, walletType }: WalletRowProps) => {
     trackEvent(AUTH.CONNECT_WALLET, { walletType: walletType, walletName: walletName });
     connectWallet(walletType);
   };
+
   return (
     <Button
       disabled={loading}
       variant="outlined"
       sx={{
+        width: '100%',
+        height: '60px',
+        borderRadius: '10px',
+        border: '1px solid rgba(255, 255, 255, 0.20)',
+        background:
+          'linear-gradient(127deg, rgba(0, 0, 0, 0.123) 2.54%, rgba(0, 0, 0, 0.178) 97.47%)',
+        backdropFilter: 'blur(6px)',
+        padding: '10px',
+        cursor: 'pointer',
+        fontSize: '14px',
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        width: '100%',
-        mb: '8px',
+        justifyContent: 'flex-start',
+        '&.Mui-disabled': {
+          background: '#22222237',
+          color: '#cacaca',
+          boxShadow: 'none',
+        },
       }}
-      size="large"
       onClick={connectWalletClick}
-      endIcon={getWalletIcon(walletType)}
+      startIcon={getWalletIcon(walletType)}
     >
       {walletName}
     </Button>
@@ -107,13 +133,7 @@ export enum ErrorType {
 }
 
 export const WalletSelector = () => {
-  const { error, connectReadOnlyMode } = useWeb3Context();
-  const [inputMockWalletAddress, setInputMockWalletAddress] = useState('');
-  const [validAddressError, setValidAddressError] = useState<boolean>(false);
-  const { breakpoints } = useTheme();
-  const sm = useMediaQuery(breakpoints.down('sm'));
-  const mainnetProvider = getENSProvider();
-  const trackEvent = useRootStore((store) => store.trackEvent);
+  const { error } = useWeb3Context();
 
   let blockingError: ErrorType | undefined = undefined;
   if (error) {
@@ -126,7 +146,6 @@ export const WalletSelector = () => {
     } else {
       blockingError = ErrorType.UNDETERMINED_ERROR;
     }
-    // TODO: add other errors
   }
 
   const handleBlocking = () => {
@@ -143,109 +162,95 @@ export const WalletSelector = () => {
     }
   };
 
-  const handleReadAddress = async (inputMockWalletAddress: string): Promise<void> => {
-    if (validAddressError) setValidAddressError(false);
-    if (utils.isAddress(inputMockWalletAddress)) {
-      connectReadOnlyMode(inputMockWalletAddress);
-    } else {
-      // Check if address could be valid ENS before trying to resolve
-      if (inputMockWalletAddress.slice(-4) === '.eth') {
-        // Attempt to resolve ENS name and use resolved address if valid
-        const resolvedAddress = await mainnetProvider.resolveName(inputMockWalletAddress);
-        if (resolvedAddress && utils.isAddress(resolvedAddress)) {
-          connectReadOnlyMode(resolvedAddress);
-        } else {
-          setValidAddressError(true);
-        }
-      } else {
-        setValidAddressError(true);
-      }
-    }
-  };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
-    event.preventDefault();
-    handleReadAddress(inputMockWalletAddress);
-  };
-
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+    <Box>
       <TxModalTitle title="Connect a wallet" />
-      {error && <Warning severity="error">{handleBlocking()}</Warning>}
-      <WalletRow
-        key="browser_wallet"
-        walletName="Browser wallet"
-        walletType={WalletType.INJECTED}
-      />
-      <WalletRow
-        key="walletconnect_wallet"
-        walletName="WalletConnect"
-        walletType={WalletType.WALLET_CONNECT}
-      />
-      <WalletRow
-        key="walletlink_wallet"
-        walletName="Coinbase Wallet"
-        walletType={WalletType.WALLET_LINK}
-      />
-      <WalletRow key="torus_wallet" walletName="Torus" walletType={WalletType.TORUS} />
-      {/* <WalletRow key="frame_wallet" walletName="Frame" walletType={WalletType.FRAME} /> */}
-      <Box sx={{ display: 'flex', alignItems: 'center', mb: 1, padding: '10px 0' }}>
-        <Typography variant="subheader1" color="text.secondary">
-          <Trans>Track wallet balance in read-only mode</Trans>
-        </Typography>
-        <ReadOnlyModeTooltip />
-      </Box>
-      <form onSubmit={handleSubmit}>
-        <InputBase
-          sx={(theme) => ({
-            py: 1,
-            px: 3,
-            border: `1px solid ${theme.palette.divider}`,
-            borderRadius: '6px',
-            mb: 1,
-            overflow: 'show',
-            fontSize: sm ? '16px' : '14px',
-          })}
-          placeholder="Enter ethereum address or ENS name"
-          fullWidth
-          value={inputMockWalletAddress}
-          onChange={(e) => setInputMockWalletAddress(e.target.value)}
-          inputProps={{
-            'aria-label': 'read-only mode address',
-          }}
-        />
-        <Button
-          type="submit"
-          variant="outlined"
+      <Grid container flexDirection="row" flexWrap={'nowrap'} gap={4}>
+        <Grid
+          item
+          xs={12}
+          md={5}
           sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'center',
-            mb: '8px',
+            padding: '20px',
+            borderRadius: '20px',
+            border: '1px solid rgba(48, 58, 80, 0.3)',
+            background:
+              'linear-gradient(127.43deg, rgba(255, 255, 255, 0.15) 2.54%, rgba(153, 153, 153, 0.15) 97.47%)',
           }}
-          size="large"
-          fullWidth
-          onClick={() => trackEvent(AUTH.MOCK_WALLET)}
-          disabled={
-            !utils.isAddress(inputMockWalletAddress) && inputMockWalletAddress.slice(-4) !== '.eth'
-          }
-          aria-label="read-only mode address"
         >
-          <Trans>Track wallet</Trans>
-        </Button>
-      </form>
-      {validAddressError && (
-        <Typography variant="helperText" color="error.main">
-          <Trans>Please enter a valid wallet address.</Trans>
-        </Typography>
-      )}
-      <Typography variant="helperText">
-        <Trans>
-          Wallets are provided by External Providers and by selecting you agree to Terms of those
-          Providers. Your access to the wallet might be reliant on the External Provider being
-          operational.
-        </Trans>
-      </Typography>
+          <img src="walleticon.svg" alt="wallet icon" width={87} height={87} />
+          <Typography variant="h4" mt={2} mb={2}>
+            Connect your Wallet
+          </Typography>
+          <Typography variant="main14" fontWeight={400}>
+            Start by connecting with one of the wallet from the given options. Be sure to store your
+            private keys or seed phrase securely. Never share them with anyone.
+          </Typography>
+          <WalletButton
+            onClick={() =>
+              window.open(
+                'https://learn.metamask.io/lessons/what-is-a-crypto-wallet',
+                '_blank',
+                'noreferrer noopener'
+              )
+            }
+          >
+            <Stack
+              justifyContent="space-between"
+              alignItems="center"
+              direction="row"
+              width="100%"
+              lineHeight="30px"
+            >
+              <Typography mr={1} sx={{ fontSize: { xs: '12px', md: '14px' } }} fontWeight="bold">
+                <Trans>What Is A Wallet?</Trans>
+              </Typography>
+              <SendArrowIcon />
+            </Stack>
+          </WalletButton>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          md={7}
+          sx={{
+            padding: '20px',
+            borderRadius: '20px',
+            border: '1px solid rgba(48, 58, 80, 0.3)',
+            background:
+              'linear-gradient(127.43deg, rgba(255, 255, 255, 0.15) 2.54%, rgba(153, 153, 153, 0.15) 97.47%)',
+          }}
+        >
+          <Typography variant="h4" mt={4} mb={4}>
+            Available Wallets
+          </Typography>
+          <Grid container direction="row" rowSpacing={2} columnSpacing={{ xs: 2, sm: 3, md: 2 }}>
+            <Grid item xs={12} sm={6}>
+              <WalletRow
+                key="browser_wallet"
+                walletName="Browser wallet"
+                walletType={WalletType.INJECTED}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <WalletRow
+                key="walletconnect_wallet"
+                walletName="WalletConnect"
+                walletType={WalletType.WALLET_CONNECT}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <WalletRow
+                key="walletlink_wallet"
+                walletName="Coinbase Wallet"
+                walletType={WalletType.WALLET_LINK}
+              />
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+
+      {error && <Warning severity="error">{handleBlocking()}</Warning>}
     </Box>
   );
 };
