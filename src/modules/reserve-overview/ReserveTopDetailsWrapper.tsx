@@ -113,7 +113,7 @@ export const ReserveTopDetailsWrapper = ({ underlyingAsset }: ReserveTopDetailsP
 
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <MarketLogo size={20} logo={logo} />
-              <Typography variant="subheader1" sx={{ color: 'common.white' }}>
+              <Typography variant="subheader1" sx={{ color: 'text.primary' }}>
                 {market.marketTitle} <Trans>Market</Trans>
               </Typography>
               {market.v3 && (
