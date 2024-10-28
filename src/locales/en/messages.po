@@ -84,10 +84,6 @@ msgstr "APY, stable"
 msgid "APY, variable"
 msgstr "APY, variable"
 
-#: src/ui-config/errorMapping.tsx
-msgid "AToken supply is not zero"
-msgstr "AToken supply is not zero"
-
 #: src/modules/governance/GovernanceTopPanel.tsx
 msgid "Aave Governance"
 msgstr "Aave Governance"
@@ -2180,8 +2176,8 @@ msgid "The app is running in testnet mode."
 msgstr "The app is running in testnet mode."
 
 #: src/ui-config/errorMapping.tsx
-msgid "The caller of the function is not an AToken"
-msgstr "The caller of the function is not an AToken"
+msgid "The caller of the function is not an ZToken"
+msgstr "The caller of the function is not an ZToken"
 
 #: src/ui-config/errorMapping.tsx
 msgid "The caller of this function must be a pool"
@@ -2861,10 +2857,14 @@ msgstr "Your {networkName} wallet is empty. Get free test assets at"
 msgid "Your {networkName} wallet is empty. Get free test {0} at"
 msgstr "Your {networkName} wallet is empty. Get free test {0} at"
 
+#: src/ui-config/errorMapping.tsx
+msgid "ZToken supply is not zero"
+msgstr "ZToken supply is not zero"
+
 #: src/modules/reserve-overview/AddTokenDropdown.tsx
 #: src/modules/reserve-overview/TokenLinkDropdown.tsx
-msgid "Zeebu aToken"
-msgstr "Zeebu aToken"
+msgid "Zeebu zToken"
+msgstr "Zeebu zToken"
 
 #: src/ui-config/errorMapping.tsx
 msgid "Zero address not valid"
