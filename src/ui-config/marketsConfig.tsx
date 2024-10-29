@@ -95,6 +95,8 @@ export const marketsData: {
     enabledFeatures: {
       faucet: true,
     },
+    subgraphUrl:
+      'https://api.studio.thegraph.com/query/8290/zeebu-money-market-sepolia/version/latest',
     addresses: {
       LENDING_POOL_ADDRESS_PROVIDER: Sepolia.LENDING_POOL_ADDRESS_PROVIDER,
       LENDING_POOL: Sepolia.LENDING_POOL,
