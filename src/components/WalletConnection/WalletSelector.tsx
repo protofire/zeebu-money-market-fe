@@ -59,10 +59,10 @@ const WalletRow = ({ walletName, walletType }: WalletRowProps) => {
       case WalletType.INJECTED:
         return (
           <img
-            src={`/icons/wallets/browserWallet.svg`}
+            src={`/icons/wallets/metamask.svg`}
             width="30px"
             height="30px"
-            alt={`browser wallet icon`}
+            alt={`Metamask icon`}
           />
         );
       case WalletType.WALLET_LINK:
@@ -235,7 +235,7 @@ export const WalletSelector = () => {
             <Grid item xs={12} sm={6}>
               <WalletRow
                 key="browser_wallet"
-                walletName="Browser wallet"
+                walletName="MetaMask"
                 walletType={WalletType.INJECTED}
               />
             </Grid>
