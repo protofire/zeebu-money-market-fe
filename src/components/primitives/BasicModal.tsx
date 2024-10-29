@@ -1,5 +1,5 @@
 import { XIcon } from '@heroicons/react/outline';
-import { Box, IconButton, Modal, Paper, SvgIcon, useTheme } from '@mui/material';
+import { Box, IconButton, Modal, Paper, SvgIcon } from '@mui/material';
 import React from 'react';
 
 export interface BasicModalProps {
@@ -19,7 +19,6 @@ export const BasicModal = ({
   ...props
 }: BasicModalProps) => {
   const handleClose = () => setOpen(false);
-  const theme = useTheme();
 
   return (
     <Modal
@@ -30,10 +29,13 @@ export const BasicModal = ({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        backdropFilter: 'blur(10px)',
-        backgroundColor: theme.palette.background.surface + '1',
+        backdropFilter: 'blur(6px)',
+        backgroundColor: 'rgba(0, 0, 0, 0.250)',
         '.MuiPaper-root': {
           outline: 'none',
+        },
+        '.MuiBackdrop-root': {
+          backgroundColor: 'transparent',
         },
       }}
       onClick={(e) => {
@@ -51,18 +53,16 @@ export const BasicModal = ({
           maxWidth: { xs: '359px', xsm: `${contentMaxWidth}px` },
           maxHeight: 'calc(100vh - 20px)',
           background:
-            'linear-gradient(127.43deg, rgba(255, 255, 255, 0.35) 2.54%, rgba(153, 153, 153, 0.35) 97.47%)',
+            'linear-gradient(127.43deg, rgba(255, 255, 255, 0.175) 2.54%, rgba(153, 153, 153, 0.175) 97.47%)',
           border: '1px solid rgb(255, 138, 92)',
           boxShadow: 'rgba(42, 128, 234, 0.15) 0px 3px 4px 0px inset',
-          backdropFilter: 'blur(12px)',
           borderRadius: '12px',
-          p: 6,
         }}
       >
         {children}
 
         {withCloseButton && (
-          <Box sx={{ position: 'absolute', top: '24px', right: '50px', zIndex: 5 }}>
+          <Box sx={{ position: 'absolute', top: '16px', right: '50px', zIndex: 5 }}>
             <IconButton
               sx={{
                 borderRadius: '50%',
@@ -73,7 +73,7 @@ export const BasicModal = ({
               onClick={handleClose}
               data-cy={'close-button'}
             >
-              <SvgIcon sx={{ fontSize: '28px', color: 'text.primary' }}>
+              <SvgIcon sx={{ fontSize: '24px', color: 'text.primary' }}>
                 <XIcon data-cy={'CloseModalIcon'} />
               </SvgIcon>
             </IconButton>

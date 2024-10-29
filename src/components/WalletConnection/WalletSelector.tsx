@@ -12,7 +12,7 @@ import SendArrowIcon from '../icons/SendArrowIcon';
 import { Warning } from '../primitives/Warning';
 import { TxModalTitle } from '../transactions/FlowCommons/TxModalTitle';
 
-const WalletButton = styled(Button)(({ theme }) => ({
+const WalletButton = styled(Button)(() => ({
   boxShadow: 'none',
   textTransform: 'none',
   fontSize: 14,
@@ -23,7 +23,7 @@ const WalletButton = styled(Button)(({ theme }) => ({
   background:
     'linear-gradient(180deg, rgba(255, 255, 255, 0.25) 6.67%, rgba(255, 255, 255, 0.00) 100%)',
   borderColor: '#F5F5F5',
-  color: theme.palette.text.primary,
+  color: 'white',
   height: 50,
   marginTop: 20,
   borderRadius: '30px',
@@ -59,18 +59,18 @@ const WalletRow = ({ walletName, walletType }: WalletRowProps) => {
       case WalletType.INJECTED:
         return (
           <img
-            src={`/icons/wallets/browserWallet.svg`}
-            width="24px"
-            height="24px"
-            alt={`browser wallet icon`}
+            src={`/icons/wallets/metamask.svg`}
+            width="30px"
+            height="30px"
+            alt={`Metamask icon`}
           />
         );
       case WalletType.WALLET_LINK:
         return (
           <img
             src={`/icons/wallets/coinbase.svg`}
-            width="24px"
-            height="24px"
+            width="30px"
+            height="30px"
             alt={`wallet connect icon`}
           />
         );
@@ -78,8 +78,8 @@ const WalletRow = ({ walletName, walletType }: WalletRowProps) => {
         return (
           <img
             src={`/icons/wallets/walletConnect.svg`}
-            width="24px"
-            height="24px"
+            width="30px"
+            height="30px"
             alt={`wallet connect icon`}
           />
         );
@@ -103,7 +103,7 @@ const WalletRow = ({ walletName, walletType }: WalletRowProps) => {
         borderRadius: '10px',
         border: '1px solid rgba(255, 255, 255, 0.20)',
         background:
-          'linear-gradient(127deg, rgba(0, 0, 0, 0.123) 2.54%, rgba(0, 0, 0, 0.178) 97.47%)',
+          'linear-gradient(127.43deg, rgba(255, 255, 255, 0.15) 2.54%, rgba(153, 153, 153, 0.15) 97.47%)',
         backdropFilter: 'blur(6px)',
         padding: '10px',
         cursor: 'pointer',
@@ -164,16 +164,22 @@ export const WalletSelector = () => {
 
   return (
     <Box>
-      <TxModalTitle title="Connect a wallet" />
-      <Grid container flexDirection="row" flexWrap={'nowrap'} gap={4}>
+      <TxModalTitle title="Connect Wallet" />
+      <Grid
+        container
+        flexDirection={{ xs: 'column-reverse', md: 'row' }}
+        flexWrap={'nowrap'}
+        gap={4}
+      >
         <Grid
           item
           xs={12}
           md={5}
           sx={{
             padding: '20px',
+            margin: { xs: '8px', md: '20px 0 20px 20px' },
             borderRadius: '20px',
-            border: '1px solid rgba(48, 58, 80, 0.3)',
+            border: '1px solid rgba(48, 58, 80, 0.4)',
             background:
               'linear-gradient(127.43deg, rgba(255, 255, 255, 0.15) 2.54%, rgba(153, 153, 153, 0.15) 97.47%)',
           }}
@@ -215,28 +221,22 @@ export const WalletSelector = () => {
           md={7}
           sx={{
             padding: '20px',
+            margin: { xs: '8px', md: '20px 20px 20px 0' },
             borderRadius: '20px',
-            border: '1px solid rgba(48, 58, 80, 0.3)',
+            border: '1px solid rgba(48, 58, 80, 0.4)',
             background:
               'linear-gradient(127.43deg, rgba(255, 255, 255, 0.15) 2.54%, rgba(153, 153, 153, 0.15) 97.47%)',
           }}
         >
-          <Typography variant="h4" mt={4} mb={4}>
+          <Typography variant="h4" mb={4}>
             Available Wallets
           </Typography>
           <Grid container direction="row" rowSpacing={2} columnSpacing={{ xs: 2, sm: 3, md: 2 }}>
             <Grid item xs={12} sm={6}>
               <WalletRow
                 key="browser_wallet"
-                walletName="Browser wallet"
+                walletName="MetaMask"
                 walletType={WalletType.INJECTED}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <WalletRow
-                key="walletconnect_wallet"
-                walletName="WalletConnect"
-                walletType={WalletType.WALLET_CONNECT}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -244,6 +244,13 @@ export const WalletSelector = () => {
                 key="walletlink_wallet"
                 walletName="Coinbase Wallet"
                 walletType={WalletType.WALLET_LINK}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <WalletRow
+                key="walletconnect_wallet"
+                walletName="WalletConnect"
+                walletType={WalletType.WALLET_CONNECT}
               />
             </Grid>
           </Grid>
