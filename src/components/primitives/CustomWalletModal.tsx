@@ -10,7 +10,7 @@ export interface BasicModalProps {
   contentMaxWidth?: number;
 }
 
-export const BasicModal = ({
+export const CustomWalletModal = ({
   open,
   setOpen,
   withCloseButton = true,
@@ -53,18 +53,16 @@ export const BasicModal = ({
           maxWidth: { xs: '359px', xsm: `${contentMaxWidth}px` },
           maxHeight: 'calc(100vh - 20px)',
           background:
-            'linear-gradient(127.43deg, rgba(255, 255, 255, 0.250) 2.54%, rgba(153, 153, 153, 0.250) 97.47%)',
+            'linear-gradient(127.43deg, rgba(255, 255, 255, 0.175) 2.54%, rgba(153, 153, 153, 0.175) 97.47%)',
           border: '1px solid rgb(255, 138, 92)',
           boxShadow: 'rgba(42, 128, 234, 0.15) 0px 3px 4px 0px inset',
           borderRadius: '12px',
-          backdropFilter: 'blur(12px)',
-          p: 6,
         }}
       >
         {children}
 
         {withCloseButton && (
-          <Box sx={{ position: 'absolute', top: '24px', right: '50px', zIndex: 5 }}>
+          <Box sx={{ position: 'absolute', top: '16px', right: '50px', zIndex: 5 }}>
             <IconButton
               sx={{
                 borderRadius: '50%',
