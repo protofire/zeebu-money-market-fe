@@ -167,6 +167,7 @@ export const WalletSelector = () => {
       <TxModalTitle
         padding={4}
         borderBottom="1px solid rgba(255, 255, 255, 0.3)"
+        marginBottom={0}
         title="Connect Wallet"
       />
       <Grid
@@ -188,7 +189,7 @@ export const WalletSelector = () => {
               'linear-gradient(127.43deg, rgba(255, 255, 255, 0.15) 2.54%, rgba(153, 153, 153, 0.15) 97.47%)',
           }}
         >
-          <img src="walleticon.svg" alt="wallet icon" width={87} height={87} />
+          <img src="/walleticon.svg" alt="wallet icon" width={87} height={87} />
           <Typography variant="h4" mt={2} mb={2}>
             Connect your Wallet
           </Typography>

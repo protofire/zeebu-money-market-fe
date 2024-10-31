@@ -6,9 +6,16 @@ export type TxModalTitleProps = {
   symbol?: string;
   padding?: number;
   borderBottom?: string;
+  marginBottom?: number;
 };
 
-export const TxModalTitle = ({ title, symbol, padding, borderBottom }: TxModalTitleProps) => {
+export const TxModalTitle = ({
+  title,
+  symbol,
+  padding,
+  borderBottom,
+  marginBottom,
+}: TxModalTitleProps) => {
   return (
     <Typography
       variant="h3"
@@ -16,6 +23,7 @@ export const TxModalTitle = ({ title, symbol, padding, borderBottom }: TxModalTi
       sx={{
         p: padding ?? undefined,
         borderBottom: borderBottom ?? undefined,
+        marginBottom: marginBottom ?? '20px',
         flex: '0 0 auto',
       }}
     >
