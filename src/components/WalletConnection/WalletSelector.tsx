@@ -59,10 +59,10 @@ const WalletRow = ({ walletName, walletType }: WalletRowProps) => {
       case WalletType.INJECTED:
         return (
           <img
-            src={`/icons/wallets/metamask.svg`}
+            src={`/icons/wallets/browserWallet.svg`}
             width="30px"
             height="30px"
-            alt={`Metamask icon`}
+            alt={`Browser wallet icon`}
           />
         );
       case WalletType.WALLET_LINK:
@@ -164,7 +164,12 @@ export const WalletSelector = () => {
 
   return (
     <Box>
-      <TxModalTitle title="Connect Wallet" />
+      <TxModalTitle
+        padding={4}
+        borderBottom="1px solid rgba(255, 255, 255, 0.3)"
+        marginBottom={0}
+        title="Connect Wallet"
+      />
       <Grid
         container
         flexDirection={{ xs: 'column-reverse', md: 'row' }}
@@ -184,7 +189,7 @@ export const WalletSelector = () => {
               'linear-gradient(127.43deg, rgba(255, 255, 255, 0.15) 2.54%, rgba(153, 153, 153, 0.15) 97.47%)',
           }}
         >
-          <img src="walleticon.svg" alt="wallet icon" width={87} height={87} />
+          <img src="/walleticon.svg" alt="wallet icon" width={87} height={87} />
           <Typography variant="h4" mt={2} mb={2}>
             Connect your Wallet
           </Typography>
@@ -235,7 +240,7 @@ export const WalletSelector = () => {
             <Grid item xs={12} sm={6}>
               <WalletRow
                 key="browser_wallet"
-                walletName="MetaMask"
+                walletName="Browser Wallet"
                 walletType={WalletType.INJECTED}
               />
             </Grid>
