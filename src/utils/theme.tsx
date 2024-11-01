@@ -446,7 +446,7 @@ export function getThemedComponents(theme: Theme) {
               color:
                 theme.palette.mode === 'light' ? theme.palette.primary : theme.palette.common.white,
               border: '1px solid',
-              borderColor: theme.palette.common.white,
+              borderColor: theme.palette.primary.light,
               background:
                 'linear-gradient(rgba(255, 255, 255, 0.25) 6.67%, rgba(255, 255, 255, 0) 100%);',
               borderRadius: '3rem',

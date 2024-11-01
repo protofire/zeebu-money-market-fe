@@ -19,7 +19,9 @@ export const DrawerWrapper = ({ open, setOpen, children, headerHeight }: DrawerW
       sx={{ top: `${headerHeight}px` }}
       PaperProps={{
         sx: {
-          background: 'rgba(27, 32, 48, 0.98)',
+          background:
+            'linear-gradient(127.43deg, rgba(255, 255, 255, 0.15) 2.54%, rgba(153, 153, 153, 0.15) 97.47%)',
+          color: 'text.primary',
           backdropFilter: 'blur(20px)',
           boxShadow: 'none',
           borderRadius: 'unset',

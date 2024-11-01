@@ -222,8 +222,10 @@ export function AppHeader() {
                 size="small"
                 color="primary"
                 sx={{
-                  backgroundColor: '#c26f21',
-                  '&:hover, &.Mui-focusVisible': { backgroundColor: 'rgba(202, 151, 74, 0.7)' },
+                  backgroundColor: '#df822c',
+                  borderColor: '#9c5818',
+                  color: 'white',
+                  '&:hover, &.Mui-focusVisible': { backgroundColor: '#db8e46' },
                 }}
               >
                 TESTNET
