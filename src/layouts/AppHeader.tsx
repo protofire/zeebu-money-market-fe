@@ -80,6 +80,9 @@ function HideOnScroll({ children }: Props) {
 const SWITCH_VISITED_KEY = 'switchVisited';
 
 export function AppHeader() {
+  const theme = useTheme();
+  const isDarkMode = theme.palette.mode === 'dark';
+  const logoSrc = isDarkMode ? uiConfig.appLogoDark : uiConfig.appLogoLight;
   const { breakpoints } = useTheme();
   const md = useMediaQuery(breakpoints.down('md'));
   const sm = useMediaQuery(breakpoints.down('sm'));
@@ -209,7 +212,7 @@ export function AppHeader() {
           }}
           onClick={() => setMobileMenuOpen(false)}
         >
-          <img src={uiConfig.appLogo} alt="Zeebu" width={91} height={22} />
+          <img src={logoSrc} alt="Zeebu" width={91} height={22} />
         </Box>
         <Box sx={{ mr: sm ? 1 : 3 }}>
           {ENABLE_TESTNET && (
