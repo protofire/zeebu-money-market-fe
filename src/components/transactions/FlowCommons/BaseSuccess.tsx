@@ -43,6 +43,7 @@ export const BaseSuccessView = ({ txHash, children, hideTx }: BaseSuccessTxViewP
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            color: 'white',
           }}
         >
           <SvgIcon sx={{ color: 'success.main', fontSize: '32px' }}>
@@ -50,7 +51,7 @@ export const BaseSuccessView = ({ txHash, children, hideTx }: BaseSuccessTxViewP
           </SvgIcon>
         </Box>
 
-        <Typography sx={{ mt: 4 }} variant="h2">
+        <Typography sx={{ mt: 4 }} variant="h2" color="white">
           <Trans>All done!</Trans>
         </Typography>
 
@@ -70,6 +71,7 @@ export const BaseSuccessView = ({ txHash, children, hideTx }: BaseSuccessTxViewP
               justifyContent: 'right',
               mt: 6,
               mb: 3,
+              color: 'white',
             }}
             underline="hover"
             target="_blank"

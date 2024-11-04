@@ -50,7 +50,7 @@ export const TxSuccessView = ({
         }}
       >
         {action && amount && symbol && (
-          <Typography>
+          <Typography color="white">
             <Trans>
               You {action} <FormattedNumber value={Number(amount)} compact variant="secondary14" />{' '}
               {symbol}
@@ -59,20 +59,20 @@ export const TxSuccessView = ({
         )}
 
         {customAction && (
-          <Typography>
+          <Typography color="white">
             {customText}
             {customAction}
           </Typography>
         )}
 
         {!action && !amount && symbol && (
-          <Typography>
+          <Typography color="white">
             Your {symbol} {collateral ? 'now' : 'is not'} used as collateral
           </Typography>
         )}
 
         {rate && (
-          <Typography>
+          <Typography color="white">
             <Trans>
               You switched to {rate === InterestRate.Variable ? 'variable' : 'stable'} rate
             </Trans>
@@ -83,7 +83,7 @@ export const TxSuccessView = ({
           <Box
             sx={(theme) => ({
               border: theme.palette.mode === 'dark' ? `1px solid ${theme.palette.divider}` : 'none',
-              background: theme.palette.mode === 'dark' ? 'none' : '#F7F7F9',
+              background: theme.palette.mode === 'dark' ? 'none' : '#f7f7f926',
               borderRadius: '12px',
               display: 'flex',
               flexDirection: 'column',
@@ -97,7 +97,7 @@ export const TxSuccessView = ({
               aToken={addToken && addToken.aToken ? true : false}
               sx={{ fontSize: '32px', mt: '12px', mb: '8px' }}
             />
-            <Typography variant="description" color="text.primary" sx={{ mx: '24px' }}>
+            <Typography variant="description" color="white" sx={{ mx: '24px' }}>
               <Trans>
                 Add {addToken && addToken.aToken ? 'zToken ' : 'token '} to wallet to track your
                 balance.

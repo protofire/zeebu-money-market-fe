@@ -73,7 +73,7 @@ const BorrowModeSwitch = ({
       mb={5}
       flexDirection="column"
       align="flex-start"
-      captionColor="text.secondary"
+      captionColor="white"
     >
       <StyledTxModalToggleGroup
         color="primary"
@@ -274,7 +274,9 @@ export const BorrowModalContent = ({
 
       {blockingError !== undefined && (
         <Warning severity="error" icon={false} sx={{ mt: 1, mb: 0 }}>
-          <Typography variant="helperText">{handleBlocked()}</Typography>
+          <Typography variant="helperText" color="white">
+            {handleBlocked()}
+          </Typography>
         </Warning>
       )}
 

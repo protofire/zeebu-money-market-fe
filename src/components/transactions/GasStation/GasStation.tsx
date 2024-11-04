@@ -93,7 +93,7 @@ export const GasStation: React.FC<GasStationProps> = ({
               <FormattedNumber
                 value={totalGasCostsUsd}
                 symbol="USD"
-                color="text.secondary"
+                color="white"
                 variant="caption"
               />
               <GasTooltip />

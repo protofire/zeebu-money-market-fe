@@ -192,6 +192,7 @@ export const SwitchAssetInput = ({
                 textOverflow: 'ellipsis',
                 whiteSpace: 'nowrap',
                 overflow: 'hidden',
+                color: 'white',
               },
             }}
             // eslint-disable-next-line
@@ -233,7 +234,7 @@ export const SwitchAssetInput = ({
           <Typography
             data-cy={`assetsSelectedOption_${selectedAsset.symbol.toUpperCase()}`}
             variant="main16"
-            color="text.primary"
+            color="white"
           >
             {selectedAsset.symbol}
           </Typography>
@@ -312,7 +313,7 @@ export const SwitchAssetInput = ({
                     symbol={asset.symbol}
                     sx={{ width: 24, height: 24, mr: 1 }}
                   />
-                  <Typography variant="main14" color="text.primary" sx={{ mr: 1 }}>
+                  <Typography variant="main14" color="white" sx={{ mr: 1 }}>
                     {asset.symbol}
                   </Typography>
                 </Box>
@@ -339,7 +340,8 @@ export const SwitchAssetInput = ({
                   value={asset.symbol}
                   data-cy={`assetsSelectOption_${asset.symbol.toUpperCase()}`}
                   sx={{
-                    backgroundColor: theme.palette.background.paper,
+                    backgroundColor: theme.palette.background.paper + '10',
+                    color: 'white',
                   }}
                   onClick={() => handleSelect(asset)}
                 >
@@ -358,7 +360,7 @@ export const SwitchAssetInput = ({
             ) : (
               <Typography
                 variant="main14"
-                color="text.primary"
+                color="white"
                 sx={{ width: 'auto', textAlign: 'center', m: 4 }}
               >
                 <Trans>
@@ -379,29 +381,29 @@ export const SwitchAssetInput = ({
             compact
             symbol="USD"
             variant="secondary12"
-            color="text.muted"
-            symbolsColor="text.muted"
+            color="#d7dbee"
+            symbolsColor="#d7dbee"
             flexGrow={1}
           />
         )}
 
         {selectedAsset.balance && onChange && (
           <>
-            <Typography component="div" variant="secondary12" color="text.secondary">
+            <Typography component="div" variant="secondary12" color="#d7dbee">
               <Trans>Balance</Trans>
               <FormattedNumber
                 value={selectedAsset.balance}
                 compact
                 variant="secondary12"
-                color="text.secondary"
-                symbolsColor="text.disabled"
+                color="#d7dbee"
+                symbolsColor="#d7dbee"
                 sx={{ ml: 1 }}
               />
             </Typography>
             {!disableInput && (
               <Button
                 size="small"
-                sx={{ minWidth: 0, ml: '7px', p: 0 }}
+                sx={{ minWidth: 0, ml: '7px', p: 0, color: 'white' }}
                 onClick={() => {
                   onChange('-1');
                 }}

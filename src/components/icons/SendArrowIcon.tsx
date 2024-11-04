@@ -1,9 +1,6 @@
-import { useTheme } from '@mui/material';
 import type { SVGProps } from 'react';
 
 export default function SendArrowIcon(props: SVGProps<SVGSVGElement>) {
-  const theme = useTheme();
-
   return (
     <svg
       {...props}
@@ -11,7 +8,7 @@ export default function SendArrowIcon(props: SVGProps<SVGSVGElement>) {
       height={props.height ?? '24'}
       viewBox="0 0 24 24"
       fill="none"
-      stroke={theme.palette.text.primary}
+      stroke="white"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
