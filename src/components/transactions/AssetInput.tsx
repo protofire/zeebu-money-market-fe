@@ -161,6 +161,7 @@ export const AssetInput = <T extends Asset = Asset>({
                 style: {
                   fontSize: '21px',
                   lineHeight: '28,01px',
+                  color: 'white',
                   padding: 0,
                   height: '28px',
                   textOverflow: 'ellipsis',
@@ -199,7 +200,11 @@ export const AssetInput = <T extends Asset = Asset>({
                 symbol={asset.iconSymbol || asset.symbol}
                 sx={{ mr: 2, ml: 4 }}
               />
-              <Typography variant="h3" sx={{ lineHeight: '28px' }} data-cy={'inputAsset'}>
+              <Typography
+                variant="h3"
+                sx={{ lineHeight: '28px', color: 'white' }}
+                data-cy={'inputAsset'}
+              >
                 {symbol}
               </Typography>
             </Box>
@@ -292,28 +297,28 @@ export const AssetInput = <T extends Asset = Asset>({
               compact
               symbol="USD"
               variant="secondary12"
-              color="text.muted"
-              symbolsColor="text.muted"
+              color="#d7dbee"
+              symbolsColor="#d7dbee"
               flexGrow={1}
             />
           )}
 
           {asset.balance && onChange && (
             <>
-              <Typography component="div" variant="secondary12" color="text.secondary">
+              <Typography component="div" variant="secondary12" color="#d7dbee">
                 {balanceText && balanceText !== '' ? balanceText : <Trans>Balance</Trans>}{' '}
                 <FormattedNumber
                   value={asset.balance}
                   compact
                   variant="secondary12"
-                  color="text.secondary"
-                  symbolsColor="text.disabled"
+                  color="#d7dbee"
+                  symbolsColor="#d7dbee"
                 />
               </Typography>
               {!disableInput && (
                 <Button
                   size="small"
-                  sx={{ minWidth: 0, ml: '7px', p: 0 }}
+                  sx={{ minWidth: 0, ml: '7px', p: 0, color: 'white' }}
                   onClick={() => {
                     if (event) {
                       trackEvent(event.eventName, { ...event.eventParams });

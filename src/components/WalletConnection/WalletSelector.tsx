@@ -111,6 +111,7 @@ const WalletRow = ({ walletName, walletType }: WalletRowProps) => {
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'flex-start',
+        color: 'white',
         '&.Mui-disabled': {
           background: '#22222237',
           color: '#cacaca',
@@ -190,10 +191,10 @@ export const WalletSelector = () => {
           }}
         >
           <img src="/walleticon.svg" alt="wallet icon" width={87} height={87} />
-          <Typography variant="h4" mt={2} mb={2}>
+          <Typography variant="h4" mt={2} mb={2} color="white">
             Connect your Wallet
           </Typography>
-          <Typography variant="main14" fontWeight={400}>
+          <Typography variant="main14" fontWeight={400} color="white">
             Start by connecting with one of the wallet from the given options. Be sure to store your
             private keys or seed phrase securely. Never share them with anyone.
           </Typography>
@@ -233,7 +234,7 @@ export const WalletSelector = () => {
               'linear-gradient(127.43deg, rgba(255, 255, 255, 0.15) 2.54%, rgba(153, 153, 153, 0.15) 97.47%)',
           }}
         >
-          <Typography variant="h4" mb={4}>
+          <Typography variant="h4" mb={4} color="white">
             Available Wallets
           </Typography>
           <Grid container direction="row" rowSpacing={2} columnSpacing={{ xs: 2, sm: 3, md: 2 }}>

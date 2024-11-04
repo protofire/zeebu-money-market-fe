@@ -1,3 +1,4 @@
 export const uiConfig = {
-  appLogo: '/Zeebu-brand.svg',
+  appLogoLight: '/Zeebu-brand-light.svg',
+  appLogoDark: '/Zeebu-brand-dark.svg',
 };

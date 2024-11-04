@@ -90,19 +90,28 @@ export const DetailsNumberLine = ({
   ...rest
 }: DetailsNumberLineProps) => {
   return (
-    <Row caption={description} captionVariant="description" mb={4}>
+    <Row caption={description} captionVariant="description" mb={4} captionColor="white">
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
         {loading ? (
           <Skeleton variant="rectangular" height={20} width={100} sx={{ borderRadius: '4px' }} />
         ) : (
           <>
             {iconSymbol && <TokenIcon symbol={iconSymbol} sx={{ mr: 1, fontSize: '16px' }} />}
-            {numberPrefix && <Typography sx={{ mr: 1 }}>{numberPrefix}</Typography>}
-            <FormattedNumber value={value} variant="secondary14" {...rest} />
+            {numberPrefix && (
+              <Typography sx={{ mr: 1 }} color="white">
+                {numberPrefix}
+              </Typography>
+            )}
+            <FormattedNumber value={value} variant="secondary14" {...rest} color="white" />
             {futureValue && (
               <>
                 {ArrowRightIcon}
-                <FormattedNumber value={futureValue} variant="secondary14" {...rest} />
+                <FormattedNumber
+                  value={futureValue}
+                  variant="secondary14"
+                  color="white"
+                  {...rest}
+                />
               </>
             )}
           </>
@@ -133,7 +142,6 @@ export const DetailsNumberLineWithSub = ({
   futureValue,
   futureValueUSD,
   hideSymbolSuffix,
-  color,
   tokenIcon,
   loading = false,
 }: DetailsNumberLineWithSubProps) => {
@@ -155,9 +163,9 @@ export const DetailsNumberLineWithSub = ({
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               {value && (
                 <>
-                  <FormattedNumber value={value} variant="secondary14" color={color} />
+                  <FormattedNumber value={value} variant="secondary14" color="white" />
                   {!hideSymbolSuffix && (
-                    <Typography ml={1} variant="secondary14">
+                    <Typography ml={1} variant="secondary14" color="white">
                       {symbol}
                     </Typography>
                   )}
@@ -165,9 +173,9 @@ export const DetailsNumberLineWithSub = ({
                 </>
               )}
               {tokenIcon && <TokenIcon symbol={tokenIcon} sx={{ mr: 1, fontSize: '14px' }} />}
-              <FormattedNumber value={futureValue} variant="secondary14" color={color} />
+              <FormattedNumber value={futureValue} variant="secondary14" color="white" />
               {!hideSymbolSuffix && (
-                <Typography ml={1} variant="secondary14">
+                <Typography ml={1} variant="secondary14" color="white">
                   {symbol}
                 </Typography>
               )}
@@ -194,7 +202,12 @@ export interface DetailsCollateralLine {
 
 export const DetailsCollateralLine = ({ collateralType }: DetailsCollateralLine) => {
   return (
-    <Row caption={<Trans>Collateralization</Trans>} captionVariant="description" mb={4}>
+    <Row
+      caption={<Trans>Collateralization</Trans>}
+      captionVariant="description"
+      mb={4}
+      captionColor="white"
+    >
       <CollateralState collateralType={collateralType} />
     </Row>
   );
@@ -255,7 +268,13 @@ export const DetailsIncentivesLine = ({
 }: DetailsIncentivesLineProps) => {
   if (!incentives || incentives.filter((i) => i.incentiveAPR !== '0').length === 0) return null;
   return (
-    <Row caption={<Trans>Rewards APR</Trans>} captionVariant="description" mb={4} minHeight={24}>
+    <Row
+      caption={<Trans>Rewards APR</Trans>}
+      captionVariant="description"
+      mb={4}
+      minHeight={24}
+      captionColor="white"
+    >
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
         {loading ? (
           <Skeleton variant="rectangular" height={20} width={100} sx={{ borderRadius: '4px' }} />
@@ -300,6 +319,7 @@ export const DetailsHFLine = ({
       captionVariant="description"
       mb={4}
       align="flex-start"
+      captionColor="white"
     >
       <Box sx={{ textAlign: 'right' }}>
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
@@ -323,7 +343,7 @@ export const DetailsHFLine = ({
           )}
         </Box>
 
-        <Typography variant="helperText" color="text.secondary">
+        <Typography variant="helperText" color="white">
           <Trans>Liquidation at</Trans>
           {' <1.0'}
         </Typography>

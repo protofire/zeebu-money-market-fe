@@ -6,6 +6,7 @@ import { TextWithTooltip, TextWithTooltipProps } from '../TextWithTooltip';
 export const GasTooltip = ({ ...rest }: TextWithTooltipProps) => {
   return (
     <TextWithTooltip
+      color="white"
       event={{
         eventName: GENERAL.TOOL_TIP,
         eventParams: { tooltip: 'Gas Calc' },

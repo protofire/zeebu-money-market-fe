@@ -153,8 +153,8 @@ export const SwapModalDetails = ({
                   variant="helperText"
                   compact
                   symbol="USD"
-                  symbolsColor="text.secondary"
-                  color="text.secondary"
+                  symbolsColor="white"
+                  color="white"
                 />
               </>
             )}
@@ -191,8 +191,8 @@ export const SwapModalDetails = ({
                   variant="helperText"
                   compact
                   symbol="USD"
-                  symbolsColor="text.secondary"
-                  color="text.secondary"
+                  symbolsColor="white"
+                  color="white"
                 />
               </>
             )}

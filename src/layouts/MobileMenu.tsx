@@ -20,7 +20,7 @@ interface MobileMenuProps {
 const MenuItemsWrapper = ({ children, title }: { children: ReactNode; title: ReactNode }) => (
   <Box sx={{ mb: 6, '&:last-of-type': { mb: 0, '.MuiDivider-root': { display: 'none' } } }}>
     <Box sx={{ px: 2 }}>
-      <Typography variant="subheader2" sx={{ color: '#A5A8B6', px: 4, py: 2 }}>
+      <Typography variant="subheader2" sx={{ color: 'text.primary', px: 4, py: 2 }}>
         {title}
       </Typography>
       {children}
@@ -45,7 +45,7 @@ export const MobileMenu = ({ open, setOpen, headerHeight }: MobileMenuProps) => 
           sx={{ p: '7px 8px', minWidth: 'unset', ml: 2 }}
           onClick={() => setOpen(true)}
         >
-          <SvgIcon sx={{ color: '#F1F1F3' }} fontSize="small">
+          <SvgIcon sx={{ color: 'text.primary' }} fontSize="small">
             <MenuIcon />
           </SvgIcon>
         </Button>

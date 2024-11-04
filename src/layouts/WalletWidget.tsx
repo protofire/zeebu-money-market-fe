@@ -110,7 +110,7 @@ export default function WalletWidget({ open, setOpen, headerHeight }: WalletWidg
         variant="subheader2"
         sx={{
           display: { xs: 'block', md: 'none' },
-          color: '#A5A8B6',
+          color: 'text.primary',
           px: 4,
           py: 2,
         }}
@@ -145,7 +145,7 @@ export default function WalletWidget({ open, setOpen, headerHeight }: WalletWidg
       {!md && (
         <Box sx={{ display: 'flex', flexDirection: 'row', padding: '0 16px 10px' }}>
           <Button
-            variant="outlined"
+            variant="surface"
             sx={{
               padding: '0 5px',
               marginRight: '10px',
@@ -156,7 +156,7 @@ export default function WalletWidget({ open, setOpen, headerHeight }: WalletWidg
             Switch wallet
           </Button>
           <Button
-            variant="outlined"
+            variant="surface"
             sx={{
               padding: '0 5px',
             }}
@@ -180,7 +180,7 @@ export default function WalletWidget({ open, setOpen, headerHeight }: WalletWidg
               mb: 1,
             }}
           >
-            <Typography variant="caption" color={{ xs: '#FFFFFFB2', md: 'text.secondary' }}>
+            <Typography variant="caption" color="text.secondary">
               <Trans>Network</Trans>
             </Typography>
           </Box>
@@ -195,7 +195,7 @@ export default function WalletWidget({ open, setOpen, headerHeight }: WalletWidg
                 borderRadius: '50%',
               }}
             />
-            <Typography color={{ xs: '#F1F1F3', md: 'text.primary' }} variant="subheader1">
+            <Typography color="text.primary" variant="subheader1">
               {networkConfig.name}
             </Typography>
           </Box>
@@ -205,13 +205,13 @@ export default function WalletWidget({ open, setOpen, headerHeight }: WalletWidg
 
       <Box
         component={component}
-        sx={{ color: { xs: '#F1F1F3', md: 'text.primary', cursor: 'pointer' } }}
+        sx={{ color: 'text.primary', cursor: 'pointer' }}
         onClick={handleCopy}
       >
         <ListItemIcon
           sx={{
             color: {
-              xs: '#F1F1F3',
+              xs: 'text.primary',
               md: 'primary.light',
               minWidth: 'unset',
               marginRight: 12,
@@ -229,15 +229,11 @@ export default function WalletWidget({ open, setOpen, headerHeight }: WalletWidg
 
       {networkConfig?.explorerLinkBuilder && (
         <Link href={networkConfig.explorerLinkBuilder({ address: currentAccount })}>
-          <Box
-            component={component}
-            sx={{ color: { xs: '#F1F1F3', md: 'text.primary' } }}
-            onClick={handleViewOnExplorer}
-          >
+          <Box component={component} sx={{ color: 'text.primary' }} onClick={handleViewOnExplorer}>
             <ListItemIcon
               sx={{
                 color: {
-                  xs: '#F1F1F3',
+                  xs: 'text.primary',
                   md: 'primary.light',
                   minWidth: 'unset',
                   marginRight: 12,
@@ -261,20 +257,21 @@ export default function WalletWidget({ open, setOpen, headerHeight }: WalletWidg
             <Button
               sx={{
                 marginBottom: '16px',
-                background: '#383D51',
-                color: '#F1F1F3',
+                // background: '#383D51',
+                color: 'text.primary',
               }}
               fullWidth
               size="large"
-              variant={palette.mode === 'dark' ? 'outlined' : 'text'}
+              // variant={palette.mode === 'dark' ? 'outlined' : 'text'}
               onClick={handleSwitchWallet}
+              variant="surface"
             >
               Switch wallet
             </Button>
             <Button
               sx={{
-                background: '#383D51',
-                color: '#F1F1F3',
+                // background: '#383D51',
+                color: 'text.primary',
               }}
               fullWidth
               size="large"
@@ -294,7 +291,7 @@ export default function WalletWidget({ open, setOpen, headerHeight }: WalletWidg
       {md && connected && open ? (
         <MobileCloseButton setOpen={setOpen} />
       ) : loading ? (
-        <Skeleton height={36} width={126} sx={{ background: '#383D51' }} />
+        <Skeleton height={36} width={126} sx={{ background: '#383d51a7' }} />
       ) : (
         <Button
           variant={connected ? 'surface' : 'gradient'}

@@ -55,7 +55,7 @@ export const SwitchSlippageSelector = ({
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-      <Typography variant="caption" color="text.secondary">
+      <Typography variant="caption" color="white">
         <Trans>Slippage</Trans>
         <Menu
           sx={{
@@ -78,7 +78,7 @@ export const SwitchSlippageSelector = ({
           open={open}
           onClose={handleClose}
         >
-          <Typography variant="subheader2" mb={5}>
+          <Typography variant="subheader2" mb={5} color="white">
             <Trans>Max slippage</Trans>
           </Typography>
           <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'row', gap: '8px' }}>
@@ -150,7 +150,7 @@ export const SwitchSlippageSelector = ({
       </Typography>
       <FormattedNumber
         variant="caption"
-        color={slippageValidation ? `${slippageValidation.severity}.main` : 'text.primary'}
+        color={slippageValidation ? `${slippageValidation.severity}.main` : 'white'}
         value={slippage}
         visibleDecimals={2}
         symbol="%"
@@ -161,7 +161,7 @@ export const SwitchSlippageSelector = ({
         onClick={handleOpen}
         aria-controls="switch-slippage-selector"
       >
-        <SvgIcon sx={{ fontSize: '16px' }}>
+        <SvgIcon sx={{ fontSize: '16px', color: 'white' }}>
           <CogIcon />
         </SvgIcon>
       </Button>
