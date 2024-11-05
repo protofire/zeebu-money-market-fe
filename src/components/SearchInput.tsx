@@ -43,7 +43,7 @@ export const SearchInput = ({
         border: `1px solid ${theme.palette.divider}`,
         borderRadius: '6px',
         height: '36px',
-        color: 'white',
+        // color: 'white',
         ...wrapperSx,
       })}
     >
@@ -53,7 +53,7 @@ export const SearchInput = ({
       <InputBase
         autoFocus={sm}
         inputRef={inputEl}
-        sx={{ width: '100%', fontSize: { xs: 16, sm: 14 }, color: 'white' }}
+        sx={{ width: '100%', fontSize: { xs: 16, sm: 14 } }}
         placeholder={placeholder}
         value={searchTerm}
         onChange={(e) => {
