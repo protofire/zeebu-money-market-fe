@@ -10,7 +10,11 @@ interface StyledLinkProps {
 
 function Copyright() {
   return (
-    <Typography mt={1} variant="secondary14" sx={{ fontWeight: 'normal', opacity: '0.5' }}>
+    <Typography
+      mt={1}
+      variant="secondary14"
+      sx={{ fontWeight: 'normal', opacity: '0.5', color: 'text.primary' }}
+    >
       Copyright ©
       <Link href="https://www.zeebu.com/" target="_blank" color="text.primary">
         Zeebu&nbsp;
@@ -21,7 +25,7 @@ function Copyright() {
 }
 
 const StyledLink = styled(Link)<StyledLinkProps>(({ theme }) => ({
-  color: theme.palette.common.white,
+  color: theme.palette.text.primary,
   '&:hover': {
     color: theme.palette.text.primary,
   },
