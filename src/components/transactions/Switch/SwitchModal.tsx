@@ -160,7 +160,7 @@ export const SwitchModal = () => {
     <BasicModal open={type === ModalType.Switch} setOpen={close}>
       {!user ? (
         <Box sx={{ display: 'flex', flexDirection: 'column', mt: 4, alignItems: 'center' }}>
-          <Typography sx={{ mb: 6, textAlign: 'center' }} color="text.secondary">
+          <Typography sx={{ mb: 6, textAlign: 'center' }} color="white">
             <Trans>Please connect your wallet to be able to switch your tokens.</Trans>
           </Typography>
           <ConnectWalletButton />
