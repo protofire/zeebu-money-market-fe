@@ -82,11 +82,15 @@ const SWITCH_VISITED_KEY = 'switchVisited';
 export function AppHeader() {
   const theme = useTheme();
   const isDarkMode = theme.palette.mode === 'dark';
-  const logoSrc = isDarkMode ? uiConfig.appLogoDark : uiConfig.appLogoLight;
   const { breakpoints } = useTheme();
   const md = useMediaQuery(breakpoints.down('md'));
   const sm = useMediaQuery(breakpoints.down('sm'));
   const smd = useMediaQuery('(max-width:1120px)');
+  const logoSrc = md
+    ? uiConfig.appLogoMobile
+    : isDarkMode
+    ? uiConfig.appLogoDark
+    : uiConfig.appLogoLight;
 
   const [, setVisitedSwitch] = useState(() => {
     if (typeof window === 'undefined') return true;
@@ -212,7 +216,15 @@ export function AppHeader() {
           }}
           onClick={() => setMobileMenuOpen(false)}
         >
-          <img src={logoSrc} alt="Zeebu" width={91} height={22} />
+          <img
+            src={logoSrc}
+            alt="Zeebu"
+            style={{
+              width: md ? 38 : 91,
+              height: md ? 36 : 22,
+              transition: '0.3s ease all',
+            }}
+          />
         </Box>
         <Box sx={{ mr: sm ? 1 : 3 }}>
           {ENABLE_TESTNET && (
