@@ -193,7 +193,7 @@ export const getDesignTokens = (mode: 'light' | 'dark') => {
       divider: getColor('#EAEBEF', '#ebebef65'),
       action: {
         active: getColor('#8E92A3', '#EBEBEF8F'),
-        hover: getColor('#F1F1F3', '#EBEBEF14'),
+        hover: getColor('#f1f1f386', '#EBEBEF14'),
         selected: getColor('#EAEBEF', '#EBEBEF29'),
         disabled: getColor('#ffbca1', '#f0ede9bc'),
         disabledBackground: getColor('#EAEBEF', '#EBEBEF1F'),
