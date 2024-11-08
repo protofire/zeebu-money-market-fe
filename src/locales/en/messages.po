@@ -1272,10 +1272,6 @@ msgstr "Liquidated collateral"
 msgid "Liquidation"
 msgstr "Liquidation"
 
-#: src/modules/dashboard/LiquidationRiskParametresModal/components/LTVContent.tsx
-msgid "Liquidation <0/> threshold"
-msgstr "Liquidation <0/> threshold"
-
 #: src/components/transactions/FlowCommons/TxModalDetails.tsx
 msgid "Liquidation at"
 msgstr "Liquidation at"
@@ -1294,6 +1290,7 @@ msgid "Liquidation risk parameters"
 msgstr "Liquidation risk parameters"
 
 #: src/components/transactions/Swap/SwapModalDetails.tsx
+#: src/modules/dashboard/LiquidationRiskParametresModal/components/LTVContent.tsx
 #: src/modules/reserve-overview/ReserveEModePanel.tsx
 #: src/modules/reserve-overview/SupplyInfo.tsx
 msgid "Liquidation threshold"

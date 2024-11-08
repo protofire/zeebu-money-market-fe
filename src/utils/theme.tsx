@@ -168,7 +168,7 @@ export const getDesignTokens = (mode: 'light' | 'dark') => {
         '200': getColor('#E5EFFB', '#071F2E'), // for alert background
       },
       success: {
-        main: getColor('#6fca72', '#66BB6A'),
+        main: getColor('#4CAF50', '#66BB6A'),
         light: getColor('#90FF95', '#90FF95'),
         dark: getColor('#318435', '#388E3C'),
         '100': getColor('#1C4B1E', '#C2E4C3'), // for alert text
@@ -178,7 +178,7 @@ export const getDesignTokens = (mode: 'light' | 'dark') => {
         primary: getColor('#303549', '#F1F1F3'),
         secondary: getColor('#555868', '#d5daf3'),
         disabled: getColor('#656874', '##d5daf3'),
-        muted: getColor('#A5A8B6', '#b9bbc5'),
+        muted: getColor('#787b86', '#b9bbc5'),
         highlight: getColor('#383D51', '#d19e40'),
       },
       background: {
@@ -193,7 +193,7 @@ export const getDesignTokens = (mode: 'light' | 'dark') => {
       divider: getColor('#EAEBEF', '#ebebef65'),
       action: {
         active: getColor('#8E92A3', '#EBEBEF8F'),
-        hover: getColor('#F1F1F3', '#EBEBEF14'),
+        hover: getColor('#f1f1f386', '#EBEBEF14'),
         selected: getColor('#EAEBEF', '#EBEBEF29'),
         disabled: getColor('#ffbca1', '#f0ede9bc'),
         disabledBackground: getColor('#EAEBEF', '#EBEBEF1F'),

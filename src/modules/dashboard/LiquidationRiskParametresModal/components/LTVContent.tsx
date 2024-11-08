@@ -79,25 +79,29 @@ export const LTVContent = ({
               flexDirection: 'column',
               alignItems: liquidationThresholdPercent > 75 ? 'flex-end' : 'center',
               textAlign: liquidationThresholdPercent > 75 ? 'right' : 'center',
+              width: 'fit-content',
+              border: '1px solid red',
+              p: '0.3rem',
+              mt: '0.2rem',
+              borderRadius: '0.4rem',
+              bgcolor: '#f5393942',
             }}
           >
             <FormattedNumber
               value={currentLiquidationThreshold}
               visibleDecimals={2}
-              color="error.main"
+              color="white"
               variant="subheader2"
               percent
-              symbolsColor="error.main"
+              symbolsColor="white"
             />
             <Typography
               sx={{ display: 'flex' }}
               variant="helperText"
               lineHeight="12px"
-              color="error.main"
+              color="white"
             >
-              <Trans>
-                Liquidation <br /> threshold
-              </Trans>
+              <Trans>Liquidation threshold</Trans>
             </Typography>
           </Box>
         </Box>
