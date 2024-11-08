@@ -2,7 +2,7 @@ import { ChainId } from '@aave/contract-helpers';
 import { AaveV2Ethereum } from '@bgd-labs/aave-address-book';
 import { ReactNode } from 'react';
 
-import { Sepolia } from './addresses';
+import { BaseSepolia, Sepolia } from './addresses';
 
 // Enable for premissioned market
 // import { PermissionView } from 'src/components/transactions/FlowCommons/PermissionView';
@@ -53,6 +53,7 @@ export type MarketDataType = {
 export enum CustomMarket {
   proto_sepolia = 'proto_sepolia',
   proto_mainnet = 'proto_mainnet',
+  proto_base_sepolia = 'proto_base_sepolia',
 }
 
 const apiKey = process.env.NEXT_PUBLIC_SUBGRAPH_API_KEY;
@@ -105,6 +106,27 @@ export const marketsData: {
       WALLET_BALANCE_PROVIDER: Sepolia.WALLET_BALANCE_PROVIDER,
       UI_POOL_DATA_PROVIDER: Sepolia.UI_POOL_DATA_PROVIDER,
       UI_INCENTIVE_DATA_PROVIDER: Sepolia.UI_INCENTIVE_DATA_PROVIDER,
+      GHO_TOKEN_ADDRESS: '0xc4bF5CbDaBE595361438F8c6a187bDc330539c60',
+      GHO_UI_DATA_PROVIDER: '0x69B9843A16a6E9933125EBD97659BA3CCbE2Ef8A',
+    },
+  },
+  [CustomMarket.proto_base_sepolia]: {
+    marketTitle: 'Base Sepolia',
+    market: CustomMarket.proto_base_sepolia,
+    chainId: ChainId.base_sepolia,
+    enabledFeatures: {
+      faucet: true,
+    },
+    subgraphUrl:
+      'https://api.studio.thegraph.com/query/8290/zeebu-money-market-base-sepolia/version/latest',
+    addresses: {
+      LENDING_POOL_ADDRESS_PROVIDER: BaseSepolia.LENDING_POOL_ADDRESS_PROVIDER,
+      LENDING_POOL: BaseSepolia.LENDING_POOL,
+      WETH_GATEWAY: BaseSepolia.WETH_GATEWAY,
+      FAUCET: BaseSepolia.FAUCET,
+      WALLET_BALANCE_PROVIDER: BaseSepolia.WALLET_BALANCE_PROVIDER,
+      UI_POOL_DATA_PROVIDER: BaseSepolia.UI_POOL_DATA_PROVIDER,
+      UI_INCENTIVE_DATA_PROVIDER: BaseSepolia.UI_INCENTIVE_DATA_PROVIDER,
       GHO_TOKEN_ADDRESS: '0xc4bF5CbDaBE595361438F8c6a187bDc330539c60',
       GHO_UI_DATA_PROVIDER: '0x69B9843A16a6E9933125EBD97659BA3CCbE2Ef8A',
     },
