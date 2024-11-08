@@ -192,7 +192,7 @@ export const AddTokenDropdown = ({
             >
               <TokenIcon symbol={poolReserve.iconSymbol} sx={{ fontSize: '20px' }} aToken={true} />
               <Typography variant="subheader1" sx={{ ml: 3 }} noWrap data-cy={`assetName`}>
-                {`a${poolReserve.symbol}`}
+                {`z${poolReserve.symbol}`}
               </Typography>
             </MenuItem>
           </Box>
