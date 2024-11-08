@@ -81,9 +81,15 @@ export const HFContent = ({ healthFactor }: HFContentProps) => {
 
       <Box
         sx={{
-          maxWidth: '20%',
+          width: 'fit-content',
           textAlign: 'center',
-          pt: 1.5,
+          border: '1px solid red',
+          p: '0.3rem',
+          mt: '0.2rem',
+          borderRadius: '0.4rem',
+          bgcolor: '#f5393942',
+          display: 'flex',
+          flexDirection: 'column',
           '&:after': {
             content: "''",
             position: 'absolute',
@@ -96,13 +102,8 @@ export const HFContent = ({ healthFactor }: HFContentProps) => {
           },
         }}
       >
-        <FormattedNumber value={1} visibleDecimals={2} color="error.main" variant="subheader2" />
-        <Typography
-          sx={{ display: 'flex' }}
-          variant="helperText"
-          lineHeight="12px"
-          color="error.main"
-        >
+        <FormattedNumber value={1} visibleDecimals={2} color="white" variant="subheader2" />
+        <Typography sx={{ display: 'flex' }} variant="helperText" lineHeight="12px" color="white">
           <Trans>Liquidation value</Trans>
         </Typography>
       </Box>
