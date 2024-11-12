@@ -93,7 +93,7 @@ export function AppFooter() {
     <Box
       sx={{
         display: 'flex',
-        padding: ['22px 0px 40px 0px', '0 22px 0 40px', '20px 80px'],
+        padding: ['16px 8px', '0 22px 0 40px', '20px 80px'],
         width: '100%',
         justifyContent: 'space-between',
         alignItems: 'center',
