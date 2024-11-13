@@ -1,5 +1,5 @@
 import { Trans } from '@lingui/macro';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, useTheme } from '@mui/material';
 import { ReactNode } from 'react';
 
 import { DarkTooltip } from './infoTooltips/DarkTooltip';
@@ -11,6 +11,9 @@ interface CircleIconProps {
 }
 
 export const CircleIcon = ({ downToSM, tooltipText, children }: CircleIconProps) => {
+  const theme = useTheme();
+  const isLightTheme = theme.palette.mode === 'light';
+
   return (
     <DarkTooltip
       title={
@@ -29,14 +32,16 @@ export const CircleIcon = ({ downToSM, tooltipText, children }: CircleIconProps)
       >
         <Box
           sx={{
-            bgcolor: '#f1f1f11d',
+            bgcolor: isLightTheme ? '#e0e0e028' : '#f1f1f150',
             width: downToSM ? '18px' : '24px',
             height: downToSM ? '18px' : '24px',
             borderRadius: '50%',
             display: 'flex',
             justifyContent: 'center',
             ml: '8px',
-            border: '0.5px solid rgba(235, 235, 237, 0.12)',
+            border: isLightTheme
+              ? '0.5px solid rgba(0, 0, 0, 0.12)'
+              : '0.5px solid rgba(235, 235, 237, 0.12)',
           }}
         >
           {children}
