@@ -1316,10 +1316,6 @@ msgstr "MAI has been paused due to a community decision. Supply, borrows and rep
 msgid "MAX"
 msgstr "MAX"
 
-#: src/layouts/AppFooter.tsx
-msgid "Manage analytics"
-msgstr "Manage analytics"
-
 #: src/modules/reserve-overview/ReserveTopDetailsWrapper.tsx
 msgid "Market"
 msgstr "Market"
