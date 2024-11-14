@@ -108,6 +108,7 @@ export const SupplyActions = React.memo(
       signatureAmount: amountToSupply,
       onApprovalTxConfirmed: fetchApprovedAmount,
       onSignTxCompleted: (signedParams) => setSignatureParams(signedParams),
+      amountToApprove: parseUnits(Number(amountToSupply).toString(), decimals).toString(),
     });
 
     useEffect(() => {
