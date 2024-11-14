@@ -2,7 +2,6 @@ import { Trans } from '@lingui/macro';
 import { Description, Instagram, LinkedIn, Telegram, Twitter } from '@mui/icons-material';
 import { Box, styled, SvgIcon, Typography } from '@mui/material';
 import { Link } from 'src/components/primitives/Link';
-import { useRootStore } from 'src/store/root';
 
 interface StyledLinkProps {
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
@@ -62,11 +61,6 @@ const FOOTER_ICONS = [
 ];
 
 export function AppFooter() {
-  const [setAnalyticsConfigOpen] = useRootStore((store) => [
-    store.setAnalyticsConfigOpen,
-    store.setFeedbackOpen,
-  ]);
-
   const FOOTER_LINKS = [
     {
       href: 'https://www.zeebu.com/privacy-policy',
@@ -77,15 +71,6 @@ export function AppFooter() {
       href: 'https://www.zeebu.com/terms-conditions',
       label: <Trans>Terms of Service</Trans>,
       key: 'Terms',
-    },
-    {
-      href: '/',
-      label: <Trans>Manage analytics</Trans>,
-      key: 'Manage analytics',
-      onClick: (event: React.MouseEvent) => {
-        event.preventDefault();
-        setAnalyticsConfigOpen(true);
-      },
     },
   ];
 
@@ -104,7 +89,7 @@ export function AppFooter() {
       <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
         <Box sx={{ display: 'flex', flexDirection: 'row', gap: '1rem', alignItems: 'center' }}>
           {FOOTER_LINKS.map((link) => (
-            <StyledLink onClick={link.onClick} key={link.key} href={link.href}>
+            <StyledLink key={link.key} href={link.href}>
               <Typography variant="secondary16">{link.label}</Typography>
             </StyledLink>
           ))}
