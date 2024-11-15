@@ -1,4 +1,5 @@
 import { BigNumber } from 'bignumber.js';
+import { parseUnits } from 'ethers/lib/utils';
 import { CollateralType } from 'src/helpers/types';
 import { ComputedUserReserveData } from 'src/hooks/app-data-provider/useAppDataProvider';
 
@@ -92,4 +93,12 @@ export const getAssetCollateralType = (
   }
 
   return collateralType;
+};
+
+export const parseAmount = (_amount: string, _decimals: number) => {
+  const amountNumber = Number(_amount).toString();
+
+  if (amountNumber === 'NaN') return '0';
+
+  return parseUnits(amountNumber, _decimals).toString();
 };

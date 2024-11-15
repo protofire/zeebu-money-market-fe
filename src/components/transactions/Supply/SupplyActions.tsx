@@ -15,7 +15,7 @@ import { getErrorTextFromError, TxAction } from 'src/ui-config/errorMapping';
 import { queryKeysFactory } from 'src/ui-config/queries';
 
 import { TxActionsWrapper } from '../TxActionsWrapper';
-import { APPROVAL_GAS_LIMIT, checkRequiresApproval } from '../utils';
+import { APPROVAL_GAS_LIMIT, checkRequiresApproval, parseAmount } from '../utils';
 
 export interface SupplyActionProps extends BoxProps {
   amountToSupply: string;
@@ -98,6 +98,8 @@ export const SupplyActions = React.memo(
 
     const usePermit = permitAvailable && walletApprovalMethodPreference === ApprovalMethod.PERMIT;
 
+    const amountToApprove = parseAmount(amountToSupply, decimals);
+
     const { approval } = useApprovalTx({
       usePermit,
       approvedAmount,
@@ -108,7 +110,7 @@ export const SupplyActions = React.memo(
       signatureAmount: amountToSupply,
       onApprovalTxConfirmed: fetchApprovedAmount,
       onSignTxCompleted: (signedParams) => setSignatureParams(signedParams),
-      amountToApprove: parseUnits(Number(amountToSupply).toString(), decimals).toString(),
+      amountToApprove,
     });
 
     useEffect(() => {
