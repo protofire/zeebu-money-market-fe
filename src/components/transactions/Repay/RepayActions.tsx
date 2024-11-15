@@ -16,7 +16,7 @@ import { getErrorTextFromError, TxAction } from 'src/ui-config/errorMapping';
 import { queryKeysFactory } from 'src/ui-config/queries';
 
 import { TxActionsWrapper } from '../TxActionsWrapper';
-import { APPROVAL_GAS_LIMIT, checkRequiresApproval } from '../utils';
+import { APPROVAL_GAS_LIMIT, checkRequiresApproval, parseAmount } from '../utils';
 
 export interface RepayActionProps extends BoxProps {
   amountToRepay: string;
@@ -111,6 +111,8 @@ export const RepayActions = ({
     setApprovalTxState({});
   }
 
+  const amountToApprove = parseAmount(amountToRepay, poolReserve.decimals);
+
   const { approval } = useApprovalTx({
     usePermit,
     approvedAmount,
@@ -121,6 +123,7 @@ export const RepayActions = ({
     signatureAmount: amountToRepay,
     onApprovalTxConfirmed: fetchApprovedAmount,
     onSignTxCompleted: (signedParams) => setSignatureParams(signedParams),
+    amountToApprove,
   });
 
   useEffect(() => {
