@@ -45,7 +45,7 @@ const WhiteSlider = styled(Slider)<SliderProps>(() => ({
 export default function CDRSlider() {
   const [value, setValue] = React.useState(30);
 
-  const handleSliderChange = (event: Event, newValue: number | number[]) => {
+  const handleSliderChange = (_event: Event, newValue: number | number[]) => {
     setValue(newValue as number);
   };
 
