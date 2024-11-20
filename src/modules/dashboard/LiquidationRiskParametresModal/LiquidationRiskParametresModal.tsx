@@ -77,6 +77,7 @@ export const LiquidationRiskParametresInfoModal = ({
           </Trans>
         }
         color={healthFactorColor}
+        backgroundColor="#31373f"
       >
         <HFContent healthFactor={healthFactor} />
       </InfoWrapper>
@@ -102,6 +103,7 @@ export const LiquidationRiskParametresInfoModal = ({
           </Trans>
         }
         color={ltvColor}
+        backgroundColor="#31373f"
       >
         <LTVContent
           loanToValue={loanToValue}

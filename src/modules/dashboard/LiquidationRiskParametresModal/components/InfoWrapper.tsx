@@ -8,6 +8,7 @@ interface InfoWrapperProps {
   children: ReactNode;
   bottomText: ReactNode;
   color: AlertColor;
+  backgroundColor?: string; // Optional background color
 }
 
 export const InfoWrapper = ({
@@ -17,6 +18,7 @@ export const InfoWrapper = ({
   children,
   bottomText,
   color,
+  backgroundColor,
 }: InfoWrapperProps) => {
   return (
     <Box
@@ -27,6 +29,7 @@ export const InfoWrapper = ({
         px: 4,
         pt: 4,
         pb: 6,
+        backgroundColor: backgroundColor || 'transparent',
         '&:last-of-type': {
           mb: 0,
         },
