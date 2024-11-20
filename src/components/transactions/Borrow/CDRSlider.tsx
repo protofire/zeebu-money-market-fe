@@ -11,6 +11,15 @@ const Input = styled(MuiInput)(() => ({
   background: '#ffffff28',
   padding: '0.3rem',
   borderRadius: '4px',
+  '& .MuiInput-input': {
+    padding: '0',
+  },
+  '&:before': {
+    borderBottom: 'none',
+  },
+  '&:after': {
+    borderBottom: 'none',
+  },
 }));
 
 const WhiteSlider = styled(Slider)<SliderProps>(() => ({
