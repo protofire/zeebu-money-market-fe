@@ -38,6 +38,7 @@ import {
 } from '../FlowCommons/TxModalDetails';
 import { BorrowActions } from './BorrowActions';
 import { BorrowAmountWarning } from './BorrowAmountWarning';
+import CDRSlider from './CDRSlider';
 import { ParameterChangewarning } from './ParameterChangewarning';
 
 export enum ErrorType {
@@ -289,7 +290,7 @@ export const BorrowModalContent = ({
           }
         />
       )}
-
+      <CDRSlider />
       <TxModalDetails gasLimit={gasLimit}>
         <DetailsIncentivesLine incentives={incentive} symbol={poolReserve.symbol} />
         <DetailsHFLine
