@@ -1,15 +1,37 @@
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import MuiInput from '@mui/material/Input';
-import Slider from '@mui/material/Slider';
+import Slider, { SliderProps } from '@mui/material/Slider';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 
-const Input = styled(MuiInput)`
-  width: 80px;
-  border: '1px solid red';
-`;
+const Input = styled(MuiInput)(() => ({
+  width: '60px',
+  background: '#ffffff28',
+  padding: '0.3rem',
+  borderRadius: '4px',
+}));
+
+const WhiteSlider = styled(Slider)<SliderProps>(() => ({
+  color: '#FFFFFF',
+  '& .MuiSlider-thumb': {
+    backgroundColor: '#FFFFFF',
+  },
+  '& .MuiSlider-rail': {
+    backgroundColor: '#FFFFFF',
+  },
+  '& .MuiSlider-track': {
+    backgroundColor: '#FFFFFF',
+  },
+  '& .MuiSlider-valueLabel': {
+    backgroundColor: '#FFFFFF',
+    color: '#333333',
+    borderRadius: '4px',
+    fontWeight: 'bold',
+    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.2)',
+  },
+}));
 
 export default function CDRSlider() {
   const [value, setValue] = React.useState(30);
@@ -32,13 +54,14 @@ export default function CDRSlider() {
 
   return (
     <Box>
-      <Typography id="input-slider" gutterBottom>
+      <Typography id="input-slider" mt={6}>
         Collateral Ratio
       </Typography>
-      <Grid container spacing={2} sx={{ alignItems: 'center' }}>
+      <Grid container spacing={8} sx={{ alignItems: 'center' }}>
         <Grid item xs>
-          <Slider
+          <WhiteSlider
             value={typeof value === 'number' ? value : 0}
+            valueLabelDisplay="auto"
             onChange={handleSliderChange}
             aria-labelledby="input-slider"
           />
