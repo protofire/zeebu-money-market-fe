@@ -7,7 +7,8 @@ import Typography from '@mui/material/Typography';
 import * as React from 'react';
 
 const Input = styled(MuiInput)(() => ({
-  width: '60px',
+  width: '70px',
+  height: '38px',
   background: '#ffffff28',
   padding: '0.3rem',
   borderRadius: '4px',
@@ -48,6 +49,11 @@ type CDRSliderProps__Type = {
   value: number;
   onChange: (_value: number) => void;
 };
+const marks = [
+  { value: 100, label: 'Low' },
+  { value: 6150, label: 'Mid' },
+  { value: 12322, label: 'High' },
+];
 
 export default function CDRSlider(props: CDRSliderProps__Type) {
   const { maxValue, minValue, value, onChange } = props;
@@ -59,14 +65,6 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange(event.target.value === '' ? 0 : Number(event.target.value));
   };
-
-  // const handleBlur = () => {
-  //   if (value < 0) {
-  //     setValue(0);
-  //   } else if (value > 100) {
-  //     setValue(100);
-  //   }
-  // };
 
   return (
     <Box>
@@ -82,6 +80,7 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
             aria-labelledby="input-slider"
             max={maxValue}
             min={minValue}
+            marks={marks}
           />
         </Grid>
         <Grid item>
@@ -89,7 +88,6 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
             value={value}
             size="small"
             onChange={handleInputChange}
-            // onBlur={handleBlur}
             inputProps={{
               step: 10,
               min: minValue,
