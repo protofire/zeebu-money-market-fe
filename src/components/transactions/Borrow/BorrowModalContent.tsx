@@ -128,6 +128,7 @@ export const BorrowModalContent = ({
   const [interestRateMode, setInterestRateMode] = useState<InterestRate>(InterestRate.Variable);
   const [amount, setAmount] = useState('');
   const [riskCheckboxAccepted, setRiskCheckboxAccepted] = useState(false);
+  const [cdrValue, setCdrValue] = useState(0);
 
   // amount calculations
   const maxAmountToBorrow = getMaxAmountAvailableToBorrow(poolReserve, user, interestRateMode);
@@ -163,6 +164,20 @@ export const BorrowModalContent = ({
 
   // calculating input usd value
   const usdValue = valueToBigNumber(amount).multipliedBy(poolReserve.priceInUSD);
+
+  const newTotalBorrowUSD = valueToBigNumber(user.totalBorrowsUSD).plus(usdValue);
+
+  // const maxAmountToBorrowInUsd = valueToBigNumber(maxAmountToBorrow)
+  //   .multipliedBy(poolReserve.formattedPriceInMarketReferenceCurrency)
+  //   .multipliedBy(marketReferencePriceInUsd)
+  //   .shiftedBy(-USD_DECIMALS)
+  //   .plus(user.totalBorrowsUSD);
+
+  const cr = valueToBigNumber(user.totalCollateralUSD).dividedBy(newTotalBorrowUSD);
+  const maxCR = valueToBigNumber(user.totalCollateralUSD).dividedBy(user.totalBorrowsUSD);
+
+  console.log('max CR: ', maxCR.toString());
+  console.log('CR: ', cr.toString());
 
   // error types handling
   let blockingError: ErrorType | undefined = undefined;
@@ -290,7 +305,14 @@ export const BorrowModalContent = ({
           }
         />
       )}
-      <CDRSlider />
+
+      <CDRSlider
+        maxValue={maxCR.times(100).toNumber()}
+        minValue={100}
+        onChange={setCdrValue}
+        value={cdrValue}
+      />
+
       <TxModalDetails gasLimit={gasLimit}>
         <DetailsIncentivesLine incentives={incentive} symbol={poolReserve.symbol} />
         <DetailsHFLine

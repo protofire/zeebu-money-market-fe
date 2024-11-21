@@ -42,24 +42,31 @@ const WhiteSlider = styled(Slider)<SliderProps>(() => ({
   },
 }));
 
-export default function CDRSlider() {
-  const [value, setValue] = React.useState(30);
+type CDRSliderProps__Type = {
+  minValue: number;
+  maxValue: number;
+  value: number;
+  onChange: (_value: number) => void;
+};
+
+export default function CDRSlider(props: CDRSliderProps__Type) {
+  const { maxValue, minValue, value, onChange } = props;
 
   const handleSliderChange = (_event: Event, newValue: number | number[]) => {
-    setValue(newValue as number);
+    onChange(newValue as number);
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value === '' ? 0 : Number(event.target.value));
+    onChange(event.target.value === '' ? 0 : Number(event.target.value));
   };
 
-  const handleBlur = () => {
-    if (value < 0) {
-      setValue(0);
-    } else if (value > 100) {
-      setValue(100);
-    }
-  };
+  // const handleBlur = () => {
+  //   if (value < 0) {
+  //     setValue(0);
+  //   } else if (value > 100) {
+  //     setValue(100);
+  //   }
+  // };
 
   return (
     <Box>
@@ -73,6 +80,8 @@ export default function CDRSlider() {
             valueLabelDisplay="auto"
             onChange={handleSliderChange}
             aria-labelledby="input-slider"
+            max={maxValue}
+            min={minValue}
           />
         </Grid>
         <Grid item>
@@ -80,11 +89,11 @@ export default function CDRSlider() {
             value={value}
             size="small"
             onChange={handleInputChange}
-            onBlur={handleBlur}
+            // onBlur={handleBlur}
             inputProps={{
               step: 10,
-              min: 0,
-              max: 100,
+              min: minValue,
+              max: maxValue,
               type: 'number',
               'aria-labelledby': 'input-slider',
             }}
