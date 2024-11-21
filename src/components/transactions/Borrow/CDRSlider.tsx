@@ -5,6 +5,7 @@ import Slider, { SliderProps } from '@mui/material/Slider';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
+import { CollateralRatioTooltip } from 'src/components/infoTooltips/CollateralRatioTooltip';
 
 const Input = styled(MuiInput)(() => ({
   width: '70px',
@@ -12,6 +13,7 @@ const Input = styled(MuiInput)(() => ({
   background: '#ffffff28',
   padding: '0.3rem',
   borderRadius: '4px',
+  color: 'white',
   '& .MuiInput-input': {
     padding: '0',
   },
@@ -40,6 +42,9 @@ const WhiteSlider = styled(Slider)<SliderProps>(() => ({
     borderRadius: '4px',
     fontWeight: 'bold',
     boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.2)',
+  },
+  '& .MuiSlider-markLabel': {
+    color: '#FFFFFF',
   },
 }));
 
@@ -71,9 +76,12 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
 
   return (
     <Box>
-      <Typography id="input-slider" mt={6}>
-        Collateral Ratio
-      </Typography>
+      <Box sx={{ display: 'flex', flexDirection: 'row', margin: '2rem 0 0 0' }}>
+        <Typography id="input-slider" color="white">
+          Collateral Ratio
+        </Typography>
+        <CollateralRatioTooltip />
+      </Box>
       <Grid container spacing={8} sx={{ alignItems: 'center' }}>
         <Grid item xs>
           <WhiteSlider

@@ -1653,6 +1653,10 @@ msgstr "Price impact {0}%"
 msgid "Privacy Policy"
 msgstr "Privacy Policy"
 
+#: src/components/infoTooltips/CollateralRatioTooltip.tsx
+msgid "Proportion of collateral assets required to secure a loan relative to the loan amount."
+msgstr "Proportion of collateral assets required to secure a loan relative to the loan amount."
+
 #: src/modules/governance/proposal/ProposalLifecycle.tsx
 msgid "Proposal details"
 msgstr "Proposal details"
