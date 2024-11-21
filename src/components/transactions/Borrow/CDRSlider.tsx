@@ -49,21 +49,24 @@ type CDRSliderProps__Type = {
   value: number;
   onChange: (_value: number) => void;
 };
-const marks = [
-  { value: 100, label: 'Low' },
-  { value: 6150, label: 'Mid' },
-  { value: 12322, label: 'High' },
-];
 
 export default function CDRSlider(props: CDRSliderProps__Type) {
   const { maxValue, minValue, value, onChange } = props;
+
+  const midValue = (minValue + maxValue) / 2;
+
+  const marks = [
+    { value: minValue, label: 'Low' },
+    { value: midValue, label: 'Mid' },
+    { value: maxValue, label: 'High' },
+  ];
 
   const handleSliderChange = (_event: Event, newValue: number | number[]) => {
     onChange(newValue as number);
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onChange(event.target.value === '' ? 0 : Number(event.target.value));
+    onChange(event.target.value === '' ? minValue : Number(event.target.value));
   };
 
   return (
