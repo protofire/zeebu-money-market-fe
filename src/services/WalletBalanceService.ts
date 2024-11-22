@@ -3,7 +3,7 @@ import { normalize } from '@aave/math-utils';
 import { Provider } from '@ethersproject/providers';
 import { formatUnits } from 'ethers/lib/utils';
 import { governanceV3Config } from 'src/ui-config/governanceConfig';
-import { MarketDataType } from 'src/ui-config/marketsConfig';
+import { ExtraChainId, MarketDataType } from 'src/ui-config/marketsConfig';
 
 export interface GovernanceTokensBalance {
   aave: string;
@@ -19,7 +19,10 @@ export type UserPoolTokensBalances = {
 export class WalletBalanceService {
   constructor(private readonly getProvider: (chainId: number) => Provider) {}
 
-  private getWalletBalanceService(chainId: ChainId, walletBalanceProviderAddress: string) {
+  private getWalletBalanceService(
+    chainId: ChainId | ExtraChainId,
+    walletBalanceProviderAddress: string
+  ) {
     const provider = this.getProvider(chainId);
     return new WalletBalanceProvider({
       walletBalanceProviderAddress,
