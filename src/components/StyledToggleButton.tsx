@@ -7,7 +7,7 @@ const CustomToggleButton = styled(ToggleButton)<ToggleButtonProps>(({ theme }) =
   borderRadius: '6px',
 
   '&.Mui-selected, &.Mui-selected:hover': {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#ffffff61',
     borderRadius: '4px !important',
   },
 
@@ -33,12 +33,12 @@ const CustomToggleButton = styled(ToggleButton)<ToggleButtonProps>(({ theme }) =
 const CustomTxModalToggleButton = styled(ToggleButton)<ToggleButtonProps>(({ theme }) => ({
   border: '0px',
   flex: 1,
-  color: theme.palette.text.muted,
+  color: theme.palette.common.white,
   borderRadius: '4px',
 
   '&.Mui-selected, &.Mui-selected:hover': {
     border: `1px solid ${theme.palette.other.standardInputLine}`,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#ffffff2b',
     borderRadius: '4px !important',
   },
 
@@ -47,7 +47,7 @@ const CustomTxModalToggleButton = styled(ToggleButton)<ToggleButtonProps>(({ the
     height: '100%',
     display: 'flex',
     justifyContent: 'center',
-    color: theme.palette.background.header,
+    color: theme.palette.common.white,
   },
 })) as typeof ToggleButton;
 

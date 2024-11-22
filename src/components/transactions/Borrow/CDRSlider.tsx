@@ -174,7 +174,7 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
           <Typography color="white" fontWeight="bold">
             Warning: High Risk!
           </Typography>
-          <Typography variant="main12">
+          <Typography color="white" variant="main12">
             You are entering a high-risk position. Please proceed with caution.
           </Typography>
         </Box>
