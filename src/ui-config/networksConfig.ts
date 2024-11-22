@@ -1,5 +1,7 @@
 import { ChainId } from '@aave/contract-helpers';
 
+import { ExtraChainId } from './marketsConfig';
+
 export type ExplorerLinkBuilderProps = {
   tx?: string;
   address?: string;
@@ -271,7 +273,18 @@ export const networkConfigs: Record<string, BaseNetworkConfig> = {
     isTestnet: true,
     networkLogoPath: '/icons/networks/base.svg',
   },
-
+  [ExtraChainId.bnb_testnet]: {
+    name: 'BNB Testnet',
+    publicJsonRPCUrl: ['https://bnb-testnet.g.alchemy.com/v2/NFT15NwaOPswz1rhAS1po_Z1FWsxkMKG'],
+    publicJsonRPCWSUrl: 'wss://bnb-testnet.g.alchemy.com/v2/NFT15NwaOPswz1rhAS1po_Z1FWsxkMKG',
+    baseUniswapAdapter: '0x0',
+    baseAssetSymbol: 'BNB',
+    wrappedBaseAssetSymbol: 'WBNB',
+    baseAssetDecimals: 18,
+    explorerLink: 'https://testnet.bscscan.com/',
+    isTestnet: true,
+    networkLogoPath: '/icons/networks/binance.svg',
+  },
   [ChainId.harmony]: {
     name: 'Harmony',
     privateJsonRPCUrl: 'https://harmony-0.rpc.grove.city/v1/62b3314e123e6f00397f19ca',
