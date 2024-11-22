@@ -86,7 +86,7 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
     onChange(newValueNum);
 
     if (newValueNum > midValue) {
-      setAnchorEl(document.getElementById('input-slider') as HTMLElement); // Adjust anchor
+      setAnchorEl(document.getElementById('input-slider') as HTMLElement);
     } else {
       setAnchorEl(null);
     }
@@ -163,9 +163,9 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
         }}
         sx={{
           '& .MuiPaper-root': {
-            backgroundColor: 'rgba(189, 31, 31, 0.26)', // Transparent white
-            boxShadow: 'none', // Remove shadow if needed
-            backdropFilter: 'blur(5px)', // Optional: Add blur for aesthetic effect
+            backgroundColor: 'rgba(189, 31, 31, 0.26)',
+            boxShadow: 'none',
+            backdropFilter: 'blur(5px)',
             borderRadius: '6px',
           },
         }}
