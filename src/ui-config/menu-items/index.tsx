@@ -23,6 +23,11 @@ export const navigation: Navigation[] = [
     title: t`Markets`,
     dataCy: 'menuMarkets',
   },
+  {
+    link: ROUTES.staking,
+    title: t`Staking`,
+    dataCy: 'menuStaking',
+  },
 ];
 
 interface MoreMenuItem extends Navigation {
