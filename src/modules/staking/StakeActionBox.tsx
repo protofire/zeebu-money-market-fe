@@ -43,7 +43,7 @@ export const StakeActionBox = ({
           bottom: -1,
           left: -1,
           right: -1,
-          background: gradientBorder ? theme.palette.gradients.aaveGradient : 'transparent',
+          background: gradientBorder ? theme.palette.gradients.newGradient : 'transparent',
         },
       })}
     >
@@ -55,7 +55,7 @@ export const StakeActionBox = ({
           alignItems: 'center',
           flexDirection: 'column',
           borderRadius: '6px',
-          background: theme.palette.background.paper,
+          background: theme.palette.background.paper + '2b',
           position: 'relative',
           zIndex: 2,
         })}

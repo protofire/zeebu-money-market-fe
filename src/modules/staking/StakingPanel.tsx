@@ -181,7 +181,21 @@ export const StakingPanel: React.FC<StakingPanelProps> = ({
   );
 
   return (
-    <Paper sx={{ p: { xs: 4, xsm: 6 }, pt: 4, height: '100%' }}>
+    <Paper
+      sx={{
+        p: { xs: 4, xsm: 6 },
+        height: '100%',
+        pt: 4,
+        pb: 20,
+        border: 0,
+        borderBottom: '1px solid hsla(0,0%,100%,.2)',
+        background:
+          'radial-gradient(61.2% 18.19% at 52.96% 0, hsla(0, 0%, 100%, .3) 0, hsla(0, 0%, 60%, 0) 100%), linear-gradient(127deg, hsla(0, 0%, 100%, .15) 2.54%, hsla(0, 0%, 60%, .15) 97.47%);',
+        boxShadow: ' 0px 3px 4px 0px rgba(41, 127, 234, 0.15) inset',
+        backdropFilter: 'blur(4px)',
+        borderRadius: '30px 0 30px 0',
+      }}
+    >
       <Box
         sx={{
           display: { xs: 'none', xsm: 'flex' },
@@ -229,7 +243,7 @@ export const StakingPanel: React.FC<StakingPanelProps> = ({
           p: { xs: 0, xsm: 4 },
           background: {
             xs: 'unset',
-            xsm: theme.palette.background.paper,
+            xsm: theme.palette.background.paper + '2b',
           },
           position: 'relative',
           '&:after': {
@@ -309,17 +323,8 @@ export const StakingPanel: React.FC<StakingPanelProps> = ({
             {distributionEnded && (
               <TextWithTooltip iconColor="warning.main">
                 <Trans>
-                  The current incentives period, decided on by the Aave community, has ended.
-                  Governance is in the process on renewing, check for updates.{' '}
-                  <Link
-                    href="https://governance.aave.com"
-                    sx={{ textDecoration: 'underline' }}
-                    variant="caption"
-                    color="text.secondary"
-                  >
-                    Learn more
-                  </Link>
-                  .
+                  The current incentives period, decided on by the Zeebu community, has ended.
+                  Governance is in the process on renewing, check for updates.
                 </Trans>
               </TextWithTooltip>
             )}
