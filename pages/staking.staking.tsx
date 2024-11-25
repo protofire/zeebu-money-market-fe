@@ -1,24 +1,19 @@
 import { Stake } from '@aave/contract-helpers';
 import { StakeUIUserData } from '@aave/contract-helpers/dist/esm/V3-uiStakeDataProvider-contract/types';
-import { ExternalLinkIcon } from '@heroicons/react/outline';
 import { Trans } from '@lingui/macro';
-import { Box, Button, Grid, Stack, SvgIcon, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import { BigNumber } from 'ethers/lib/ethers';
 import { formatEther } from 'ethers/lib/utils';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 import { ConnectWalletPaperStaking } from 'src/components/ConnectWalletPaperStaking';
 import { ContentContainer } from 'src/components/ContentContainer';
-import { Link } from 'src/components/primitives/Link';
-import { Warning } from 'src/components/primitives/Warning';
 import StyledToggleButton from 'src/components/StyledToggleButton';
 import StyledToggleButtonGroup from 'src/components/StyledToggleButtonGroup';
 import { StakeTokenFormatted, useGeneralStakeUiData } from 'src/hooks/stake/useGeneralStakeUiData';
 import { useUserStakeUiData } from 'src/hooks/stake/useUserStakeUiData';
 import { useModalContext } from 'src/hooks/useModal';
 import { MainLayout } from 'src/layouts/MainLayout';
-import { GetABPToken } from 'src/modules/staking/GetABPToken';
-import { GhoDiscountProgram } from 'src/modules/staking/GhoDiscountProgram';
 import { StakingHeader } from 'src/modules/staking/StakingHeader';
 import { StakingPanel } from 'src/modules/staking/StakingPanel';
 import { useRootStore } from 'src/store/root';
@@ -69,11 +64,9 @@ export default function Staking() {
   }
 
   let stkAaveUserData: StakeUIUserData | undefined;
-  let stkBptUserData: StakeUIUserData | undefined;
-  let stkGhoUserData: StakeUIUserData | undefined;
-  let stkBptV2UserData: StakeUIUserData | undefined;
+
   if (stakeUserResult && Array.isArray(stakeUserResult)) {
-    [stkAaveUserData, stkBptUserData, stkGhoUserData, stkBptV2UserData] = stakeUserResult;
+    [stkAaveUserData] = stakeUserResult;
   }
 
   const {
@@ -82,7 +75,6 @@ export default function Staking() {
     openUnstake,
     openStakeRewardsClaim,
     openStakeRewardsRestakeClaim,
-    openStakingMigrate,
   } = useModalContext();
 
   const [mode, setMode] = useState<Stake>(Stake.aave);
@@ -112,14 +104,6 @@ export default function Staking() {
   );
 
   const isStakeAAVE = mode === 'aave';
-  const isStkGho = mode === 'gho';
-  const isStkBpt = mode === 'bpt';
-
-  const showAbptPanel =
-    !stkBpt?.inPostSlashingPeriod ||
-    stkBptUserData?.stakeTokenUserBalance !== '0' ||
-    stkBptUserData.userIncentivesToClaim !== '0' ||
-    stkBptUserData.underlyingTokenUserBalance !== '0';
 
   return (
     <>
@@ -145,16 +129,6 @@ export default function Staking() {
                 <StyledToggleButton value="aave" disabled={mode === 'aave'}>
                   <Typography variant="subheader1">
                     <Trans>Stake AAVE</Trans>
-                  </Typography>
-                </StyledToggleButton>
-                <StyledToggleButton value="gho" disabled={mode === 'gho'}>
-                  <Typography variant="subheader1">
-                    <Trans>Stake GHO</Trans>
-                  </Typography>
-                </StyledToggleButton>
-                <StyledToggleButton value="bpt" disabled={mode === 'bpt'}>
-                  <Typography variant="subheader1">
-                    <Trans>Stake ABPT</Trans>
                   </Typography>
                 </StyledToggleButton>
               </StyledToggleButtonGroup>
@@ -202,121 +176,8 @@ export default function Staking() {
                           : '100%',
                       marginX: 'auto',
                     }}
-                  >
-                    <GhoDiscountProgram />
-                  </Box>
+                  />
                 </StakingPanel>
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                lg={6}
-                sx={{ display: { xs: !isStkGho ? 'none' : 'block', lg: 'block' } }}
-              >
-                <StakingPanel
-                  stakeTitle="GHO"
-                  stakedToken="GHO"
-                  maxSlash={stkGho?.maxSlashablePercentageFormatted || '0'}
-                  icon="gho"
-                  stakeData={stkGho}
-                  stakeUserData={stkGhoUserData}
-                  onStakeAction={() => openStake(Stake.gho, 'GHO')}
-                  onCooldownAction={() => openStakeCooldown(Stake.gho, 'GHO')}
-                  onUnstakeAction={() => openUnstake(Stake.gho, 'GHO')}
-                  onStakeRewardClaimAction={() => openStakeRewardsClaim(Stake.gho, 'AAVE')}
-                />
-              </Grid>
-
-              <Grid
-                item
-                xs={12}
-                lg={6}
-                sx={{ display: { xs: !isStkBpt ? 'none' : 'block', lg: 'block' } }}
-              >
-                <StakingPanel
-                  stakeTitle="ABPT V2"
-                  stakedToken="ABPTV2"
-                  maxSlash={stkBptV2?.maxSlashablePercentageFormatted || '0'}
-                  icon="stkbptv2"
-                  stakeData={stkBptV2}
-                  stakeUserData={stkBptV2UserData}
-                  onStakeAction={() => openStake(Stake.bptv2, 'stkbptv2')}
-                  onCooldownAction={() => openStakeCooldown(Stake.bptv2, 'stkbptv2')}
-                  onUnstakeAction={() => openUnstake(Stake.bptv2, 'stkbptv2')}
-                  onStakeRewardClaimAction={() => openStakeRewardsClaim(Stake.bptv2, 'AAVE')}
-                  headerAction={<GetABPToken />}
-                />
-              </Grid>
-
-              <Grid
-                item
-                xs={12}
-                lg={6}
-                sx={{ display: { xs: !isStkBpt ? 'none' : 'block', lg: 'block' } }}
-              >
-                {showAbptPanel && (
-                  <StakingPanel
-                    stakeTitle="ABPT"
-                    stakedToken="ABPT"
-                    maxSlash={stkBpt?.maxSlashablePercentageFormatted || '0'}
-                    icon="stkbpt"
-                    stakeData={stkBpt}
-                    stakeUserData={stkBptUserData}
-                    onStakeAction={() => openStake(Stake.bpt, 'stkBPT')}
-                    onCooldownAction={() => openStakeCooldown(Stake.bpt, 'stkbpt')}
-                    onUnstakeAction={() => openUnstake(Stake.bpt, 'stkBPT')}
-                    onStakeRewardClaimAction={() => openStakeRewardsClaim(Stake.bpt, 'AAVE')}
-                    onMigrateAction={() => openStakingMigrate()}
-                    headerAction={
-                      stkBpt?.inPostSlashingPeriod ? (
-                        <Stack direction="row" alignItems="center" gap={3}>
-                          <Box
-                            sx={(theme) => ({
-                              backgroundColor: theme.palette.warning.main,
-                              borderRadius: 12,
-                              height: '16px',
-                              width: '84px',
-                              marginLeft: 'auto',
-                            })}
-                          >
-                            <Typography sx={{ px: 2 }} color="white" variant="caption">
-                              Deprecated
-                            </Typography>
-                          </Box>
-                          <Button
-                            variant="outlined"
-                            size="small"
-                            component={Link}
-                            endIcon={
-                              <SvgIcon sx={{ width: 14, height: 14 }}>
-                                <ExternalLinkIcon />
-                              </SvgIcon>
-                            }
-                            href="https://pools.balancer.exchange/#/pool/0xc697051d1c6296c24ae3bcef39aca743861d9a81/"
-                          >
-                            <Trans>Balancer Pool</Trans>
-                          </Button>
-                        </Stack>
-                      ) : null
-                    }
-                  >
-                    {stkBpt?.inPostSlashingPeriod && (
-                      <Box
-                        sx={{
-                          mt: 4,
-                        }}
-                      >
-                        <Warning severity="warning" sx={{ mb: 0 }}>
-                          <Trans>
-                            As a result of governance decisions, this ABPT staking pool is now
-                            deprecated. You have the flexibility to either migrate all of your
-                            tokens to v2 or unstake them without any cooldown period.
-                          </Trans>
-                        </Warning>
-                      </Box>
-                    )}
-                  </StakingPanel>
-                )}
               </Grid>
             </Grid>
           </>

@@ -254,10 +254,6 @@ msgstr "Approving {symbol}..."
 msgid "Array parameters that should be equal length are not"
 msgstr "Array parameters that should be equal length are not"
 
-#: pages/staking.staking.tsx
-msgid "As a result of governance decisions, this ABPT staking pool is now deprecated. You have the flexibility to either migrate all of your tokens to v2 or unstake them without any cooldown period."
-msgstr "As a result of governance decisions, this ABPT staking pool is now deprecated. You have the flexibility to either migrate all of your tokens to v2 or unstake them without any cooldown period."
-
 #: src/modules/dashboard/lists/BorrowAssetsList/BorrowAssetsList.tsx
 #: src/modules/dashboard/lists/BorrowedPositionsList/BorrowedPositionsList.tsx
 #: src/modules/dashboard/lists/SuppliedPositionsList/SuppliedPositionsList.tsx
@@ -400,10 +396,6 @@ msgstr "Balance"
 #: src/components/transactions/GovDelegation/GovDelegationModalContent.tsx
 msgid "Balance to revoke"
 msgstr "Balance to revoke"
-
-#: pages/staking.staking.tsx
-msgid "Balancer Pool"
-msgstr "Balancer Pool"
 
 #: src/modules/dashboard/lists/BorrowAssetsList/BorrowAssetsList.tsx
 msgid "Be careful - You are very close to liquidation. Consider depositing more collateral or paying down some of your borrowed positions"
@@ -1132,15 +1124,6 @@ msgstr "GHO balance"
 msgid "GHO is a native decentralized, collateral-backed digital asset pegged to USD. It is created by users via borrowing against multiple collateral. When user repays their GHO borrow position, the protocol burns that user's GHO. All the interest payments accrued by minters of GHO would be directly transferred to the AaveDAO treasury."
 msgstr "GHO is a native decentralized, collateral-backed digital asset pegged to USD. It is created by users via borrowing against multiple collateral. When user repays their GHO borrow position, the protocol burns that user's GHO. All the interest payments accrued by minters of GHO would be directly transferred to the AaveDAO treasury."
 
-#: src/modules/staking/GetABPToken.tsx
-msgid "Get ABP Token"
-msgstr "Get ABP Token"
-
-#: src/modules/staking/GetABPTokenModal.tsx
-msgid "Get ABP v2 Token"
-msgstr "Get ABP v2 Token"
-
-#: src/modules/staking/GetGhoToken.tsx
 #: src/modules/staking/StakingPanel.tsx
 msgid "Get GHO"
 msgstr "Get GHO"
@@ -1154,10 +1137,6 @@ msgstr "Global settings"
 #: src/modules/reserve-overview/ReserveTopDetailsWrapper.tsx
 msgid "Go Back"
 msgstr "Go Back"
-
-#: src/modules/staking/GetABPTokenModal.tsx
-msgid "Go to Balancer Pool"
-msgstr "Go to Balancer Pool"
 
 #: src/layouts/components/LanguageSwitcher.tsx
 msgid "Greek"
@@ -1180,10 +1159,6 @@ msgstr "Health factor is not below the threshold"
 #: src/components/lists/ListWrapper.tsx
 msgid "Hide"
 msgstr "Hide"
-
-#: src/modules/staking/GhoDiscountProgram.tsx
-msgid "Holders of stkAAVE receive a discount on the GHO borrowing rate"
-msgstr "Holders of stkAAVE receive a discount on the GHO borrowing rate"
 
 #: src/components/transactions/Borrow/BorrowAmountWarning.tsx
 #: src/components/transactions/Withdraw/WithdrawAndSwitchModalContent.tsx
@@ -2110,14 +2085,6 @@ msgstr "Stake"
 msgid "Stake AAVE"
 msgstr "Stake AAVE"
 
-#: pages/staking.staking.tsx
-msgid "Stake ABPT"
-msgstr "Stake ABPT"
-
-#: pages/staking.staking.tsx
-msgid "Stake GHO"
-msgstr "Stake GHO"
-
 #: src/components/transactions/StakeCooldown/StakeCooldownModalContent.tsx
 msgid "Stake cooldown activated"
 msgstr "Stake cooldown activated"
@@ -2328,10 +2295,6 @@ msgstr "Thank you for voting!!"
 #: src/components/infoTooltips/BorrowPowerTooltip.tsx
 msgid "The % of your total borrowing power used. This is based on the amount of your collateral supplied and the total amount that you can borrow."
 msgstr "The % of your total borrowing power used. This is based on the amount of your collateral supplied and the total amount that you can borrow."
-
-#: src/modules/staking/GetABPTokenModal.tsx
-msgid "The Aave Balancer Pool Token (ABPT) is a liquidity pool token. You can receive ABPT by depositing a combination of AAVE + wstETH in the Balancer liquidity pool. You can then stake your BPT in the Safety Module to secure the protocol and earn Safety Incentives."
-msgstr "The Aave Balancer Pool Token (ABPT) is a liquidity pool token. You can receive ABPT by depositing a combination of AAVE + wstETH in the Balancer liquidity pool. You can then stake your BPT in the Safety Module to secure the protocol and earn Safety Incentives."
 
 #: src/modules/reserve-overview/Gho/GhoReserveTopDetails.tsx
 msgid "The Aave Protocol is programmed to always use the price of 1 GHO = $1. This is different from using market pricing via oracles for other crypto assets. This creates stabilizing arbitrage opportunities when the price of GHO fluctuates."
@@ -3194,10 +3157,6 @@ msgstr "staking view"
 msgid "starts"
 msgstr "starts"
 
-#: src/modules/staking/GhoDiscountProgram.tsx
-msgid "stkAAVE holders get a discount on GHO borrow rate"
-msgstr "stkAAVE holders get a discount on GHO borrow rate"
-
 #: src/modules/reserve-overview/Gho/GhoDiscountCalculator.tsx
 msgid "to"
 msgstr "to"
@@ -3229,7 +3188,6 @@ msgstr "withdrew"
 #: src/layouts/TopBarNotify.tsx
 #: src/modules/dashboard/DashboardEModeButton.tsx
 #: src/modules/reserve-overview/ReserveTopDetailsWrapper.tsx
-#: src/modules/staking/GhoDiscountProgram.tsx
 msgid "{0}"
 msgstr "{0}"
 
