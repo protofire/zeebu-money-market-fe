@@ -30,6 +30,7 @@ export const TestNetModeSwitcher = ({ component = ListItem }: TestNetModeSwitche
         cursor: 'pointer',
         color: 'text.primary',
         py: { xs: 1.5, md: 2 },
+        display: 'none', // Hide Test mode switch. Remove this line to show it again.
       }}
     >
       <ListItemText>
