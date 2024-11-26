@@ -935,10 +935,6 @@ msgstr "Efficiency mode (E-Mode)"
 msgid "Eligible for the merit program."
 msgstr "Eligible for the merit program."
 
-#: src/layouts/FeedbackDialog.tsx
-msgid "Email"
-msgstr "Email"
-
 #: src/components/transactions/Emode/EmodeModalContent.tsx
 msgid "Emode"
 msgstr "Emode"
@@ -1043,11 +1039,6 @@ msgstr "Faucet {0}"
 #: src/components/transactions/Bridge/BridgeModalContent.tsx
 msgid "Fee"
 msgstr "Fee"
-
-#: src/layouts/FeedbackDialog.tsx
-#: src/layouts/FeedbackDialog.tsx
-msgid "Feedback"
-msgstr "Feedback"
 
 #: src/components/transactions/TxActionsWrapper.tsx
 msgid "Fetching data..."
@@ -1251,10 +1242,6 @@ msgstr "Learn more in our <0>FAQ guide</0>"
 #: src/modules/governance/DelegatedInfoPanel.tsx
 msgid "Learn more."
 msgstr "Learn more."
-
-#: src/layouts/FeedbackDialog.tsx
-msgid "Let us know how we can make the app better for you. For user support related inquiries please reach out on"
-msgstr "Let us know how we can make the app better for you. For user support related inquiries please reach out on"
 
 #: src/modules/governance/RepresentativesInfoPanel.tsx
 msgid "Linked addresses"
@@ -1912,10 +1899,6 @@ msgstr "Select language"
 msgid "Select slippage tolerance"
 msgstr "Select slippage tolerance"
 
-#: src/layouts/FeedbackDialog.tsx
-msgid "Send Feedback"
-msgstr "Send Feedback"
-
 #: src/modules/governance/DelegatedInfoPanel.tsx
 msgid "Set up delegation"
 msgstr "Set up delegation"
@@ -2055,10 +2038,6 @@ msgstr "Staking discount"
 #: src/modules/governance/proposal/VotingResults.tsx
 msgid "State"
 msgstr "State"
-
-#: src/layouts/FeedbackDialog.tsx
-msgid "Submission did not work, please try again later or contact wecare@avara.xyz"
-msgstr "Submission did not work, please try again later or contact wecare@avara.xyz"
 
 #: src/components/transactions/Supply/SupplyModalContent.tsx
 #: src/components/transactions/Supply/SupplyModalContent.tsx
@@ -2214,10 +2193,6 @@ msgstr "Testnet mode"
 #: src/layouts/AppHeader.tsx
 msgid "Testnet mode is ON"
 msgstr "Testnet mode is ON"
-
-#: src/layouts/FeedbackDialog.tsx
-msgid "Thank you for submitting feedback!"
-msgstr "Thank you for submitting feedback!"
 
 #: src/components/transactions/GovVote/GovVoteModalContent.tsx
 msgid "Thank you for voting!!"
