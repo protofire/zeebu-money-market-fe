@@ -55,7 +55,7 @@ export const StakeActionBox = ({
           alignItems: 'center',
           flexDirection: 'column',
           borderRadius: '6px',
-          background: theme.palette.background.paper,
+          background: theme.palette.background.paper + '2b',
           position: 'relative',
           zIndex: 2,
         })}

@@ -108,6 +108,10 @@ msgstr "Aave debt token"
 msgid "Aave is a fully decentralized, community governed protocol by the AAVE token-holders. AAVE token-holders collectively discuss, propose, and vote on upgrades to the protocol. AAVE token-holders (Ethereum network only) can either vote themselves on new proposals or delagate to an address of choice. To learn more check out the Governance"
 msgstr "Aave is a fully decentralized, community governed protocol by the AAVE token-holders. AAVE token-holders collectively discuss, propose, and vote on upgrades to the protocol. AAVE token-holders (Ethereum network only) can either vote themselves on new proposals or delagate to an address of choice. To learn more check out the Governance"
 
+#: src/modules/staking/StakingPanel.tsx
+msgid "Aave per month"
+msgstr "Aave per month"
+
 #: src/modules/reserve-overview/Gho/GhoReserveConfiguration.tsx
 msgid "About GHO"
 msgstr "About GHO"
@@ -201,6 +205,10 @@ msgstr "Amount"
 #: src/components/transactions/StakeRewardClaimRestake/StakeRewardClaimRestakeModalContent.tsx
 msgid "Amount claimable"
 msgstr "Amount claimable"
+
+#: src/modules/staking/StakingPanel.tsx
+msgid "Amount in cooldown"
+msgstr "Amount in cooldown"
 
 #: src/ui-config/errorMapping.tsx
 msgid "Amount must be greater than 0"
@@ -613,6 +621,7 @@ msgid "Choose one of the on-ramp services"
 msgstr "Choose one of the on-ramp services"
 
 #: src/modules/dashboard/DashboardTopPanel.tsx
+#: src/modules/staking/StakingPanel.tsx
 msgid "Claim"
 msgstr "Claim"
 
@@ -632,6 +641,10 @@ msgstr "Claim {0}"
 #: src/components/transactions/StakeRewardClaim/StakeRewardClaimActions.tsx
 msgid "Claim {symbol}"
 msgstr "Claim {symbol}"
+
+#: src/modules/staking/StakingPanel.tsx
+msgid "Claimable AAVE"
+msgstr "Claimable AAVE"
 
 #: src/components/transactions/ClaimRewards/ClaimRewardsModalContent.tsx
 #: src/components/transactions/StakeRewardClaim/StakeRewardClaimModalContent.tsx
@@ -724,12 +737,25 @@ msgid "Connect wallet"
 msgstr "Connect wallet"
 
 #: src/components/transactions/StakeCooldown/StakeCooldownModalContent.tsx
+#: src/modules/staking/StakingPanel.tsx
 msgid "Cooldown period"
 msgstr "Cooldown period"
 
 #: src/components/Warnings/CooldownWarning.tsx
 msgid "Cooldown period warning"
 msgstr "Cooldown period warning"
+
+#: src/modules/staking/StakingPanel.tsx
+msgid "Cooldown time left"
+msgstr "Cooldown time left"
+
+#: src/modules/staking/StakingPanel.tsx
+msgid "Cooldown to unstake"
+msgstr "Cooldown to unstake"
+
+#: src/modules/staking/StakingPanel.tsx
+msgid "Cooling down..."
+msgstr "Cooling down..."
 
 #: src/layouts/WalletWidget.tsx
 msgid "Copy address"
@@ -1082,6 +1108,10 @@ msgstr "Forum discussion"
 msgid "French"
 msgstr "French"
 
+#: src/modules/staking/StakingHeader.tsx
+msgid "Funds in the Safety Module"
+msgstr "Funds in the Safety Module"
+
 #: src/components/transactions/Bridge/BridgeModalContent.tsx
 msgid "GHO balance"
 msgstr "GHO balance"
@@ -1089,6 +1119,10 @@ msgstr "GHO balance"
 #: src/modules/reserve-overview/Gho/GhoReserveConfiguration.tsx
 msgid "GHO is a native decentralized, collateral-backed digital asset pegged to USD. It is created by users via borrowing against multiple collateral. When user repays their GHO borrow position, the protocol burns that user's GHO. All the interest payments accrued by minters of GHO would be directly transferred to the AaveDAO treasury."
 msgstr "GHO is a native decentralized, collateral-backed digital asset pegged to USD. It is created by users via borrowing against multiple collateral. When user repays their GHO borrow position, the protocol burns that user's GHO. All the interest payments accrued by minters of GHO would be directly transferred to the AaveDAO treasury."
+
+#: src/modules/staking/StakingPanel.tsx
+msgid "Get GHO"
+msgstr "Get GHO"
 
 #: src/layouts/MobileMenu.tsx
 #: src/layouts/SettingsMenu.tsx
@@ -1337,6 +1371,10 @@ msgstr "Max"
 #: src/modules/reserve-overview/SupplyInfo.tsx
 msgid "Max LTV"
 msgstr "Max LTV"
+
+#: src/modules/staking/StakingPanel.tsx
+msgid "Max slashing"
+msgstr "Max slashing"
 
 #: src/components/transactions/Switch/SwitchSlippageSelector.tsx
 msgid "Max slippage"
@@ -1606,6 +1644,7 @@ msgid "Please connect your wallet to be able to switch your tokens."
 msgstr "Please connect your wallet to be able to switch your tokens."
 
 #: src/components/ConnectWalletPaper.tsx
+#: src/components/ConnectWalletPaperStaking.tsx
 msgid "Please connect your wallet to see your supplies, borrowings, and open positions."
 msgstr "Please connect your wallet to see your supplies, borrowings, and open positions."
 
@@ -1618,6 +1657,7 @@ msgid "Please switch to {networkName}."
 msgstr "Please switch to {networkName}."
 
 #: src/components/ConnectWalletPaper.tsx
+#: src/components/ConnectWalletPaperStaking.tsx
 msgid "Please, connect your wallet"
 msgstr "Please, connect your wallet"
 
@@ -1711,6 +1751,11 @@ msgstr "Raw-Ipfs"
 #: src/modules/governance/proposal/VotingResults.tsx
 msgid "Reached"
 msgstr "Reached"
+
+#: src/modules/staking/StakingPanel.tsx
+#: src/modules/staking/StakingPanel.tsx
+msgid "Reactivate cooldown period to unstake {0} {stakedToken}"
+msgstr "Reactivate cooldown period to unstake {0} {stakedToken}"
 
 #: src/components/transactions/Warnings/MarketWarning.tsx
 msgid "Read more here."
@@ -1830,6 +1875,10 @@ msgstr "Reserve status & configuration"
 #: src/modules/history/HistoryFilterMenu.tsx
 msgid "Reset"
 msgstr "Reset"
+
+#: src/modules/staking/StakingPanel.tsx
+msgid "Restake"
+msgstr "Restake"
 
 #: src/components/transactions/StakeRewardClaimRestake/StakeRewardClaimRestakeActions.tsx
 msgid "Restake {symbol}"
@@ -2019,23 +2068,35 @@ msgid "Stablecoin"
 msgstr "Stablecoin"
 
 #: src/components/transactions/Stake/StakeActions.tsx
+#: src/modules/staking/StakingPanel.tsx
+#: src/modules/staking/StakingPanel.tsx
 msgid "Stake"
 msgstr "Stake"
+
+#: pages/staking.staking.tsx
+msgid "Stake AAVE"
+msgstr "Stake AAVE"
 
 #: src/components/transactions/StakeCooldown/StakeCooldownModalContent.tsx
 msgid "Stake cooldown activated"
 msgstr "Stake cooldown activated"
 
 #: src/components/transactions/Stake/StakeModalContent.tsx
+#: src/modules/staking/StakingPanel.tsx
+#: src/modules/staking/StakingPanel.tsx
 msgid "Staked"
 msgstr "Staked"
 
 #: src/components/transactions/Stake/StakeActions.tsx
+#: src/modules/staking/StakingHeader.tsx
+#: src/ui-config/menu-items/index.tsx
 msgid "Staking"
 msgstr "Staking"
 
 #: src/components/transactions/Stake/StakeModalContent.tsx
 #: src/components/transactions/StakeRewardClaimRestake/StakeRewardClaimRestakeModalContent.tsx
+#: src/modules/staking/StakingPanel.tsx
+#: src/modules/staking/StakingPanelNoWallet.tsx
 msgid "Staking APR"
 msgstr "Staking APR"
 
@@ -2276,6 +2337,11 @@ msgstr "The cooldown period is the time required prior to unstaking your tokens 
 msgid "The cooldown period is {0}. After {1} of cooldown, you will enter unstake window of {2}. You will continue receiving rewards during cooldown and unstake window."
 msgstr "The cooldown period is {0}. After {1} of cooldown, you will enter unstake window of {2}. You will continue receiving rewards during cooldown and unstake window."
 
+#: src/modules/staking/StakingPanel.tsx
+#: src/modules/staking/StakingPanelNoWallet.tsx
+msgid "The current incentives period, decided on by the Zeebu community, has ended. Governance is in the process on renewing, check for updates."
+msgstr "The current incentives period, decided on by the Zeebu community, has ended. Governance is in the process on renewing, check for updates."
+
 #: src/ui-config/errorMapping.tsx
 msgid "The requested amount is greater than the max loan size in stable rate mode"
 msgstr "The requested amount is greater than the max loan size in stable rate mode"
@@ -2400,6 +2466,18 @@ msgstr "This is the total amount that you are able to supply to in this reserve.
 msgid "This represents the threshold at which a borrow position will be considered undercollateralized and subject to liquidation for each collateral. For example, if a collateral has a liquidation threshold of 80%, it means that the position will be liquidated when the debt value is worth 80% of the collateral value."
 msgstr "This represents the threshold at which a borrow position will be considered undercollateralized and subject to liquidation for each collateral. For example, if a collateral has a liquidation threshold of 80%, it means that the position will be liquidated when the debt value is worth 80% of the collateral value."
 
+#: src/modules/staking/StakingPanel.tsx
+msgid "Time left to unstake"
+msgstr "Time left to unstake"
+
+#: src/modules/staking/StakingPanel.tsx
+msgid "Time remaining until the 48 hour withdraw period starts."
+msgstr "Time remaining until the 48 hour withdraw period starts."
+
+#: src/modules/staking/StakingPanel.tsx
+msgid "Time remaining until the withdraw period ends."
+msgstr "Time remaining until the withdraw period ends."
+
 #: src/components/transactions/Warnings/ParaswapErrorDisplay.tsx
 msgid "Tip: Try increasing slippage or reduce input amount"
 msgstr "Tip: Try increasing slippage or reduce input amount"
@@ -2455,6 +2533,10 @@ msgstr "Total borrowed"
 #: src/modules/markets/MarketsTopPanel.tsx
 msgid "Total borrows"
 msgstr "Total borrows"
+
+#: src/modules/staking/StakingHeader.tsx
+msgid "Total emission per day"
+msgstr "Total emission per day"
 
 #: src/modules/reserve-overview/Gho/GhoInterestRateGraph.tsx
 msgid "Total interest accrued"
@@ -2519,6 +2601,14 @@ msgstr "Underlying asset does not exist in {marketName} v3 Market, hence this po
 #: src/modules/reserve-overview/TokenLinkDropdown.tsx
 msgid "Underlying token"
 msgstr "Underlying token"
+
+#: src/modules/staking/StakingPanel.tsx
+msgid "Unstake"
+msgstr "Unstake"
+
+#: src/modules/staking/StakingPanel.tsx
+msgid "Unstake now"
+msgstr "Unstake now"
 
 #: src/components/transactions/StakeCooldown/StakeCooldownModalContent.tsx
 #: src/components/transactions/StakeCooldown/StakeCooldownModalContent.tsx
@@ -2702,6 +2792,10 @@ msgstr "Voting power"
 msgid "Voting results"
 msgstr "Voting results"
 
+#: src/modules/staking/StakingPanel.tsx
+msgid "Wallet Balance"
+msgstr "Wallet Balance"
+
 #: src/components/transactions/Repay/RepayModalContent.tsx
 #: src/components/transactions/Repay/RepayTypeSelector.tsx
 #: src/components/transactions/Stake/StakeModalContent.tsx
@@ -2724,6 +2818,10 @@ msgstr "We couldn't find any assets related to your search. Try again with a dif
 #: src/modules/history/HistoryWrapperMobile.tsx
 msgid "We couldn't find any transactions related to your search. Try again with a different asset name, or reset filters."
 msgstr "We couldn't find any transactions related to your search. Try again with a different asset name, or reset filters."
+
+#: pages/staking.staking.tsx
+msgid "We couldn’t detect a wallet. Connect a wallet to stake and view your balance."
+msgstr "We couldn’t detect a wallet. Connect a wallet to stake and view your balance."
 
 #: pages/404.page.tsx
 msgid "We suggest you go back to the Dashboard."
@@ -2827,6 +2925,10 @@ msgstr "You can not withdraw this amount because it will cause collateral call"
 #: src/components/transactions/DebtSwitch/DebtSwitchModalDetails.tsx
 msgid "You can only switch to tokens with variable APY types. After this transaction, you may change the variable rate to a stable one if available."
 msgstr "You can only switch to tokens with variable APY types. After this transaction, you may change the variable rate to a stable one if available."
+
+#: src/modules/staking/StakingPanel.tsx
+msgid "You can only withdraw your assets from the Security Module after the cooldown period ends and the unstake window is active."
+msgstr "You can only withdraw your assets from the Security Module after the cooldown period ends and the unstake window is active."
 
 #: src/components/transactions/FlowCommons/Error.tsx
 msgid "You can report incident to our <0>Discord</0> or<1>Github</1>."
@@ -2959,6 +3061,10 @@ msgstr "Your {networkName} wallet is empty. Get free test assets at"
 #: src/hooks/useReserveActionState.tsx
 msgid "Your {networkName} wallet is empty. Get free test {0} at"
 msgstr "Your {networkName} wallet is empty. Get free test {0} at"
+
+#: src/modules/staking/StakingHeader.tsx
+msgid "ZBU holders (Ethereum network only) can stake their assets in the Safety Module to add more security to the protocol and earn Safety Incentives. In the case of a shortfall event, your stake can be slashed to cover the deficit, providing an additional layer of protection for the protocol."
+msgstr "ZBU holders (Ethereum network only) can stake their assets in the Safety Module to add more security to the protocol and earn Safety Incentives. In the case of a shortfall event, your stake can be slashed to cover the deficit, providing an additional layer of protection for the protocol."
 
 #: src/ui-config/errorMapping.tsx
 msgid "ZToken supply is not zero"
@@ -3097,6 +3203,18 @@ msgstr "{0}{name}"
 msgid "{currentMethod}"
 msgstr "{currentMethod}"
 
+#: src/modules/staking/StakingPanel.tsx
+msgid "{d}d"
+msgstr "{d}d"
+
+#: src/modules/staking/StakingPanel.tsx
+msgid "{h}h"
+msgstr "{h}h"
+
+#: src/modules/staking/StakingPanel.tsx
+msgid "{m}m"
+msgstr "{m}m"
+
 #: src/hooks/useReserveActionState.tsx
 #: src/hooks/useReserveActionState.tsx
 #: src/modules/dashboard/lists/SupplyAssetsList/SupplyAssetsList.tsx
@@ -3110,6 +3228,10 @@ msgstr "{notifyText}"
 #: src/modules/governance/proposal/ProposalLifecycle.tsx
 msgid "{stepName}"
 msgstr "{stepName}"
+
+#: src/modules/staking/StakingPanel.tsx
+msgid "{s}s"
+msgstr "{s}s"
 
 #: src/modules/governance/DelegatedInfoPanel.tsx
 #: src/modules/reserve-overview/Gho/CalculatorInput.tsx
