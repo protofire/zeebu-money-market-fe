@@ -14,34 +14,42 @@ export const ColorModeContext = React.createContext({
 type Mode = 'light' | 'dark';
 
 /**
- * Main Layout component which wrapps around the whole app
+ * Main Layout component which wraps around the whole app
  * @param param0
  * @returns
  */
 export function AppGlobalStyles({ children }: { children: ReactNode }) {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-  const [mode, setMode] = useState<Mode>(prefersDarkMode ? 'dark' : 'light');
+  const [mode, setMode] = useState<Mode>('dark'); // Default to 'dark' initially
+  const [isClient, setIsClient] = useState(false); // Track client-side rendering
+
   const colorMode = useMemo(
     () => ({
       toggleColorMode: () => {
         setMode((prevMode) => {
           const newMode = prevMode === 'light' ? 'dark' : 'light';
-          localStorage.setItem('colorMode', newMode);
+          if (isClient) {
+            localStorage.setItem('colorMode', newMode);
+          }
           return newMode;
         });
       },
     }),
-    []
+    [isClient]
   );
 
   useEffect(() => {
-    const initialMode = localStorage?.getItem('colorMode') as Mode;
-    if (initialMode) {
-      setMode(initialMode);
-    } else if (prefersDarkMode) {
-      setMode('dark');
+    setIsClient(true);
+
+    if (isClient) {
+      const savedMode = localStorage.getItem('colorMode') as Mode | null;
+      if (savedMode) {
+        setMode(savedMode);
+      } else if (prefersDarkMode) {
+        setMode('dark');
+      }
     }
-  }, []);
+  }, [prefersDarkMode, isClient]);
 
   const theme = useMemo(() => {
     const themeCreate = createTheme(getDesignTokens(mode));
@@ -51,9 +59,8 @@ export function AppGlobalStyles({ children }: { children: ReactNode }) {
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+        {/* CssBaseline kickstarts an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-
         {children}
       </ThemeProvider>
     </ColorModeContext.Provider>
