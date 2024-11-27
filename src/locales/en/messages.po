@@ -2276,6 +2276,10 @@ msgstr "The cooldown period is the time required prior to unstaking your tokens 
 msgid "The cooldown period is {0}. After {1} of cooldown, you will enter unstake window of {2}. You will continue receiving rewards during cooldown and unstake window."
 msgstr "The cooldown period is {0}. After {1} of cooldown, you will enter unstake window of {2}. You will continue receiving rewards during cooldown and unstake window."
 
+#: src/components/infoTooltips/LTVTooltip.tsx
+msgid "The ratio of the collateral value to the borrowed value."
+msgstr "The ratio of the collateral value to the borrowed value."
+
 #: src/ui-config/errorMapping.tsx
 msgid "The requested amount is greater than the max loan size in stable rate mode"
 msgstr "The requested amount is greater than the max loan size in stable rate mode"
