@@ -16,7 +16,7 @@ import { fetchIconSymbolAndName } from 'src/ui-config/reservePatches';
 import { displayGhoForMintableMarket } from 'src/utils/ghoUtilities';
 
 import { ListWrapper } from '../../../../components/lists/ListWrapper';
-import { Link, ROUTES } from '../../../../components/primitives/Link';
+import { Link } from '../../../../components/primitives/Link';
 import {
   ComputedReserveData,
   useAppDataContext,
@@ -272,10 +272,7 @@ export const SupplyAssetsList = () => {
               filteredSupplyReserves.length === 0 &&
               (isTestnet ? (
                 <Warning severity="info">
-                  <Trans>Your {networkName} wallet is empty. Get free test assets at </Trans>{' '}
-                  <Link href={ROUTES.faucet} style={{ fontWeight: 400 }}>
-                    <Trans>{networkName} Faucet</Trans>
-                  </Link>
+                  <Trans>Your {networkName} wallet is empty.</Trans>
                 </Warning>
               ) : (
                 <WalletEmptyInfo name={networkName} bridge={bridge} chainId={currentChainId} />
