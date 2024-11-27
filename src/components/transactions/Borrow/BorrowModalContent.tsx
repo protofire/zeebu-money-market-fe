@@ -6,7 +6,7 @@ import {
 } from '@aave/math-utils';
 import { Trans } from '@lingui/macro';
 import { Typography } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { APYTypeTooltip } from 'src/components/infoTooltips/APYTypeTooltip';
 import { FormattedNumber } from 'src/components/primitives/FormattedNumber';
 import { Row } from 'src/components/primitives/Row';
@@ -128,21 +128,16 @@ export const BorrowModalContent = ({
   const [interestRateMode, setInterestRateMode] = useState<InterestRate>(InterestRate.Variable);
   const [amount, setAmount] = useState('');
   const [riskCheckboxAccepted, setRiskCheckboxAccepted] = useState(false);
-  const [cdrValue, setCdrValue] = useState(0);
+
+  const currentLtv = valueToBigNumber(user.totalBorrowsUSD)
+    .dividedBy(user.totalCollateralUSD)
+    .times(100);
+
+  const [ltv, setLtv] = useState(parseInt(currentLtv.toFixed(0)));
+  const [firstAmount, setFirstAmount] = useState(true);
 
   // amount calculations
   const maxAmountToBorrow = getMaxAmountAvailableToBorrow(poolReserve, user, interestRateMode);
-
-  // We set this in a useEffect, so it doesn't constantly change when
-  // max amount selected
-  const handleChange = (_value: string) => {
-    if (_value === '-1') {
-      setAmount(maxAmountToBorrow);
-    } else {
-      const decimalTruncatedValue = roundToTokenDecimals(_value, poolReserve.decimals);
-      setAmount(decimalTruncatedValue);
-    }
-  };
 
   const isMaxSelected = amount === maxAmountToBorrow;
 
@@ -165,19 +160,59 @@ export const BorrowModalContent = ({
   // calculating input usd value
   const usdValue = valueToBigNumber(amount).multipliedBy(poolReserve.priceInUSD);
 
-  const newTotalBorrowUSD = valueToBigNumber(user.totalBorrowsUSD).plus(usdValue);
+  // We set this in a useEffect, so it doesn't constantly change when
+  // max amount selected
+  const handleChange = (_value: string) => {
+    setFirstAmount(true);
+    if (_value === '-1') {
+      setAmount(maxAmountToBorrow);
+    } else {
+      const decimalTruncatedValue = roundToTokenDecimals(_value, poolReserve.decimals);
+      setAmount(decimalTruncatedValue);
+    }
+  };
 
-  // const maxAmountToBorrowInUsd = valueToBigNumber(maxAmountToBorrow)
-  //   .multipliedBy(poolReserve.formattedPriceInMarketReferenceCurrency)
-  //   .multipliedBy(marketReferencePriceInUsd)
-  //   .shiftedBy(-USD_DECIMALS)
-  //   .plus(user.totalBorrowsUSD);
+  useEffect(() => {
+    if (!firstAmount) return;
+    if (usdValue.isNaN()) {
+      setLtv(parseInt(currentLtv.toFixed(0)));
+      return;
+    }
 
-  const cr = valueToBigNumber(user.totalCollateralUSD).dividedBy(newTotalBorrowUSD);
-  const maxCR = valueToBigNumber(user.totalCollateralUSD).dividedBy(user.totalBorrowsUSD);
+    const newTotalBorrowUSD = valueToBigNumber(user.totalBorrowsUSD).plus(usdValue);
+    const newLtv = newTotalBorrowUSD.dividedBy(user.totalCollateralUSD).times(100);
 
-  console.log('max CR: ', maxCR.toString());
-  console.log('CR: ', cr.toString());
+    setLtv(parseInt(newLtv.toFixed(0)));
+  }, [amount, currentLtv, firstAmount, usdValue, user.totalBorrowsUSD, user.totalCollateralUSD]);
+
+  useEffect(() => {
+    if (firstAmount) return;
+
+    if (currentLtv.gte(ltv - 1)) {
+      setAmount('');
+      return;
+    }
+
+    const amountToBorrow = valueToBigNumber(ltv)
+      .dividedBy(100)
+      .times(user.totalCollateralUSD)
+      .minus(user.totalBorrowsUSD)
+      .dividedBy(poolReserve.priceInUSD);
+
+    const decimalTruncatedValue = roundToTokenDecimals(
+      amountToBorrow.toString(),
+      poolReserve.decimals
+    );
+    setAmount(decimalTruncatedValue);
+  }, [
+    currentLtv,
+    firstAmount,
+    ltv,
+    poolReserve.decimals,
+    poolReserve.priceInUSD,
+    user.totalBorrowsUSD,
+    user.totalCollateralUSD,
+  ]);
 
   // error types handling
   let blockingError: ErrorType | undefined = undefined;
@@ -266,6 +301,9 @@ export const BorrowModalContent = ({
       <AssetInput
         value={amount}
         onChange={handleChange}
+        onFocus={() => {
+          setFirstAmount(true);
+        }}
         usdValue={usdValue.toString(10)}
         assets={[
           {
@@ -307,10 +345,13 @@ export const BorrowModalContent = ({
       )}
 
       <CDRSlider
-        maxValue={maxCR.times(100).toNumber()}
-        minValue={100}
-        onChange={setCdrValue}
-        value={cdrValue}
+        onChange={setLtv}
+        value={ltv}
+        lowerLimit={parseInt(currentLtv.toFixed())}
+        higherLimit={70}
+        onFocus={() => {
+          setFirstAmount(false);
+        }}
       />
 
       <TxModalDetails gasLimit={gasLimit}>

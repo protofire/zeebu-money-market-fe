@@ -5,7 +5,7 @@ import Popover from '@mui/material/Popover';
 import Slider, { SliderProps } from '@mui/material/Slider';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { LTVTooltip } from 'src/components/infoTooltips/LTVTooltip';
 
 const Input = styled(MuiInput)(() => ({
@@ -53,27 +53,33 @@ const WhiteSlider = styled(Slider)<SliderProps>(() => ({
 }));
 
 type CDRSliderProps__Type = {
-  minValue: number;
-  maxValue: number;
   value: number;
+  lowerLimit: number;
+  higherLimit: number;
   onChange: (_value: number) => void;
+  onFocus: () => void;
 };
 
 export default function CDRSlider(props: CDRSliderProps__Type) {
-  const { maxValue, minValue, value, onChange } = props;
-  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const { value, onChange, onFocus, lowerLimit, higherLimit } = props;
 
-  const midValue = (minValue + maxValue) / 2;
+  const [internalValue, setInternalValue] = useState(value);
+
+  useEffect(() => {
+    setInternalValue(value);
+  }, [value]);
+
+  const midValue = 50;
 
   const marks = [
-    { value: minValue, label: 'Low' },
+    { value: 0, label: 'Low' },
     { value: midValue, label: 'Mid' },
-    { value: maxValue, label: 'High' },
+    { value: 100, label: 'High' },
   ];
 
   const getTrackColor = () => {
     if (value <= midValue) {
-      return value < (minValue + midValue) / 2
+      return value < 50 / 2
         ? 'linear-gradient(231deg,#00c2a1,#ffef79)'
         : 'linear-gradient(231deg,#ff895d,#ffcd4d)';
     }
@@ -83,31 +89,19 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleSliderChange = (_event: Event, newValue: number | number[], _activeThumb: number) => {
     const newValueNum = newValue as number;
-    onChange(newValueNum);
 
-    if (newValueNum > midValue) {
-      setAnchorEl(document.getElementById('input-slider') as HTMLElement);
-    } else {
-      setAnchorEl(null);
-    }
+    if (newValueNum < lowerLimit || newValueNum > higherLimit) return;
+
+    setInternalValue(newValueNum);
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = event.target.value === '' ? minValue : Number(event.target.value);
+    const newValue = event.target.value === '' ? 0 : Number(event.target.value);
+
+    if (newValue < lowerLimit || newValue > higherLimit) return;
+
     onChange(newValue);
-
-    if (newValue > midValue) {
-      setAnchorEl(event.currentTarget as HTMLElement);
-    } else {
-      setAnchorEl(null);
-    }
   };
-
-  const handleClosePopover = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
 
   return (
     <Box mb={4}>
@@ -120,12 +114,17 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
       <Grid container spacing={8} sx={{ alignItems: 'center' }}>
         <Grid item xs>
           <WhiteSlider
-            value={typeof value === 'number' ? value : 0}
+            onFocus={onFocus}
+            value={internalValue}
             valueLabelDisplay="auto"
             onChange={handleSliderChange}
+            onMouseUp={() => {
+              console.log('end');
+              onChange(internalValue);
+            }}
             aria-labelledby="input-slider"
-            max={maxValue}
-            min={minValue}
+            max={100}
+            min={0}
             marks={marks}
             sx={{
               '& .MuiSlider-track': {
@@ -139,10 +138,11 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
             value={value}
             size="small"
             onChange={handleInputChange}
+            onFocus={onFocus}
             inputProps={{
-              step: 10,
-              min: minValue,
-              max: maxValue,
+              step: 1,
+              min: 0,
+              max: 100,
               type: 'number',
               'aria-labelledby': 'input-slider',
             }}
@@ -150,9 +150,7 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
         </Grid>
       </Grid>
       <Popover
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClosePopover}
+        open={false}
         anchorOrigin={{
           vertical: 'center',
           horizontal: 'right',

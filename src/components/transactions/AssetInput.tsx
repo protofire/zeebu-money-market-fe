@@ -86,6 +86,8 @@ export interface AssetInputProps<T extends Asset = Asset> {
   selectOption?: (asset: T) => ReactNode;
   sx?: BoxProps;
   exchangeRateComponent?: ReactNode;
+  onFocus?: () => void;
+  onBlur?: () => void;
 }
 
 export const AssetInput = <T extends Asset = Asset>({
@@ -108,6 +110,8 @@ export const AssetInput = <T extends Asset = Asset>({
   selectOption,
   sx = {},
   exchangeRateComponent,
+  onFocus,
+  onBlur,
 }: AssetInputProps<T>) => {
   const theme = useTheme();
   const trackEvent = useRootStore((store) => store.trackEvent);
@@ -156,6 +160,8 @@ export const AssetInput = <T extends Asset = Asset>({
                   onChange(e.target.value);
                 }
               }}
+              onFocus={onFocus}
+              onBlur={onBlur}
               inputProps={{
                 'aria-label': 'amount input',
                 style: {
