@@ -8,7 +8,7 @@ import { getDesignTokens, getThemedComponents } from '../utils/theme';
 
 export const ColorModeContext = React.createContext({
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  toggleColorMode: () => {},
+  toggleColorMode: () => {}, // Default no-op function
 });
 
 type Mode = 'light' | 'dark';
@@ -20,41 +20,42 @@ type Mode = 'light' | 'dark';
  */
 export function AppGlobalStyles({ children }: { children: ReactNode }) {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-  const [mode, setMode] = useState<Mode>('dark'); // Default to 'dark' initially
-  const [isClient, setIsClient] = useState(false); // Track client-side rendering
+  const [mode, setMode] = useState<Mode>('dark');
+  const [isReady, setIsReady] = useState(false);
 
   const colorMode = useMemo(
     () => ({
       toggleColorMode: () => {
         setMode((prevMode) => {
           const newMode = prevMode === 'light' ? 'dark' : 'light';
-          if (isClient) {
-            localStorage.setItem('colorMode', newMode);
-          }
+          localStorage.setItem('colorMode', newMode);
           return newMode;
         });
       },
     }),
-    [isClient]
+    []
   );
 
   useEffect(() => {
-    setIsClient(true);
-
-    if (isClient) {
-      const savedMode = localStorage.getItem('colorMode') as Mode | null;
-      if (savedMode) {
-        setMode(savedMode);
-      } else if (prefersDarkMode) {
-        setMode('dark');
-      }
+    const savedMode = localStorage.getItem('colorMode') as Mode | null;
+    if (savedMode) {
+      setMode(savedMode);
+    } else if (prefersDarkMode) {
+      setMode('dark');
+    } else {
+      setMode('light');
     }
-  }, [prefersDarkMode, isClient]);
+    setIsReady(true);
+  }, [prefersDarkMode]);
 
   const theme = useMemo(() => {
     const themeCreate = createTheme(getDesignTokens(mode));
     return deepmerge(themeCreate, getThemedComponents(themeCreate));
   }, [mode]);
+
+  if (!isReady) {
+    return null;
+  }
 
   return (
     <ColorModeContext.Provider value={colorMode}>
