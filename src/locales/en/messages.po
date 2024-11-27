@@ -685,12 +685,9 @@ msgid "Collateral usage is limited because of Isolation mode."
 msgstr "Collateral usage is limited because of Isolation mode."
 
 #: src/components/isolationMode/IsolatedBadge.tsx
+#: src/modules/dashboard/lists/SupplyAssetsList/SupplyAssetsList.tsx
 msgid "Collateral usage is limited because of isolation mode."
 msgstr "Collateral usage is limited because of isolation mode."
-
-#: src/modules/dashboard/lists/SupplyAssetsList/SupplyAssetsList.tsx
-msgid "Collateral usage is limited because of isolation mode. <0>Learn More</0>"
-msgstr "Collateral usage is limited because of isolation mode. <0>Learn More</0>"
 
 #: src/components/transactions/FlowCommons/TxModalDetails.tsx
 #: src/components/transactions/Swap/SwapModalDetails.tsx

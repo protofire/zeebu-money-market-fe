@@ -16,7 +16,6 @@ import { fetchIconSymbolAndName } from 'src/ui-config/reservePatches';
 import { displayGhoForMintableMarket } from 'src/utils/ghoUtilities';
 
 import { ListWrapper } from '../../../../components/lists/ListWrapper';
-import { Link } from '../../../../components/primitives/Link';
 import {
   ComputedReserveData,
   useAppDataContext,
@@ -261,12 +260,7 @@ export const SupplyAssetsList = () => {
               <MarketWarning marketName="Ethereum AMM" />
             ) : user?.isInIsolationMode ? (
               <Warning severity="warning">
-                <Trans>
-                  Collateral usage is limited because of isolation mode.{' '}
-                  <Link href="https://docs.aave.com/faq/" target="_blank" rel="noopener">
-                    Learn More
-                  </Link>
-                </Trans>
+                <Trans>Collateral usage is limited because of isolation mode.</Trans>
               </Warning>
             ) : (
               filteredSupplyReserves.length === 0 &&
