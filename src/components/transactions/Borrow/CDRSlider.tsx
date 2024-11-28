@@ -30,7 +30,6 @@ const Input = styled(MuiInput)(() => ({
 const WhiteSlider = styled(Slider)<SliderProps>(() => ({
   color: '#FFFFFF',
   margin: '8px 0 0 0',
-  // borderRadius: '0px',
   '& .MuiSlider-thumb': {
     backgroundColor: '#FFFFFF',
   },
@@ -103,6 +102,22 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
       </Box>
     ));
 
+  const renderSeparators = () =>
+    marks.slice(1).map((mark, index) => (
+      <Box
+        key={index}
+        sx={{
+          position: 'absolute',
+          left: `${mark.start}%`,
+          height: '18px',
+          width: '2px',
+          top: '14px',
+          backgroundColor: '#FFFFFF',
+          transform: 'translateX(-50%)',
+        }}
+      />
+    ));
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleSliderChange = (_event: Event, newValue: number | number[], _activeThumb: number) => {
     const newValueNum = newValue as number;
@@ -150,6 +165,7 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
               }}
             />
             {renderMarks()}
+            {renderSeparators()}
           </Box>
         </Grid>
         <Grid item>
