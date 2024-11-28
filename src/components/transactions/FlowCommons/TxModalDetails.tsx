@@ -306,6 +306,26 @@ export interface DetailsHFLineProps {
   loading?: boolean;
 }
 
+export const DetailsCRLine = ({ collateralRatio }: { collateralRatio: string }) => {
+  return (
+    <Row
+      caption={<Trans>Collateral Ratio</Trans>}
+      captionVariant="description"
+      mb={4}
+      align="flex-start"
+      captionColor="white"
+    >
+      <Box sx={{ textAlign: 'right' }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+          <>
+            <HealthFactorNumber value={collateralRatio} variant="secondary14" />
+          </>
+        </Box>
+      </Box>
+    </Row>
+  );
+};
+
 export const DetailsHFLine = ({
   healthFactor,
   futureHealthFactor,
