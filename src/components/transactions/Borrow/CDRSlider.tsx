@@ -74,13 +74,14 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
 
   const marks = [
     { start: 0, end: 33, label: 'Conservative' },
-    { start: 33, end: 66, label: 'Moderate' },
-    { start: 66, end: 100, label: 'Aggressive' },
+    { start: 33, end: 56, label: 'Moderate' },
+    { start: 56, end: 80, label: 'Aggressive' },
+    { start: 80, end: 100, label: 'Liquidation' },
   ];
 
   const getTrackColor = () => {
     if (value < 33) return 'linear-gradient(231deg,#00c2a1,#ffef79)';
-    if (value < 66) return 'linear-gradient(231deg,#ff895d,#ffcd4d)';
+    if (value < 56) return 'linear-gradient(231deg,#ff895d,#ffcd4d)';
     return 'linear-gradient(231deg,#d91838,#ff7881)';
   };
 
@@ -95,7 +96,7 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
           bottom: '-10px',
           color: 'white',
           textAlign: 'center',
-          fontSize: '11px',
+          fontSize: '10px',
         }}
       >
         {mark.label}
@@ -112,7 +113,7 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
           height: '18px',
           width: '2px',
           top: '14px',
-          backgroundColor: '#FFFFFF',
+          backgroundColor: '#ffffff9e',
           transform: 'translateX(-50%)',
         }}
       />
@@ -146,7 +147,7 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
           {internalValue.toFixed(2)}%
         </Typography>
       </Box>
-      <Grid container spacing={8} sx={{ alignItems: 'center' }}>
+      <Grid container spacing={4} sx={{ alignItems: 'center' }}>
         <Grid item xs>
           <Box position="relative">
             <WhiteSlider
@@ -172,6 +173,7 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
           <Input
             value={value}
             size="small"
+            type="percentage"
             onChange={handleInputChange}
             onFocus={onFocus}
             inputProps={{
