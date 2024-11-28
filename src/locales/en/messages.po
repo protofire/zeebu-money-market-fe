@@ -657,6 +657,10 @@ msgstr "Close"
 msgid "Collateral"
 msgstr "Collateral"
 
+#: src/components/transactions/FlowCommons/TxModalDetails.tsx
+msgid "Collateral Ratio"
+msgstr "Collateral Ratio"
+
 #: src/components/transactions/Repay/CollateralRepayModalContent.tsx
 msgid "Collateral balance after repay"
 msgstr "Collateral balance after repay"

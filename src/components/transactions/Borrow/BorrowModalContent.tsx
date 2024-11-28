@@ -31,6 +31,7 @@ import { GasEstimationError } from '../FlowCommons/GasEstimationError';
 import { ModalWrapperProps } from '../FlowCommons/ModalWrapper';
 import { TxSuccessView } from '../FlowCommons/Success';
 import {
+  DetailsCRLine,
   DetailsHFLine,
   DetailsIncentivesLine,
   DetailsUnwrapSwitch,
@@ -214,6 +215,10 @@ export const BorrowModalContent = ({
     user.totalCollateralUSD,
   ]);
 
+  const collateralRatio = valueToBigNumber(user.totalCollateralUSD)
+    .dividedBy(valueToBigNumber(user.totalBorrowsUSD).plus(usdValue.isNaN() ? '0' : usdValue))
+    .times(100);
+
   // error types handling
   let blockingError: ErrorType | undefined = undefined;
   if (interestRateMode === InterestRate.Stable && !poolReserve.stableBorrowRateEnabled) {
@@ -361,6 +366,7 @@ export const BorrowModalContent = ({
           healthFactor={user.healthFactor}
           futureHealthFactor={newHealthFactor.toString(10)}
         />
+        <DetailsCRLine collateralRatio={collateralRatio.toString()} />
       </TxModalDetails>
 
       {txError && <GasEstimationError txError={txError} />}
