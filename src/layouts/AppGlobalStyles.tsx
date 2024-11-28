@@ -8,19 +8,21 @@ import { getDesignTokens, getThemedComponents } from '../utils/theme';
 
 export const ColorModeContext = React.createContext({
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  toggleColorMode: () => {},
+  toggleColorMode: () => {}, // Default no-op function
 });
 
 type Mode = 'light' | 'dark';
 
 /**
- * Main Layout component which wrapps around the whole app
+ * Main Layout component which wraps around the whole app
  * @param param0
  * @returns
  */
 export function AppGlobalStyles({ children }: { children: ReactNode }) {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-  const [mode, setMode] = useState<Mode>(prefersDarkMode ? 'dark' : 'light');
+  const [mode, setMode] = useState<Mode>('dark');
+  const [isReady, setIsReady] = useState(false);
+
   const colorMode = useMemo(
     () => ({
       toggleColorMode: () => {
@@ -35,25 +37,31 @@ export function AppGlobalStyles({ children }: { children: ReactNode }) {
   );
 
   useEffect(() => {
-    const initialMode = localStorage?.getItem('colorMode') as Mode;
-    if (initialMode) {
-      setMode(initialMode);
+    const savedMode = localStorage.getItem('colorMode') as Mode | null;
+    if (savedMode) {
+      setMode(savedMode);
     } else if (prefersDarkMode) {
       setMode('dark');
+    } else {
+      setMode('light');
     }
-  }, []);
+    setIsReady(true);
+  }, [prefersDarkMode]);
 
   const theme = useMemo(() => {
     const themeCreate = createTheme(getDesignTokens(mode));
     return deepmerge(themeCreate, getThemedComponents(themeCreate));
   }, [mode]);
 
+  if (!isReady) {
+    return null;
+  }
+
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+        {/* CssBaseline kickstarts an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-
         {children}
       </ThemeProvider>
     </ColorModeContext.Provider>
