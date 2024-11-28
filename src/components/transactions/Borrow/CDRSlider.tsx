@@ -1,3 +1,4 @@
+import { InputAdornment } from '@mui/material';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import MuiInput from '@mui/material/Input';
@@ -29,7 +30,13 @@ const Input = styled(MuiInput)(() => ({
 const WhiteSlider = styled(Slider)<SliderProps>(() => ({
   color: '#FFFFFF',
   margin: '8px 0 0 0',
+  // borderRadius: '0px',
   '& .MuiSlider-thumb': {
+    backgroundColor: '#FFFFFF',
+  },
+  '& .MuiSlider-mark': {
+    width: 2,
+    height: 18,
     backgroundColor: '#FFFFFF',
   },
   '& .MuiSlider-rail': {
@@ -46,9 +53,6 @@ const WhiteSlider = styled(Slider)<SliderProps>(() => ({
     borderRadius: '4px',
     fontWeight: 'bold',
     boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.2)',
-  },
-  '& .MuiSlider-markLabel': {
-    color: '#FFFFFF',
   },
 }));
 
@@ -69,22 +73,35 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
     setInternalValue(value);
   }, [value]);
 
-  const midValue = 50;
-
   const marks = [
-    { value: 0, label: 'Low' },
-    { value: midValue, label: 'Mid' },
-    { value: 100, label: 'High' },
+    { start: 0, end: 33, label: 'Conservative' },
+    { start: 33, end: 66, label: 'Moderate' },
+    { start: 66, end: 100, label: 'Aggressive' },
   ];
 
   const getTrackColor = () => {
-    if (value <= midValue) {
-      return value < 50 / 2
-        ? 'linear-gradient(231deg,#00c2a1,#ffef79)'
-        : 'linear-gradient(231deg,#ff895d,#ffcd4d)';
-    }
+    if (value < 33) return 'linear-gradient(231deg,#00c2a1,#ffef79)';
+    if (value < 66) return 'linear-gradient(231deg,#ff895d,#ffcd4d)';
     return 'linear-gradient(231deg,#d91838,#ff7881)';
   };
+
+  const renderMarks = () =>
+    marks.map((mark, index) => (
+      <Box
+        key={index}
+        sx={{
+          position: 'absolute',
+          left: `${mark.start}%`,
+          width: `${mark.end - mark.start}%`,
+          bottom: '-10px',
+          color: 'white',
+          textAlign: 'center',
+          fontSize: '11px',
+        }}
+      >
+        {mark.label}
+      </Box>
+    ));
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleSliderChange = (_event: Event, newValue: number | number[], _activeThumb: number) => {
@@ -110,28 +127,30 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
           Loan to Value (LTV)
         </Typography>
         <LTVTooltip />
+        <Typography sx={{ marginLeft: 'auto', fontWeight: 'bold', color: 'white' }}>
+          {internalValue.toFixed(2)}%
+        </Typography>
       </Box>
       <Grid container spacing={8} sx={{ alignItems: 'center' }}>
         <Grid item xs>
-          <WhiteSlider
-            onFocus={onFocus}
-            value={internalValue}
-            valueLabelDisplay="auto"
-            onChange={handleSliderChange}
-            onMouseUp={() => {
-              console.log('end');
-              onChange(internalValue);
-            }}
-            aria-labelledby="input-slider"
-            max={100}
-            min={0}
-            marks={marks}
-            sx={{
-              '& .MuiSlider-track': {
-                backgroundImage: getTrackColor(),
-              },
-            }}
-          />
+          <Box position="relative">
+            <WhiteSlider
+              onFocus={onFocus}
+              value={internalValue}
+              valueLabelDisplay="off"
+              onChange={handleSliderChange}
+              onMouseUp={() => onChange(internalValue)}
+              aria-labelledby="input-slider"
+              max={100}
+              min={0}
+              sx={{
+                '& .MuiSlider-track': {
+                  backgroundImage: getTrackColor(),
+                },
+              }}
+            />
+            {renderMarks()}
+          </Box>
         </Grid>
         <Grid item>
           <Input
@@ -140,6 +159,7 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
             onChange={handleInputChange}
             onFocus={onFocus}
             inputProps={{
+              endAdornment: <InputAdornment position="end">%</InputAdornment>,
               step: 1,
               min: 0,
               max: 100,
