@@ -86,6 +86,13 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
   const renderMarks = () =>
     marks.map((mark, index) => {
       const isSelected = value >= mark.start && value < mark.end;
+
+      let gradient = '';
+      if (value < 33) gradient = 'linear-gradient(231deg, #00c2a1, #ffef79)';
+      else if (value < 56) gradient = 'linear-gradient(231deg, #ff895d, #ffcd4d)';
+      else if (value < 80) gradient = 'linear-gradient(231deg, #e27d8e, #ff9fa6)';
+      else gradient = 'linear-gradient(231deg, #ff3030, #ff9999)';
+
       return (
         <Box
           key={index}
@@ -94,10 +101,13 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
             left: `${mark.start}%`,
             width: `${mark.end - mark.start}%`,
             bottom: '-10px',
-            color: 'white',
             textAlign: 'center',
-            fontSize: '10px',
+            fontSize: '11px',
             fontWeight: isSelected ? 'bold' : 'normal',
+            color: isSelected ? 'transparent' : '#ffffff',
+            backgroundImage: isSelected ? gradient : 'none',
+            backgroundClip: isSelected ? 'text' : 'unset',
+            textFillColor: isSelected ? 'transparent' : 'unset',
           }}
         >
           {mark.label}
