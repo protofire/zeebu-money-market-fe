@@ -1,31 +1,11 @@
-import { InputAdornment } from '@mui/material';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import MuiInput from '@mui/material/Input';
 import Popover from '@mui/material/Popover';
 import Slider, { SliderProps } from '@mui/material/Slider';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import React, { useEffect, useState } from 'react';
 import { LTVTooltip } from 'src/components/infoTooltips/LTVTooltip';
-
-const Input = styled(MuiInput)(() => ({
-  width: '70px',
-  height: '38px',
-  background: '#ffffff28',
-  padding: '0.3rem',
-  borderRadius: '4px',
-  color: 'white',
-  '& .MuiInput-input': {
-    padding: '0',
-  },
-  '&:before': {
-    borderBottom: 'none',
-  },
-  '&:after': {
-    borderBottom: 'none',
-  },
-}));
 
 const WhiteSlider = styled(Slider)<SliderProps>(() => ({
   color: '#FFFFFF',
@@ -128,14 +108,6 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
     setInternalValue(newValueNum);
   };
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = event.target.value === '' ? 0 : Number(event.target.value);
-
-    if (newValue < lowerLimit || newValue > higherLimit) return;
-
-    onChange(newValue);
-  };
-
   return (
     <Box mb={4}>
       <Box sx={{ display: 'flex', flexDirection: 'row', margin: '2rem 0 0' }}>
@@ -144,7 +116,7 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
         </Typography>
         <LTVTooltip />
         <Typography sx={{ marginLeft: 'auto', fontWeight: 'bold', color: 'white' }}>
-          {internalValue.toFixed(2)}%
+          {internalValue.toFixed(0)}%
         </Typography>
       </Box>
       <Grid container spacing={4} sx={{ alignItems: 'center' }}>
@@ -168,23 +140,6 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
             {renderMarks()}
             {renderSeparators()}
           </Box>
-        </Grid>
-        <Grid item>
-          <Input
-            value={value}
-            size="small"
-            type="percentage"
-            onChange={handleInputChange}
-            onFocus={onFocus}
-            inputProps={{
-              endAdornment: <InputAdornment position="end">%</InputAdornment>,
-              step: 1,
-              min: 0,
-              max: 100,
-              type: 'number',
-              'aria-labelledby': 'input-slider',
-            }}
-          />
         </Grid>
       </Grid>
       <Popover
