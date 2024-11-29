@@ -36,6 +36,23 @@ const WhiteSlider = styled(Slider)<SliderProps>(() => ({
   },
 }));
 
+const renderLastRange = () => (
+  <Box
+    sx={{
+      position: 'absolute',
+      left: '80%',
+      width: '20%',
+      height: '18px',
+      top: '14px',
+      background: '#ff303047',
+      backgroundImage:
+        'repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.3) 0px, rgba(255, 255, 255, 0.3) 5px, transparent 5px, transparent 10px)',
+      zIndex: '1',
+      borderRadius: '0 8px 8px 0',
+    }}
+  />
+);
+
 type CDRSliderProps__Type = {
   value: number;
   lowerLimit: number;
@@ -147,6 +164,7 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
             />
             {renderMarks()}
             {renderSeparators()}
+            {renderLastRange()}
           </Box>
         </Grid>
       </Grid>
