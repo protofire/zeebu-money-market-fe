@@ -12,6 +12,7 @@ const WhiteSlider = styled(Slider)<SliderProps>(() => ({
   margin: '8px 0 0 0',
   '& .MuiSlider-thumb': {
     backgroundColor: '#FFFFFF',
+    zIndex: '3',
   },
   '& .MuiSlider-mark': {
     width: 2,
@@ -19,7 +20,7 @@ const WhiteSlider = styled(Slider)<SliderProps>(() => ({
     backgroundColor: '#FFFFFF',
   },
   '& .MuiSlider-rail': {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#ffffff84',
     height: '18px',
   },
   '& .MuiSlider-track': {
@@ -66,22 +67,26 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
   };
 
   const renderMarks = () =>
-    marks.map((mark, index) => (
-      <Box
-        key={index}
-        sx={{
-          position: 'absolute',
-          left: `${mark.start}%`,
-          width: `${mark.end - mark.start}%`,
-          bottom: '-10px',
-          color: 'white',
-          textAlign: 'center',
-          fontSize: '10px',
-        }}
-      >
-        {mark.label}
-      </Box>
-    ));
+    marks.map((mark, index) => {
+      const isSelected = value >= mark.start && value < mark.end;
+      return (
+        <Box
+          key={index}
+          sx={{
+            position: 'absolute',
+            left: `${mark.start}%`,
+            width: `${mark.end - mark.start}%`,
+            bottom: '-10px',
+            color: 'white',
+            textAlign: 'center',
+            fontSize: '10px',
+            fontWeight: isSelected ? 'bold' : 'normal',
+          }}
+        >
+          {mark.label}
+        </Box>
+      );
+    });
 
   const renderSeparators = () =>
     marks.slice(1).map((mark, index) => (
@@ -93,8 +98,9 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
           height: '18px',
           width: '2px',
           top: '14px',
-          backgroundColor: '#ffffff9e',
+          backgroundColor: '#5050509e',
           transform: 'translateX(-50%)',
+          zIndex: '1',
         }}
       />
     ));
@@ -134,6 +140,8 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
               sx={{
                 '& .MuiSlider-track': {
                   backgroundImage: getTrackColor(),
+                  zIndex: '2',
+                  border: '0',
                 },
               }}
             />
