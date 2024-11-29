@@ -11,7 +11,8 @@ import {
   useMediaQuery,
   useTheme,
 } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useWeb3Context } from 'src/libs/hooks/useWeb3Context';
 import { useRootStore } from 'src/store/root';
 import { BaseNetworkConfig } from 'src/ui-config/networksConfig';
 import { DASHBOARD } from 'src/utils/mixPanelEvents';
@@ -31,6 +32,10 @@ export const getMarketInfoById = (marketId: CustomMarket) => {
   const logo = market.logo || network.networkLogoPath;
 
   return { market, logo };
+};
+
+export const getMarketInfoByChainId = (chainId: number) => {
+  return Object.values(marketsData).find((x) => x.chainId === chainId);
 };
 
 export const getMarketHelpData = (marketName: string) => {
@@ -106,10 +111,25 @@ export const MarketSwitcher = () => {
   const upToLG = useMediaQuery(theme.breakpoints.up('lg'));
   const downToXSM = useMediaQuery(theme.breakpoints.down('xsm'));
   const trackEvent = useRootStore((store) => store.trackEvent);
+  const { switchNetwork, chainId: currentChainId } = useWeb3Context();
+
+  useEffect(() => {
+    const marketInfo = getMarketInfoByChainId(currentChainId);
+
+    if (marketInfo === undefined) return;
+
+    setCurrentMarket(marketInfo.market);
+  }, [currentChainId, setCurrentMarket]);
 
   const handleMarketSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     trackEvent(DASHBOARD.CHANGE_MARKET, { market: e.target.value });
     setCurrentMarket(e.target.value as unknown as CustomMarket);
+
+    const {
+      market: { chainId },
+    } = getMarketInfoById(e.target.value as unknown as CustomMarket);
+
+    switchNetwork(chainId);
   };
 
   return (
