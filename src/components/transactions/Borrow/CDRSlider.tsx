@@ -1,6 +1,5 @@
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import Popover from '@mui/material/Popover';
 import Slider, { SliderProps } from '@mui/material/Slider';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
@@ -36,12 +35,12 @@ const WhiteSlider = styled(Slider)<SliderProps>(() => ({
   },
 }));
 
-const renderLastRange = () => (
+const renderLastRange = (higherLimit: number) => (
   <Box
     sx={{
       position: 'absolute',
-      left: '80%',
-      width: '20%',
+      left: higherLimit.toString().concat('%'),
+      width: (100 - higherLimit).toString().concat('%'),
       height: '18px',
       top: '14px',
       background: '#ff303047',
@@ -71,15 +70,15 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
   }, [value]);
 
   const marks = [
-    { start: 0, end: 33, label: 'Conservative' },
-    { start: 33, end: 56, label: 'Moderate' },
-    { start: 56, end: 80, label: 'Aggressive' },
-    { start: 80, end: 100, label: 'Liquidation' },
+    { start: 0, end: 30, label: 'Conservative' },
+    { start: 30, end: 50, label: 'Moderate' },
+    { start: 50, end: higherLimit, label: 'Aggressive' },
+    { start: higherLimit, end: 100, label: 'Liquidation' },
   ];
 
   const getTrackColor = () => {
-    if (value < 33) return 'linear-gradient(231deg,#00c2a1,#ffef79)';
-    if (value < 56) return 'linear-gradient(231deg,#ff895d,#ffcd4d)';
+    if (value < 30) return 'linear-gradient(231deg,#00c2a1,#ffef79)';
+    if (value < 50) return 'linear-gradient(231deg,#ff895d,#ffcd4d)';
     return 'linear-gradient(231deg,#d91838,#ff7881)';
   };
 
@@ -88,9 +87,9 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
       const isSelected = value >= mark.start && value < mark.end;
 
       let gradient = '';
-      if (value < 33) gradient = 'linear-gradient(231deg, #00c2a1, #ffef79)';
-      else if (value < 56) gradient = 'linear-gradient(231deg, #ff895d, #ffcd4d)';
-      else if (value < 80) gradient = 'linear-gradient(231deg, #e27d8e, #ff9fa6)';
+      if (value < 30) gradient = 'linear-gradient(231deg, #00c2a1, #ffef79)';
+      else if (value < 50) gradient = 'linear-gradient(231deg, #ff895d, #ffcd4d)';
+      else if (value < higherLimit) gradient = 'linear-gradient(231deg, #e27d8e, #ff9fa6)';
       else gradient = 'linear-gradient(231deg, #ff3030, #ff9999)';
 
       return (
@@ -174,38 +173,10 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
             />
             {renderMarks()}
             {renderSeparators()}
-            {renderLastRange()}
+            {renderLastRange(higherLimit)}
           </Box>
         </Grid>
       </Grid>
-      <Popover
-        open={false}
-        anchorOrigin={{
-          vertical: 'center',
-          horizontal: 'right',
-        }}
-        transformOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
-        }}
-        sx={{
-          '& .MuiPaper-root': {
-            backgroundColor: 'rgba(189, 31, 31, 0.26)',
-            boxShadow: 'none',
-            backdropFilter: 'blur(5px)',
-            borderRadius: '6px',
-          },
-        }}
-      >
-        <Box sx={{ padding: '1rem', maxWidth: '200px' }}>
-          <Typography color="white" fontWeight="bold">
-            Warning: High Risk!
-          </Typography>
-          <Typography color="white" variant="main12">
-            You are entering a high-risk position. Please proceed with caution.
-          </Typography>
-        </Box>
-      </Popover>
     </Box>
   );
 }
