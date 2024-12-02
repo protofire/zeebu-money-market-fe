@@ -42,7 +42,7 @@ const renderLastRange = (higherLimit: number) => (
       left: higherLimit.toString().concat('%'),
       width: (100 - higherLimit).toString().concat('%'),
       height: '18px',
-      top: '14px',
+      top: { xs: '21px', sm: '14px' },
       background: '#ff303047',
       backgroundImage:
         'repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.3) 0px, rgba(255, 255, 255, 0.3) 5px, transparent 5px, transparent 10px)',
@@ -114,7 +114,7 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
           left: `${mark.start}%`,
           height: '18px',
           width: '2px',
-          top: '14px',
+          top: { xs: '21px', sm: '14px' },
           backgroundColor: '#5050509e',
           transform: 'translateX(-50%)',
           zIndex: '1',
