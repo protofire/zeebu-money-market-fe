@@ -1,39 +1,25 @@
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import MuiInput from '@mui/material/Input';
-import Popover from '@mui/material/Popover';
 import Slider, { SliderProps } from '@mui/material/Slider';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import React, { useEffect, useState } from 'react';
+import React, { SyntheticEvent, useEffect, useState } from 'react';
 import { LTVTooltip } from 'src/components/infoTooltips/LTVTooltip';
-
-const Input = styled(MuiInput)(() => ({
-  width: '70px',
-  height: '38px',
-  background: '#ffffff28',
-  padding: '0.3rem',
-  borderRadius: '4px',
-  color: 'white',
-  '& .MuiInput-input': {
-    padding: '0',
-  },
-  '&:before': {
-    borderBottom: 'none',
-  },
-  '&:after': {
-    borderBottom: 'none',
-  },
-}));
 
 const WhiteSlider = styled(Slider)<SliderProps>(() => ({
   color: '#FFFFFF',
   margin: '8px 0 0 0',
   '& .MuiSlider-thumb': {
     backgroundColor: '#FFFFFF',
+    zIndex: '3',
+  },
+  '& .MuiSlider-mark': {
+    width: 2,
+    height: 18,
+    backgroundColor: '#FFFFFF',
   },
   '& .MuiSlider-rail': {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#ffffff84',
     height: '18px',
   },
   '& .MuiSlider-track': {
@@ -47,10 +33,24 @@ const WhiteSlider = styled(Slider)<SliderProps>(() => ({
     fontWeight: 'bold',
     boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.2)',
   },
-  '& .MuiSlider-markLabel': {
-    color: '#FFFFFF',
-  },
 }));
+
+const renderLastRange = (higherLimit: number) => (
+  <Box
+    sx={{
+      position: 'absolute',
+      left: higherLimit.toString().concat('%'),
+      width: (100 - higherLimit).toString().concat('%'),
+      height: '18px',
+      top: { xs: '21px', sm: '14px' },
+      background: '#ff303047',
+      backgroundImage:
+        'repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.3) 0px, rgba(255, 255, 255, 0.3) 5px, transparent 5px, transparent 10px)',
+      zIndex: '1',
+      borderRadius: '0 8px 8px 0',
+    }}
+  />
+);
 
 type CDRSliderProps__Type = {
   value: number;
@@ -69,38 +69,74 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
     setInternalValue(value);
   }, [value]);
 
-  const midValue = 50;
-
   const marks = [
-    { value: 0, label: 'Low' },
-    { value: midValue, label: 'Mid' },
-    { value: 100, label: 'High' },
+    { start: 0, end: 30, label: 'Safe' },
+    { start: 30, end: 50, label: 'Moderate' },
+    { start: 50, end: higherLimit, label: 'High' },
+    { start: higherLimit, end: 100, label: 'Liquidation' },
   ];
 
   const getTrackColor = () => {
-    if (value <= midValue) {
-      return value < 50 / 2
-        ? 'linear-gradient(231deg,#00c2a1,#ffef79)'
-        : 'linear-gradient(231deg,#ff895d,#ffcd4d)';
-    }
+    if (value < 30) return 'linear-gradient(231deg,#00c2a1,#ffef79)';
+    if (value < 50) return 'linear-gradient(231deg,#ff895d,#ffcd4d)';
     return 'linear-gradient(231deg,#d91838,#ff7881)';
   };
 
+  const renderMarks = () =>
+    marks.map((mark, index) => {
+      const isSelected = value >= mark.start && value < mark.end;
+
+      return (
+        <Box
+          key={index}
+          sx={{
+            position: 'absolute',
+            left: `${mark.start}%`,
+            width: `${mark.end - mark.start}%`,
+            bottom: '-12px',
+            textAlign: 'center',
+            fontSize: '12px',
+            fontWeight: isSelected ? 'bold' : 'normal',
+            color: '#ffffff',
+          }}
+        >
+          {mark.label}
+        </Box>
+      );
+    });
+
+  const renderSeparators = () =>
+    marks.slice(1).map((mark, index) => (
+      <Box
+        key={index}
+        sx={{
+          position: 'absolute',
+          left: `${mark.start}%`,
+          height: '18px',
+          width: '2px',
+          top: { xs: '21px', sm: '14px' },
+          backgroundColor: '#5050509e',
+          transform: 'translateX(-50%)',
+          zIndex: '1',
+        }}
+      />
+    ));
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const handleSliderChange = (_event: Event, newValue: number | number[], _activeThumb: number) => {
+  const handleSliderChange = (_event: Event | SyntheticEvent, newValue: number | number[]) => {
     const newValueNum = newValue as number;
 
-    if (newValueNum < lowerLimit || newValueNum > higherLimit) return;
+    if (newValueNum < lowerLimit) {
+      setInternalValue(lowerLimit);
+      return;
+    }
+
+    if (newValueNum > higherLimit) {
+      setInternalValue(higherLimit);
+      return;
+    }
 
     setInternalValue(newValueNum);
-  };
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = event.target.value === '' ? 0 : Number(event.target.value);
-
-    if (newValue < lowerLimit || newValue > higherLimit) return;
-
-    onChange(newValue);
   };
 
   return (
@@ -110,73 +146,36 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
           Loan to Value (LTV)
         </Typography>
         <LTVTooltip />
+        <Typography sx={{ marginLeft: 'auto', fontWeight: 'bold', color: 'white' }}>
+          {internalValue.toFixed(0)}%
+        </Typography>
       </Box>
-      <Grid container spacing={8} sx={{ alignItems: 'center' }}>
+      <Grid container spacing={4} sx={{ alignItems: 'center' }}>
         <Grid item xs>
-          <WhiteSlider
-            onFocus={onFocus}
-            value={internalValue}
-            valueLabelDisplay="auto"
-            onChange={handleSliderChange}
-            onMouseUp={() => {
-              console.log('end');
-              onChange(internalValue);
-            }}
-            aria-labelledby="input-slider"
-            max={100}
-            min={0}
-            marks={marks}
-            sx={{
-              '& .MuiSlider-track': {
-                backgroundImage: getTrackColor(),
-              },
-            }}
-          />
-        </Grid>
-        <Grid item>
-          <Input
-            value={value}
-            size="small"
-            onChange={handleInputChange}
-            onFocus={onFocus}
-            inputProps={{
-              step: 1,
-              min: 0,
-              max: 100,
-              type: 'number',
-              'aria-labelledby': 'input-slider',
-            }}
-          />
+          <Box position="relative">
+            <WhiteSlider
+              onFocus={onFocus}
+              value={internalValue}
+              valueLabelDisplay="off"
+              onChange={handleSliderChange}
+              onChangeCommitted={() => onChange(internalValue)}
+              aria-labelledby="input-slider"
+              max={100}
+              min={0}
+              sx={{
+                '& .MuiSlider-track': {
+                  backgroundImage: getTrackColor(),
+                  zIndex: '2',
+                  border: '0',
+                },
+              }}
+            />
+            {renderMarks()}
+            {renderSeparators()}
+            {renderLastRange(higherLimit)}
+          </Box>
         </Grid>
       </Grid>
-      <Popover
-        open={false}
-        anchorOrigin={{
-          vertical: 'center',
-          horizontal: 'right',
-        }}
-        transformOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
-        }}
-        sx={{
-          '& .MuiPaper-root': {
-            backgroundColor: 'rgba(189, 31, 31, 0.26)',
-            boxShadow: 'none',
-            backdropFilter: 'blur(5px)',
-            borderRadius: '6px',
-          },
-        }}
-      >
-        <Box sx={{ padding: '1rem', maxWidth: '200px' }}>
-          <Typography color="white" fontWeight="bold">
-            Warning: High Risk!
-          </Typography>
-          <Typography color="white" variant="main12">
-            You are entering a high-risk position. Please proceed with caution.
-          </Typography>
-        </Box>
-      </Popover>
     </Box>
   );
 }
