@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 import Slider, { SliderProps } from '@mui/material/Slider';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import React, { useEffect, useState } from 'react';
+import React, { SyntheticEvent, useEffect, useState } from 'react';
 import { LTVTooltip } from 'src/components/infoTooltips/LTVTooltip';
 
 const WhiteSlider = styled(Slider)<SliderProps>(() => ({
@@ -123,10 +123,18 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
     ));
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const handleSliderChange = (_event: Event, newValue: number | number[], _activeThumb: number) => {
+  const handleSliderChange = (_event: Event | SyntheticEvent, newValue: number | number[]) => {
     const newValueNum = newValue as number;
 
-    if (newValueNum < lowerLimit || newValueNum > higherLimit) return;
+    if (newValueNum < lowerLimit) {
+      setInternalValue(lowerLimit);
+      return;
+    }
+
+    if (newValueNum > higherLimit) {
+      setInternalValue(higherLimit);
+      return;
+    }
 
     setInternalValue(newValueNum);
   };
@@ -150,7 +158,7 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
               value={internalValue}
               valueLabelDisplay="off"
               onChange={handleSliderChange}
-              onMouseUp={() => onChange(internalValue)}
+              onChangeCommitted={() => onChange(internalValue)}
               aria-labelledby="input-slider"
               max={100}
               min={0}
