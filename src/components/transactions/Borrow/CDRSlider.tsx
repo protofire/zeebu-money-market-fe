@@ -70,9 +70,9 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
   }, [value]);
 
   const marks = [
-    { start: 0, end: 30, label: 'Conservative' },
+    { start: 0, end: 30, label: 'Safe' },
     { start: 30, end: 50, label: 'Moderate' },
-    { start: 50, end: higherLimit, label: 'Aggressive' },
+    { start: 50, end: higherLimit, label: 'High' },
     { start: higherLimit, end: 100, label: 'Liquidation' },
   ];
 
@@ -86,12 +86,6 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
     marks.map((mark, index) => {
       const isSelected = value >= mark.start && value < mark.end;
 
-      let gradient = '';
-      if (value < 30) gradient = 'linear-gradient(231deg, #00c2a1, #ffef79)';
-      else if (value < 50) gradient = 'linear-gradient(231deg, #ff895d, #ffcd4d)';
-      else if (value < higherLimit) gradient = 'linear-gradient(231deg, #e27d8e, #ff9fa6)';
-      else gradient = 'linear-gradient(231deg, #ff3030, #ff9999)';
-
       return (
         <Box
           key={index}
@@ -99,14 +93,11 @@ export default function CDRSlider(props: CDRSliderProps__Type) {
             position: 'absolute',
             left: `${mark.start}%`,
             width: `${mark.end - mark.start}%`,
-            bottom: '-10px',
+            bottom: '-12px',
             textAlign: 'center',
-            fontSize: '11px',
+            fontSize: '12px',
             fontWeight: isSelected ? 'bold' : 'normal',
-            color: isSelected ? 'transparent' : '#ffffff',
-            backgroundImage: isSelected ? gradient : 'none',
-            backgroundClip: isSelected ? 'text' : 'unset',
-            textFillColor: isSelected ? 'transparent' : 'unset',
+            color: '#ffffff',
           }}
         >
           {mark.label}
