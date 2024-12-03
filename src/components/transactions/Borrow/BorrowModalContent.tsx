@@ -161,6 +161,15 @@ export const BorrowModalContent = ({
   // calculating input usd value
   const usdValue = valueToBigNumber(amount).multipliedBy(poolReserve.priceInUSD);
 
+  const maxAmountToBorrowUSD = valueToBigNumber(maxAmountToBorrow).multipliedBy(
+    poolReserve.priceInUSD
+  );
+
+  const maxLtv = valueToBigNumber(maxAmountToBorrowUSD)
+    .plus(user.totalBorrowsUSD)
+    .dividedBy(user.totalCollateralUSD)
+    .times(100);
+
   // We set this in a useEffect, so it doesn't constantly change when
   // max amount selected
   const handleChange = (_value: string) => {
@@ -181,6 +190,7 @@ export const BorrowModalContent = ({
     }
 
     const newTotalBorrowUSD = valueToBigNumber(user.totalBorrowsUSD).plus(usdValue);
+
     const newLtv = newTotalBorrowUSD.dividedBy(user.totalCollateralUSD).times(100);
 
     setLtv(parseInt(newLtv.toFixed(0)));
@@ -353,7 +363,7 @@ export const BorrowModalContent = ({
         onChange={setLtv}
         value={ltv}
         lowerLimit={parseInt(currentLtv.toFixed())}
-        higherLimit={70}
+        higherLimit={parseInt(maxLtv.toFixed())}
         onFocus={() => {
           setFirstAmount(false);
         }}
