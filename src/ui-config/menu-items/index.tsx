@@ -23,6 +23,11 @@ export const navigation: Navigation[] = [
     title: t`Markets`,
     dataCy: 'menuMarkets',
   },
+  {
+    link: ROUTES.faq,
+    title: t`Faq`,
+    dataCy: 'menuFaq',
+  },
 ];
 
 interface MoreMenuItem extends Navigation {
