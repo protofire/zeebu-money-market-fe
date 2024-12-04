@@ -6,10 +6,16 @@ import React, { useState } from 'react';
 
 const FaqContainer: React.FC = () => {
   const [expanded, setExpanded] = useState<number | false>(false);
+  const [nestedExpanded, setNestedExpanded] = useState<number | false>(false);
 
   const handleAccordionChange =
     (panel: number) => (_: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
+    };
+
+  const handleNestedAccordionChange =
+    (panel: number) => (_: React.SyntheticEvent, isExpanded: boolean) => {
+      setNestedExpanded(isExpanded ? panel : false);
     };
 
   const renderExpandIcon = (isExpanded: boolean) => (
@@ -18,7 +24,6 @@ const FaqContainer: React.FC = () => {
         fontSize: '1.5rem',
         fontWeight: 'normal',
         color: 'white',
-        // right: '10px',
         position: 'relative',
       }}
     >
@@ -43,6 +48,7 @@ const FaqContainer: React.FC = () => {
             overflow: 'hidden',
             padding: '0 8px',
           }}
+          sx={{ '&.MuiAccordionDetails-root': { padding: '0 !important' } }}
         >
           <AccordionSummary
             expandIcon={renderExpandIcon(expanded === index)}
@@ -63,10 +69,47 @@ const FaqContainer: React.FC = () => {
               padding: '15px 28px',
             }}
           >
-            <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus
-              ex, sit amet blandit leo lobortis eget.
-            </Typography>
+            {index === 0 ? (
+              <div>
+                {[...Array(2)].map((_, nestedIndex) => (
+                  <Accordion
+                    key={nestedIndex}
+                    expanded={nestedExpanded === nestedIndex}
+                    onChange={handleNestedAccordionChange(nestedIndex)}
+                    sx={{
+                      background: 'transparent',
+                      boxShadow: 'none',
+                      borderRadius: '0',
+                      padding: '0',
+                      '&:before': {
+                        display: 'none',
+                      },
+                    }}
+                  >
+                    <AccordionSummary
+                      expandIcon={renderExpandIcon(nestedExpanded === nestedIndex)}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        fontWeight: 'normal',
+                        fontSize: '1.2rem',
+                        height: '57px',
+                      }}
+                    >
+                      <Typography sx={{ fontSize: '1.125rem' }}>
+                        Nested Accordion {nestedIndex + 1}
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Typography>Content for Nested Accordion {nestedIndex + 1}.</Typography>
+                    </AccordionDetails>
+                  </Accordion>
+                ))}
+              </div>
+            ) : (
+              <Typography>Content for Accordion {index + 1}.</Typography>
+            )}
           </AccordionDetails>
         </Accordion>
       ))}

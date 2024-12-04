@@ -25,7 +25,7 @@ export const navigation: Navigation[] = [
   },
   {
     link: ROUTES.faq,
-    title: t`Faq`,
+    title: t`FAQ`,
     dataCy: 'menuFaq',
   },
 ];
