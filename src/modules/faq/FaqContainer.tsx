@@ -13,7 +13,15 @@ const FaqContainer: React.FC = () => {
     };
 
   const renderExpandIcon = (isExpanded: boolean) => (
-    <span style={{ fontSize: '1.5rem', fontWeight: 'bold', marginRight: '10px' }}>
+    <span
+      style={{
+        fontSize: '1.5rem',
+        fontWeight: 'normal',
+        color: 'white',
+        // right: '10px',
+        position: 'relative',
+      }}
+    >
       {isExpanded ? '-' : '+'}
     </span>
   );
@@ -26,15 +34,14 @@ const FaqContainer: React.FC = () => {
           expanded={expanded === index}
           onChange={handleAccordionChange(index)}
           style={{
-            marginBottom: '10px',
+            marginBottom: '20px',
             color: '#ffffff',
-            border: 0,
-            borderBottom: '1px solid hsla(0,0%,100%,.2)',
             background: 'linear-gradient(127deg,hsla(0,0%,100%,.1) 2.54%,hsla(0,0%,60%,.1) 97.47%)',
-            boxShadow: ' 0px 3px 4px 0px rgba(41, 127, 234, 0.15) inset',
+            boxShadow: '0 4px 34px 0 rgba(0,0,0,.08)',
             backdropFilter: 'blur(4px)',
             borderRadius: '30px 0 30px 0',
             overflow: 'hidden',
+            padding: '0 8px',
           }}
         >
           <AccordionSummary
@@ -43,17 +50,17 @@ const FaqContainer: React.FC = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              // padding: '10px 20px',
               fontWeight: 'bold',
               color: '#ffffff',
               fontSize: '1.2rem',
+              height: '57px',
             }}
           >
-            <Typography>Accordion {index + 1}</Typography>
+            <Typography sx={{ fontSize: '1.125rem' }}>Accordion {index + 1}</Typography>
           </AccordionSummary>
           <AccordionDetails
             style={{
-              padding: '15px 20px',
+              padding: '15px 28px',
             }}
           >
             <Typography>
