@@ -294,7 +294,7 @@ export default function WalletWidget({ open, setOpen, headerHeight }: WalletWidg
         <Skeleton height={36} width={126} sx={{ background: '#383d51a7' }} />
       ) : (
         <Button
-          variant={connected ? 'surface' : 'gradient'}
+          variant={connected ? 'surface' : 'contained'}
           aria-label="wallet"
           id="wallet-button"
           aria-controls={open ? 'wallet-button' : undefined}
