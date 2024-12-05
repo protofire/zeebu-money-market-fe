@@ -302,7 +302,7 @@ export default function WalletWidget({ open, setOpen, headerHeight }: WalletWidg
           aria-haspopup="true"
           onClick={handleClick}
           sx={{
-            p: connected ? '5px 8px' : undefined,
+            p: connected ? '5px 8px' : '6px',
             minWidth: hideWalletAccountText ? 'unset' : undefined,
           }}
           endIcon={
