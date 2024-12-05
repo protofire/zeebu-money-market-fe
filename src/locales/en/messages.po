@@ -826,10 +826,6 @@ msgstr "Disable E-Mode"
 msgid "Disable fork"
 msgstr "Disable fork"
 
-#: src/layouts/AppHeader.tsx
-msgid "Disable testnet"
-msgstr "Disable testnet"
-
 #: src/components/transactions/CollateralChange/CollateralChangeActions.tsx
 msgid "Disable {symbol} as collateral"
 msgstr "Disable {symbol} as collateral"

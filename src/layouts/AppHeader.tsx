@@ -130,12 +130,6 @@ export function AppHeader() {
     setMobileMenuOpen(state);
   };
 
-  const disableTestnet = () => {
-    localStorage.setItem('testnetsEnabled', 'false');
-    // Set window.location to trigger a page reload when navigating to the the dashboard
-    window.location.href = '/';
-  };
-
   const disableFork = () => {
     localStorage.setItem('testnetsEnabled', 'false');
     localStorage.removeItem('forkEnabled');
@@ -160,9 +154,6 @@ export function AppHeader() {
       <Typography variant="description">
         <Trans>The app is running in testnet mode.</Trans>
       </Typography>
-      <Button variant="outlined" sx={{ mt: '12px' }} onClick={disableTestnet}>
-        <Trans>Disable testnet</Trans>
-      </Button>
     </Box>
   );
 
