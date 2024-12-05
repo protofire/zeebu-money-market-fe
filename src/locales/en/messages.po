@@ -1021,6 +1021,7 @@ msgstr "Export data to"
 
 #: src/modules/reserve-overview/Gho/GhoReserveConfiguration.tsx
 #: src/ui-config/menu-items/index.tsx
+#: src/ui-config/menu-items/index.tsx
 msgid "FAQ"
 msgstr "FAQ"
 
@@ -2499,6 +2500,10 @@ msgstr "Underlying asset does not exist in {marketName} v3 Market, hence this po
 #: src/modules/reserve-overview/TokenLinkDropdown.tsx
 msgid "Underlying token"
 msgstr "Underlying token"
+
+#: pages/faq.page.tsx
+msgid "Understand ZBU MoneyMarket"
+msgstr "Understand ZBU MoneyMarket"
 
 #: src/components/transactions/StakeCooldown/StakeCooldownModalContent.tsx
 #: src/components/transactions/StakeCooldown/StakeCooldownModalContent.tsx
