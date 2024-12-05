@@ -1,4 +1,5 @@
-import { Box } from '@mui/material';
+import { Trans } from '@lingui/macro';
+import { Box, Typography } from '@mui/material';
 import { useEffect } from 'react';
 import { MainLayout } from 'src/layouts/MainLayout';
 import FaqContainer from 'src/modules/faq/FaqContainer';
@@ -44,9 +45,14 @@ export default function Faq() {
           flexDirection: 'column',
           alignItems: 'center',
           flex: 1,
-          mt: { xs: '-32px', lg: '-46px', xl: '-44px', xxl: '-48px' },
         }}
       >
+        <Typography
+          variant="display1"
+          sx={{ margin: { xs: '2rem 1rem 0 1rem', sm: '4rem 2rem 0 2rem' } }}
+        >
+          <Trans>Understand ZBU MoneyMarket</Trans>
+        </Typography>
         <FaqContainer />
       </Box>
     </>

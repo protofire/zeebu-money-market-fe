@@ -32,7 +32,7 @@ const FaqContainer: React.FC = () => {
   );
 
   return (
-    <div style={{ width: '100%', maxWidth: '800px', margin: '4rem auto', padding: '20px' }}>
+    <div style={{ width: '100%', maxWidth: '850px', margin: '2rem auto', padding: '20px' }}>
       {[...Array(3)].map((_, index) => (
         <Accordion
           key={index}
@@ -48,7 +48,6 @@ const FaqContainer: React.FC = () => {
             overflow: 'hidden',
             padding: '0 8px',
           }}
-          sx={{ '&.MuiAccordionDetails-root': { padding: '0 !important' } }}
         >
           <AccordionSummary
             expandIcon={renderExpandIcon(expanded === index)}
@@ -66,7 +65,7 @@ const FaqContainer: React.FC = () => {
           </AccordionSummary>
           <AccordionDetails
             style={{
-              padding: '15px 28px',
+              padding: '0 20px 20px 20px',
             }}
           >
             {index === 0 ? (

@@ -2501,6 +2501,10 @@ msgstr "Underlying asset does not exist in {marketName} v3 Market, hence this po
 msgid "Underlying token"
 msgstr "Underlying token"
 
+#: pages/faq.page.tsx
+msgid "Understand ZBU MoneyMarket"
+msgstr "Understand ZBU MoneyMarket"
+
 #: src/components/transactions/StakeCooldown/StakeCooldownModalContent.tsx
 #: src/components/transactions/StakeCooldown/StakeCooldownModalContent.tsx
 msgid "Unstake window"
